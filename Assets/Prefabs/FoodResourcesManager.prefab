@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1338596650235749774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6647226481653224042}
+  - component: {fileID: 7683565779563175617}
+  m_Layer: 0
+  m_Name: FoodResourcesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6647226481653224042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338596650235749774}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7683565779563175617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338596650235749774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee2a02e220cb164a9167fe94c554fe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bakery:
+  - {fileID: 21300000, guid: 82196bb175ff9074e948cd4d509058d2, type: 3}
+  - {fileID: 21300000, guid: b237fc555656de2438f3f40000edb315, type: 3}
+  - {fileID: 21300000, guid: 692327ae6e02b654f9eceb2397f65ce9, type: 3}
+  - {fileID: 21300000, guid: e2af82c8f77667a41a98b64701e3e6b8, type: 3}
+  - {fileID: 21300000, guid: 7ba295c819becca4e972c6431801a732, type: 3}
+  - {fileID: 21300000, guid: c1cc1f8645815fe408b16c1ecf51ba7d, type: 3}
+  - {fileID: 21300000, guid: ad643af1a626df64cbd4e6a3ebd9ee14, type: 3}
+  - {fileID: 21300000, guid: b298924d32f340044b667259acab4f63, type: 3}
+  fish: []
+  legume: []
+  fridge: []
+  fruits: []
+  perfumery: []
+  bakeryFoods:
+  - {fileID: 4359427896799794157, guid: a3aee10efe39abb4eb1a43138443d97a, type: 3}
+  - {fileID: 4359427896799794157, guid: fc4597d391c4d364f8dc156f430f58a3, type: 3}
+  - {fileID: 4359427896799794157, guid: ba3727bfea67cd1418a008f2786ad847, type: 3}
+  - {fileID: 4359427896799794157, guid: 5862e9f9366108d478441d565d209663, type: 3}
+  - {fileID: 4359427896799794157, guid: f0822d60e85390241b2404bc815ff8cd, type: 3}
+  - {fileID: 4359427896799794157, guid: 1e68fc1ff04701142981c6027a85428b, type: 3}
+  - {fileID: 4359427896799794157, guid: 388f495eb4a063d41820d047a5b78102, type: 3}
+  - {fileID: 4359427896799794157, guid: e7805b3479d83ed4fb43e52631826416, type: 3}
+  fruitsFoods:
+  - {fileID: 4359427896799794157, guid: c9d694c4349cc1845b005e04066c0219, type: 3}
+  - {fileID: 4359427896799794157, guid: bcceefdb09abf574ca7bed9d78c7438e, type: 3}
+  - {fileID: 4359427896799794157, guid: e6dcb0c913c36564cb1ddb6fc9ae12af, type: 3}
+  - {fileID: 4359427896799794157, guid: fcd9736f15c4ce745992090b0c76c763, type: 3}
+  - {fileID: 4359427896799794157, guid: adf7e8b242784a7428ffe35334b218ad, type: 3}
+  - {fileID: 4359427896799794157, guid: 0771c21c04a1fda4cacca8fa4df59ad9, type: 3}
+  - {fileID: 4359427896799794157, guid: 53bea48baac72d54ba1d98d6df0bae6d, type: 3}
+  - {fileID: 4359427896799794157, guid: 5b9452903dbbe4841b5568ddaf05ce9d, type: 3}
+  - {fileID: 4359427896799794157, guid: b19e871ae4b6fa848a7d2eb1f3889abc, type: 3}
+  - {fileID: 4359427896799794157, guid: 74b232131f52af349b69da3fa6f9d30d, type: 3}
+  - {fileID: 4359427896799794157, guid: 482ea0773b7bf324ba90c6398846b914, type: 3}
+  legumeFoods:
+  - {fileID: 4359427896799794157, guid: 27a266052307b0346873d530fe714550, type: 3}
+  - {fileID: 4359427896799794157, guid: 7aca1acb5eb8edf46b70dada2e08c600, type: 3}
+  - {fileID: 4359427896799794157, guid: 3fe51a06e4bb2f945ab07218239b2ac4, type: 3}
+  - {fileID: 4359427896799794157, guid: 4b6111b2f9ad1154c86cd643e7916bc3, type: 3}
+  - {fileID: 4359427896799794157, guid: c450a1cfbd459c94fa70dcb819b9ffc8, type: 3}
+  - {fileID: 4359427896799794157, guid: ce0ac198c792da545b4a8d4ec0512bf1, type: 3}
+  - {fileID: 4359427896799794157, guid: 5aa6c8fa2acd02444a9025c5906ab0a7, type: 3}
+  fridgeFoods:
+  - {fileID: 4359427896799794157, guid: 5dcd2330646740048a31649e03b5eb0b, type: 3}
+  - {fileID: 4359427896799794157, guid: 4a32ba52ba0f4a84da24de246c3d7fc9, type: 3}
+  - {fileID: 4359427896799794157, guid: fa8874abfe0681c45b146b15de3a7533, type: 3}
+  - {fileID: 4359427896799794157, guid: e9a308df91ce9994183fce3e07191420, type: 3}
+  - {fileID: 4359427896799794157, guid: 5b1143f61b0c6054caea010ac46fe4b4, type: 3}
+  - {fileID: 4359427896799794157, guid: cc75ebf2a79b33e4589eef37dbe81d88, type: 3}
+  - {fileID: 4359427896799794157, guid: ecdf3ee6de6bfa949bf7a4242137d773, type: 3}
+  - {fileID: 4359427896799794157, guid: d6d185dbfc0e2114b92b7bd650cd5f23, type: 3}
+  fishFoods:
+  - {fileID: 4359427896799794157, guid: 7fed87c7142fb5a4a8b0790e3a71e7a3, type: 3}
+  - {fileID: 4359427896799794157, guid: 85dad2e73371ada47b74fe5901e9b6f7, type: 3}
+  - {fileID: 4359427896799794157, guid: 143058ad6587260458835e9de923e791, type: 3}
+  - {fileID: 4359427896799794157, guid: e65979b80fe730a4abc2f31cb4d02d9a, type: 3}
+  - {fileID: 4359427896799794157, guid: 237094ab611da734da15230b8b6acfa4, type: 3}
+  - {fileID: 4359427896799794157, guid: 357269785e4e8bd4ebbb8c0b5f4ceaf9, type: 3}
+  - {fileID: 4359427896799794157, guid: 46881c29a857b214bb0d5156b790a72c, type: 3}
+  - {fileID: 4359427896799794157, guid: cd82326963943324695c8f7830de537e, type: 3}
+  perfumeryFoods:
+  - {fileID: 4359427896799794157, guid: 89a2344e7fad08942a6af544c2387554, type: 3}
+  - {fileID: 4359427896799794157, guid: c86f1e91a01b2fa4f82a68e094005e0e, type: 3}
+  - {fileID: 4359427896799794157, guid: c49ef2d04bf37c847bd5160e9ebca541, type: 3}
+  - {fileID: 4359427896799794157, guid: 65271c2125e403f4e8443556377b0153, type: 3}
+  - {fileID: 4359427896799794157, guid: 28ab9a44f1acf2545b5d5a7843863bbe, type: 3}
+  - {fileID: 4359427896799794157, guid: dc4c652b2b795d340bde02e516b8c423, type: 3}
+  - {fileID: 4359427896799794157, guid: c338b3ba901b72144b93560890e6af99, type: 3}
+  - {fileID: 4359427896799794157, guid: 26ff179c389576d4da54f8d5167ba899, type: 3}
+  - {fileID: 4359427896799794157, guid: 8ad07a2e66e73154081fed2d20772202, type: 3}
+  - {fileID: 4359427896799794157, guid: c18771663ed06db4e899b910ca2b6885, type: 3}
+  - {fileID: 4359427896799794157, guid: f3288e21ca6bce54aaf8c3235c502d5d, type: 3}
+  numFoodAccumulative: 000000000000000000000000000000000000000000000000
