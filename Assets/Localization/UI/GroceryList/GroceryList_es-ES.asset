@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: GroceryList_es-ES
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: abe1616bb0034a94093a7ac6da0a0e9b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5684768768
+    m_Localized: "Para ser un buen agente, lo primero que hay que hacer es planificar
+      la misi\xF3n. As\xED que vamos a clasificar los objetivos en las distintas
+      secciones del supermercado donde podemos encontrarlos.\n\xBFListo? \xA1Pues
+      vamos all\xE1! Arrastra los elementos en cada secci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14666924732416
+    m_Localized: Cerrar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15527885320192
+    m_Localized: Hay algo mal clasificado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17126959525888
+    m_Localized: Lista de la compra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25098603376640
+    m_Localized: "Panader\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25325410365440
+    m_Localized: "Fruter\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25407132184576
+    m_Localized: "Pescader\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25340597940224
+    m_Localized: Nevera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25454716563456
+    m_Localized: "Perfumer\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 26053705117696
+    m_Localized: Legumbres
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

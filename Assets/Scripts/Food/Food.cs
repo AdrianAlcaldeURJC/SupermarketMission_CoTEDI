@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Tables;
 
 public class Food : MonoBehaviour
 {
@@ -27,7 +31,6 @@ public class Food : MonoBehaviour
         mid,
         heavy
     };
-
     public enum colors
     {
         red,
@@ -50,7 +53,7 @@ public class Food : MonoBehaviour
 
     //Food properties
     [SerializeField]
-    public string foodName;// { get; private set; }
+    public string foodName; // { get; private set; }
     [SerializeField]
     public colors[] color; // { get; private set; }
     [SerializeField]
@@ -73,6 +76,11 @@ public class Food : MonoBehaviour
     public bool alreadyTaken;
 
     public positionStatus trolleyStatus;
+
+    // Localization
+    [SerializeField]
+    public LocalizedString localizedString;
+    private string m_localizedText;
 
     public Food()
     {
@@ -149,5 +157,25 @@ public class Food : MonoBehaviour
         };
 
         return clone;
+    }
+
+    void OnEnable()
+    {
+        localizedString.StringChanged += UpdateString;
+    }
+
+    void OnDisable()
+    {
+        localizedString.StringChanged -= UpdateString;
+    }
+
+    void UpdateString(string i_s)
+    {
+        m_localizedText = i_s;
+    }
+
+    void OnGUI()
+    {
+        EditorGUILayout.LabelField(m_localizedText);
     }
 }

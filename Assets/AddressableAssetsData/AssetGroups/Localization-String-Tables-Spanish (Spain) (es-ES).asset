@@ -16,7 +16,25 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 0888dc531a5e04f418c0a9eb943beab5
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 80864ab55e33460499680a55a16eecb2
+    m_Address: MainMenu_es-ES
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b4c9c33d84690a4fafba9e5cf133fee
+    m_Address: GroceryList_es-ES
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54743d4065bc5d74b83ba6e4fa97ca9c
+    m_Address: FoodItems_es-ES
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 043810b411557f044812f2f311844d9a, type: 2}
   m_SchemaSet:

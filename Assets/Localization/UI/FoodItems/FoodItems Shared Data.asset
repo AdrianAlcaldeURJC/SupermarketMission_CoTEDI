@@ -1,0 +1,240 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: FoodItems Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: FoodItems
+  m_TableCollectionNameGuidString: 9af92913048a3e947b74e96dffd0ff88
+  m_Entries:
+  - m_Id: 1916722917376
+    m_Key: Bakery-Bread
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4724817833984
+    m_Key: Bakery-Cake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4760440057856
+    m_Key: Bakery-Croissant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5815986991104
+    m_Key: Bakery-Muffin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6213476986880
+    m_Key: Bakery-Pastries
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5884022796288
+    m_Key: Bakery-SlicedBread
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6051690098688
+    m_Key: Bakery-WholewheatBread
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7045400408064
+    m_Key: Fish-Crab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7161519714304
+    m_Key: Fish-Emperor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7269535625216
+    m_Key: Fish-Hake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7326867566592
+    m_Key: Fish-Octopus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7415723896832
+    m_Key: Fish-Oyster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7480249069568
+    m_Key: Fish-Prawn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7555406802944
+    m_Key: Fish-Salmon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7617469919232
+    m_Key: Fish-Squib
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8033544876032
+    m_Key: Fridge-Butter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8139132284928
+    m_Key: Fridge-Cheese
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8209705644032
+    m_Key: Fridge-Cream
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8611209588736
+    m_Key: Fridge-Custard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8257680093184
+    m_Key: Fridge-Ham
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8314751987712
+    m_Key: Fridge-Milk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8369940639744
+    m_Key: Fridge-Sausages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8658005438464
+    m_Key: Fridge-Yogurt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11033332068352
+    m_Key: Fruits-Apple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11088482971648
+    m_Key: Fruits-Banana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11161052819456
+    m_Key: Fruits-Coconut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11230166560768
+    m_Key: Fruits-Grapes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11274097700864
+    m_Key: Fruits-Kiwi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11325293375488
+    m_Key: Fruits-Mango
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11434529828864
+    m_Key: Fruits-Melon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11523390353408
+    m_Key: Fruits-Orange
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11578608365568
+    m_Key: Fruits-Pear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11624053649408
+    m_Key: Fruits-Pineapple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11690650808320
+    m_Key: Fruits-Watermelon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11884876443648
+    m_Key: Legumes-BroadBeans
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12039591735296
+    m_Key: Legumes-BrownBeans
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12354474913792
+    m_Key: Legumes-Chickpea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12633857503232
+    m_Key: Legumes-KidneyBeans
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12750291382272
+    m_Key: Legumes-Lentils
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12845695021056
+    m_Key: Legumes-Peas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12940939276288
+    m_Key: Legumes-WhiteBeans
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14962291814400
+    m_Key: Perfumery-Toothpaste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13077946216448
+    m_Key: Perfumery-AidBand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13183693008896
+    m_Key: Perfumery-Alcohol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13296893079552
+    m_Key: Perfumery-Dehodorant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13646375071744
+    m_Key: Perfumery-HairBrush
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13432369098752
+    m_Key: Perfumery-HairRubberBand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13805355970560
+    m_Key: Perfumery-Shampoo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14040274743296
+    m_Key: Perfumery-ShowerGel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14273591291904
+    m_Key: Perfumery-Sponge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14724327976960
+    m_Key: Perfumery-Toothbrush
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14388024487936
+    m_Key: Perfumery-Wipe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19928247087104
+    m_Key: Bakery-KingCake
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 3978965963508547593
+  references:
+    version: 2
+    RefIds:
+    - rid: 3978965963508547593
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1745321704204
