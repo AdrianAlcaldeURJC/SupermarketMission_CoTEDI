@@ -77,11 +77,6 @@ public class Food : MonoBehaviour
 
     public positionStatus trolleyStatus;
 
-    // Localization
-    [SerializeField]
-    public LocalizedString localizedString;
-    private string m_localizedText;
-
     public Food()
     {
         this.foodName = "";
@@ -159,23 +154,4 @@ public class Food : MonoBehaviour
         return clone;
     }
 
-    void OnEnable()
-    {
-        localizedString.StringChanged += UpdateString;
-    }
-
-    void OnDisable()
-    {
-        localizedString.StringChanged -= UpdateString;
-    }
-
-    void UpdateString(string i_s)
-    {
-        m_localizedText = i_s;
-    }
-
-    void OnGUI()
-    {
-        EditorGUILayout.LabelField(m_localizedText);
-    }
 }

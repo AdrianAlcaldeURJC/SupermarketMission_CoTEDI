@@ -30,7 +30,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15527885320192
-    m_Localized: Hay algo mal clasificado
+    m_Localized: "Uh-oh! Algo no est\xE1 donde deber\xEDa. \xBFPuedes arreglarlo?"
     m_Metadata:
       m_Items: []
   - m_Id: 17126959525888
@@ -59,6 +59,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 26053705117696
     m_Localized: Legumbres
+    m_Metadata:
+      m_Items: []
+  - m_Id: 384245668687872
+    m_Localized: Hecho
+    m_Metadata:
+      m_Items: []
+  - m_Id: 384276190638080
+    m_Localized: Lista
     m_Metadata:
       m_Items: []
   references:

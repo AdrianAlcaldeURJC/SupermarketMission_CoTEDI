@@ -1286,9 +1286,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 527374487791778868, guid: bcca1d2406176fc42b27594958532bb4, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 15527885320192
+      objectReference: {fileID: 0}
     - target: {fileID: 5906409695799280732, guid: bcca1d2406176fc42b27594958532bb4, type: 3}
       propertyPath: m_Name
       value: NotificationCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906409695799280732, guid: bcca1d2406176fc42b27594958532bb4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9027424577528051248, guid: bcca1d2406176fc42b27594958532bb4, type: 3}
       propertyPath: m_Pivot.x
