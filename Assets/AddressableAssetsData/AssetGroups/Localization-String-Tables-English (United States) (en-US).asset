@@ -24,13 +24,25 @@ MonoBehaviour:
     - Locale-en-US
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b71a78d9358c48643acfca6d01f6ae5f
-    m_Address: GroceryList_en-US
+    m_Address: Aisles_en-US
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-US
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2f42e106e75a40d48835aa666d26b8d5
     m_Address: FoodItems_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e0b3950d0012e44ea0bf3a3b8f0efcf
+    m_Address: GeneralUI_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19f62a6093724224c895da1249b926c8
+    m_Address: ExplicationCanvas_en-US
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-US

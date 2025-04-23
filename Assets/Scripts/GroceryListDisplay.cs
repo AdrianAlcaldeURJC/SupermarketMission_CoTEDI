@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 
 public class GroceryListDisplay : MonoBehaviour
 {
@@ -38,8 +39,15 @@ public class GroceryListDisplay : MonoBehaviour
             //Poner como padre la lista correspondiente
             g.transform.SetParent(sectionScroll.transform);
             g.transform.localScale = new Vector3(1f, 1f, 1f);
+
+            // Set name to the food
+            GameManager.GetInstance().UpdateTMPtoLocalization(g.GetComponentInChildren<LocalizeStringEvent>(),
+                                                              g.GetComponentInChildren<TMP_Text>(),
+                                                              "FoodItems",
+                                                              foodList[i].foodName,
+                                                              true);
+
             //Comprobar si el elemento ya ha sido cogido para tachar el texto
-            g.GetComponentInChildren<TMP_Text>().text = foodList[i].foodName;
             if (foodList[i].alreadyTaken)
                 g.GetComponentInChildren<TMP_Text>().fontStyle = FontStyles.Strikethrough;
             //Quitar drag and drop script

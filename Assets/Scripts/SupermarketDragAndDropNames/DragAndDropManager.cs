@@ -19,9 +19,8 @@ public class DragAndDropManager : MonoBehaviour
     void Start()
     {
         notificationCanvas.gameObject.SetActive(false);
-        explanationCanvas.SetTextChecking(1, "El segundo paso, es el reconocimiento del terreno. Identifiquemos en este mapa dónde se encuentra cada sección del supermercado. \n" +
-                    "Arrastra el nombre de cada sección encima del icono que la representa.");
 
+        explanationCanvas.SetTextChecking("ExplicationCanvas", "SupermarketMap_1", 1);
         MapGeneration();
         var num = FindObjectsOfType<DragAndDrop>().Length;
         dropFields = FindObjectsOfType<DropField>();
@@ -50,7 +49,6 @@ public class DragAndDropManager : MonoBehaviour
                 Debug.Log("Algo mal con " + this.dropFields[i].getValue());
                 correct = false;
                 notificationCanvas.gameObject.SetActive(true);
-                notificationCanvas.GetComponentInChildren<TMP_Text>().text = "Faltan secciones por identificar.";
             }
         }
         return correct;

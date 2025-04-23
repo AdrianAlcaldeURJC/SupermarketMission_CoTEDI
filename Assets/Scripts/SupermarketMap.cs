@@ -20,8 +20,8 @@ public class SupermarketMap : MonoBehaviour
     {
         lvlLoader = FindObjectOfType<LevelLoader>();
         explanationCanvas = FindObjectOfType<ExplanationCanvas>();
-        explanationCanvas.SetTextChecking(2,"Ya es hora de entrar en acción. Elige en este mapa que sección quieres visitar. \nRecuerda consultar la lista de objetivos pulsando el botón " +
-                    "en la esquina de la izquierda para ver que nos queda pendiente.");
+
+        explanationCanvas.SetTextChecking("ExplicationCanvas", "SupermarketMapSelection_1", 2);
 
         groceryListCanvas.SetActive(false);
         MapGeneration();

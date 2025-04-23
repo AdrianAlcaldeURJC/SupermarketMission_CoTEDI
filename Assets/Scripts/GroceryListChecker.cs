@@ -158,11 +158,20 @@ public class GroceryListChecker : MonoBehaviour
             g.transform.localScale = new Vector3(1f, 1f, 1f);
             g.GetComponent<DragAndDropGroceryList>().canvas = canvas;
             g.GetComponent<DragAndDropGroceryList>().upperParent = canvas;
+            
             //set index
             int rand = Random.Range(0, numItems);
             g.transform.SetSiblingIndex(rand);
             g.GetComponent<Food>().foodName = foodPendings[i].GetComponent<Food>().foodName;
-            SubscribeTMPToLocalizaiton(g, foodPendings[i].GetComponent<Food>().foodName);
+
+            // Set localizaton text
+            g.GetComponentInChildren<LocalizeStringEvent>().OnUpdateString.RemoveAllListeners();
+            GameManager.GetInstance().UpdateTMPtoLocalization(g.GetComponentInChildren<LocalizeStringEvent>(),
+                                                                g.GetComponentInChildren<TMP_Text>(),
+                                                                "FoodItems", 
+                                                                foodPendings[i].GetComponent<Food>().foodName,
+                                                                true);
+            
             g.GetComponent<Food>().category = foodPendings[i].category;
             switch (g.GetComponent<Food>().category)
             {

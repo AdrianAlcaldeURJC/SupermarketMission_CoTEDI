@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
-  m_Name: GroceryList
+  m_Name: GeneralUI
   m_EditorClassIdentifier: 
-  m_SharedTableData: {fileID: 11400000, guid: abe1616bb0034a94093a7ac6da0a0e9b, type: 2}
+  m_SharedTableData: {fileID: 11400000, guid: 2ac2586e1e29e3240bf10d218f878ba0, type: 2}
   m_Tables:
-  - {fileID: 11400000, guid: b71a78d9358c48643acfca6d01f6ae5f, type: 2}
-  - {fileID: 11400000, guid: 8b4c9c33d84690a4fafba9e5cf133fee, type: 2}
+  - {fileID: 11400000, guid: 8e0b3950d0012e44ea0bf3a3b8f0efcf, type: 2}
+  - {fileID: 11400000, guid: cd3c7f43939bbdf40a56e2f971f5a59d, type: 2}
   m_Extensions: []
   m_Group: String Table
   references:
