@@ -23,6 +23,22 @@ MonoBehaviour:
     m_Key: SupermarketMapSelection_1
     m_Metadata:
       m_Items: []
+  - m_Id: 273532350541824
+    m_Key: SupermarketSection_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 273545109614592
+    m_Key: SupermarketSection_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 301768975495168
+    m_Key: Trolley_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 301843139178496
+    m_Key: ObstaclesGame_1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

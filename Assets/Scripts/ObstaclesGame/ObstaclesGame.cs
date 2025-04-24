@@ -41,11 +41,7 @@ public class ObstaclesGame : MonoBehaviour
             StartGame();
 
         explanationCanvas = FindObjectOfType<ExplanationCanvas>();
-        //explanationCanvas.SetTextChecking(6, "Hemos llegado al tramo final de esta misión, hay que salir de este lugar. ¿Serás capaz de esquivar todos los obstáculos que hay de camino a las cajas? " +
-        //                "Te deseo muy buena suerte, Agente " + GameManager.GetInstance().playerInitial + ". \nDesplázate con las flechas del teclado y ten cuidado de no quedarte sin vidas.");
-
-        //TODO:
-        explanationCanvas.SetTextChecking("todo", "todo", 6);
+        explanationCanvas.SetTextChecking("ExplicationCanvas", "ObstaclesGame_1", 6);
 
         numObstacles = 0;
         isGameOver = false;

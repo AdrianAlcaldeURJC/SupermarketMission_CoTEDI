@@ -288,6 +288,7 @@ public class GameManager : MonoBehaviour
             {
                 i_strEvent.OnUpdateString.RemoveListener((translatedText) => i_tmp.text = translatedText);
             }
+            i_strEvent.RefreshString();
         }
         else
         {
