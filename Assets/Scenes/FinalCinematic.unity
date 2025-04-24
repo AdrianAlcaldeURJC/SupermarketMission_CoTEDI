@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.21313447, g: 0.21313447, b: 0.21313447, a: 1}
+  m_IndirectSpecularColor: {r: 0.10299549, g: 0.109701626, b: 0.11876225, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -450,6 +450,122 @@ MonoBehaviour:
   image: {fileID: 1582414904}
   imageCharacter: {fileID: 465671525}
   imageGarden: {fileID: 21300000, guid: 6e5e004d4492fff4189cc4da65c711af, type: 3}
+  m_localizedStrings:
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 4984320000
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 2167424856064
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 2268130095104
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 2286022995968
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 2296777191424
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 657139871744
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 3255465062400
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 3539394277376
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 3639403261952
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 13431190499328
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 3816713269248
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 5133607284736
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 5297499713536
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 5413027622912
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &838046076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,8 +1676,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 6822559560399280645}
   transitionTime: 1
+  localizedStringStart: []
   introText: {fileID: 1037570728}
   dialogM: {fileID: 1037570730}
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &4336693922051567267
 MonoBehaviour:
   m_ObjectHideFlags: 0

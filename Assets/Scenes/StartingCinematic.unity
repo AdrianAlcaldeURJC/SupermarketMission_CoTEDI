@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11032831, g: 0.124284245, b: 0.13992554, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -457,6 +457,122 @@ MonoBehaviour:
   image: {fileID: 0}
   imageCharacter: {fileID: 0}
   imageGarden: {fileID: 0}
+  m_localizedStrings:
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 4984320000
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 2167424856064
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 2268130095104
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 2286022995968
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 2296777191424
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 657139871744
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 3255465062400
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 3539394277376
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 3639403261952
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 13431190499328
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 3816713269248
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 5133607284736
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 5297499713536
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 5413027622912
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!4 &771898680
 Transform:
   m_ObjectHideFlags: 0
@@ -1011,7 +1127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1609447222}
   - component: {fileID: 1609447221}
-  - component: {fileID: 1609447220}
+  - component: {fileID: 1609447223}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1019,26 +1135,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1609447220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609447219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1609447221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,6 +1165,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1609447223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609447219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &1690772807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,8 +1708,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 6822559560399280645}
   transitionTime: 1
+  localizedStringStart:
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 4984320000
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 657139871744
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   introText: {fileID: 1037570728}
   dialogM: {fileID: 1037570730}
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &4336693922051567267
 MonoBehaviour:
   m_ObjectHideFlags: 0
