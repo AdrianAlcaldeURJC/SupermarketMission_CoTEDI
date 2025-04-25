@@ -78,8 +78,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 13431190499328
-    m_Localized: "Time: {time}. You got {numPickedItems}/{totalItems} target items!
-      Psst\u2026 you also grabbed {numWrongPickedItems} extra things. Nice effort!"
+    m_Localized: "Time: {0.time}. You got {1.numPickedItems}/{2.totalItems} target
+      items! Psst\u2026 you also grabbed {3.numWrongPickedItems} extra thtotalItemsings.
+      Nice effort!"
     m_Metadata:
       m_Items:
       - rid: 3978966006029877273

@@ -146,7 +146,14 @@ public class StoryBehaviour : MonoBehaviour
         int totalItems = GameManager.GetInstance().bakeryFoodList.Count + GameManager.GetInstance().fruitFoodList.Count + GameManager.GetInstance().legumeFoodList.Count +
             GameManager.GetInstance().fridgeFoodList.Count + GameManager.GetInstance().fishFoodList.Count + GameManager.GetInstance().perfumeryFoodList.Count;
 
-        string o = m_localizedStrings[9].GetLocalizedString(time, numPickedItems, totalItems, GameManager.GetInstance().numWrongPickedItems);
+
+        var dict1 = new Dictionary<string, string>() { { "time", time } };
+        var dict2 = new Dictionary<string, int>() { { "numPickedItems", numPickedItems } };
+        var dict3 = new Dictionary<string, int>() { { "totalItems", totalItems } };
+        var dict4 = new Dictionary<string, int>() { { "numWrongPickedItems", GameManager.GetInstance().numWrongPickedItems } };
+
+        m_localizedStrings[9].Arguments = new object[] {dict1, dict2, dict3, dict4};
+        string o = m_localizedStrings[9].GetLocalizedString();
         return o;
     }
 

@@ -1676,7 +1676,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 6822559560399280645}
   transitionTime: 1
-  localizedStringStart: []
+  localizedStringStart:
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 4984320000
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:53ae91e32c3573346ba17c47478e5385
+    m_TableEntryReference:
+      m_KeyId: 657139871744
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   introText: {fileID: 1037570728}
   dialogM: {fileID: 1037570730}
   references:

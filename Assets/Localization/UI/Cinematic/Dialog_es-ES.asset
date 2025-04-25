@@ -78,8 +78,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 13431190499328
-    m_Localized: "Tiempo: {time}. \xA1Conseguiste {numPickedItem}/{totalItems} objetivos!
-      (y {numWrongPickedItems} cosas de m\xE1s). \xA1Buen trabajo!"
+    m_Localized: "Tiempo: {0.time}. \xA1Conseguiste {1.numPickedItems}/{2.totalItems}
+      objetivos! (y {3.numWrongPickedItems} cosas de m\xE1s). \xA1Buen trabajo!"
     m_Metadata:
       m_Items:
       - rid: 3978966006029877274
