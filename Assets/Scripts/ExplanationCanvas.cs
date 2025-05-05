@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Localization.Components;
 using TMPro;
 
 public class ExplanationCanvas : MonoBehaviour
@@ -21,12 +22,15 @@ public class ExplanationCanvas : MonoBehaviour
         EventManager.OnTimerStart();
     }
 
-    public void SetTextChecking(int index, string newText)
+    public void SetTextChecking(string i_localizationTable, string i_localizationKey, int i_index)
     {
-        if (GameManager.GetInstance().firstTimeScene[index])
+        if (GameManager.GetInstance().firstTimeScene[i_index])
         {
-            text.text = newText;
-            GameManager.GetInstance().firstTimeScene[index] = false;
+            LocalizeStringEvent strEvent    = text.gameObject.GetComponent<LocalizeStringEvent>();
+
+            strEvent.OnUpdateString.RemoveAllListeners();
+            GameManager.GetInstance().UpdateTMPtoLocalization(strEvent, text, i_localizationTable, i_localizationKey, true);
+            GameManager.GetInstance().firstTimeScene[i_index] = false;
         }
         else
         {

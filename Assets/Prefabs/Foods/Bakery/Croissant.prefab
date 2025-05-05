@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347bfa5ead7a60d47b16d27bac2cf770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodName: Croissant
+  foodName: Bakery-Croissant
   color: 
   price: 2
   category: 1
@@ -53,4 +53,17 @@ MonoBehaviour:
   weight: 0
   hardness: 0
   sprite: {fileID: 21300000, guid: 79d090099008baa4b990a02b0e8a34cd, type: 3}
-  alreadyTaken: 1
+  alreadyTaken: 0
+  trolleyStatus: 0
+  localizedString:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

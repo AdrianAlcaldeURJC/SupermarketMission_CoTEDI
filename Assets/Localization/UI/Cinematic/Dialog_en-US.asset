@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Dialog_en-US
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en-US
+  m_SharedData: {fileID: 11400000, guid: 53ae91e32c3573346ba17c47478e5385, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 3978966006029877273
+  m_TableData:
+  - m_Id: 4984320000
+    m_Localized: Can you come here for a sec, please?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 657139871744
+    m_Localized: Phew! Made it to checkout!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2167424856064
+    m_Localized: "There you are! Listen up\u2014I\u2019ve got a mission for you."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2268130095104
+    m_Localized: "Your dad was about to cook, but we\u2019re missing lots of ingredients\u2014and
+      we\u2019re in a hurry! Can you help?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2286022995968
+    m_Localized: Think you can grab them all by yourself, agent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2296777191424
+    m_Localized: "Yes! I see the determination in your eyes. Here\u2019s your shopping
+      list\u2014get ready for your mission!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3255465062400
+    m_Localized: Next!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3539394277376
+    m_Localized: You're back!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3639403261952
+    m_Localized: "Let\u2019s see how you did on this mission\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3816713269248
+    m_Localized: "You brought everything back perfectly\u2014and your cart organization
+      was awesome! High five!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5133607284736
+    m_Localized: "Almost everything in your cart is perfect\u2014just a couple of
+      tiny mistakes to fix next time. Great job!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5297499713536
+    m_Localized: "A few tiny oopsies with your cart packing\u2014be a bit more careful
+      next time. But hey, nothing broke! Phew!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5413027622912
+    m_Localized: 'Oh no! Some items broke because they were squished. Remember: heavy
+      stuff goes under, fragile stuff on top! You might need a quick shopping redo.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13431190499328
+    m_Localized: "Time: {0.time}. You got {1.numPickedItems}/{2.totalItems} target
+      items! Psst\u2026 you also grabbed {3.numWrongPickedItems} extra thtotalItemsings.
+      Nice effort!"
+    m_Metadata:
+      m_Items:
+      - rid: 3978966006029877273
+  references:
+    version: 2
+    RefIds:
+    - rid: 3978966006029877273
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00b05631370c0000

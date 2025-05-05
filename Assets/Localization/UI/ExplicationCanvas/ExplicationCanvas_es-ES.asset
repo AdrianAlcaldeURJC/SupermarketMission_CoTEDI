@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: ExplicationCanvas_es-ES
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: 156367ae9e65d074e88f82b1455d7621, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 37314015232
+    m_Localized: "Paso dos: \xA1A explorar! Identifiquemos en el mapa d\xF3nde est\xE1
+      cada secci\xF3n. Arrastra el nombre de cada una a su dibujo correspondiente."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2964455862272
+    m_Localized: "\xA1Hora de actuar! Elige qu\xE9 secci\xF3n visitar en el mapa.
+      Recuerda mirar tu lista de objetivos (bot\xF3n en la esquina) para ver qu\xE9
+      falta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 273532350541824
+    m_Localized: "\xA1Ups! \xA1Aqu\xED usan camuflaje! Ponte las gafas especiales
+      para ver la comida. \nElige un color abajo y \xA1date prisa! Solo tienes segundos
+      para coger lo necesario. Escapar\xE1s cuando lo consigas."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 273545109614592
+    m_Localized: "\xA1Zona con sensores! \nSolo podr\xE1s coger la comida cuando
+      su silueta entre en el recuadro brillante.\n\xA1Hazlo r\xE1pido o se cerrar\xE1!
+      Sales al completar tu misi\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 301768975495168
+    m_Localized: "\xA1Bot\xEDn listo! Gu\xE1rdalo en nuestra base: El Carro. \xA1Ojo!
+      Si pones cosas pesadas sobre fr\xE1giles... \xA1CRASH! El color de fondo te
+      dice si est\xE1 bien colocado. Mira esta gu\xEDa:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 301843139178496
+    m_Localized: "\xA1\xDAltimo desaf\xEDo! Escapa esquivando obst\xE1culos rumbo
+      a las cajas. Mucha suerte, Agente [Player Initial]. Usa las flechas y \xA1no
+      pierdas vidas!"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Shared
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 52e45da9d00c8c34f904a1ef8356ab92
+  m_SerializeEntries:
+  - m_GUID: e8f3334009d261f4b97f63a2c84f2144
+    m_Address: Assets/Localization/UI/MainMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abe1616bb0034a94093a7ac6da0a0e9b
+    m_Address: Assets/Localization/UI/GroceryList/GroceryList Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9af92913048a3e947b74e96dffd0ff88
+    m_Address: Assets/Localization/UI/FoodItems/FoodItems Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ac2586e1e29e3240bf10d218f878ba0
+    m_Address: Assets/Localization/UI/GeneralUI/GeneralUI Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 156367ae9e65d074e88f82b1455d7621
+    m_Address: Assets/Localization/UI/ExplicationCanvas/ExplicationCanvas Shared
+      Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 53ae91e32c3573346ba17c47478e5385
+    m_Address: Assets/Localization/UI/Cinematic/Cinematic Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 043810b411557f044812f2f311844d9a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 4e0af327e4e679c4392115a995a86ce8, type: 2}
+    - {fileID: 11400000, guid: e3d68c8ec135d2e40b964b391f4ab907, type: 2}

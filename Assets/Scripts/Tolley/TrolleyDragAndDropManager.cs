@@ -35,9 +35,8 @@ public class TrolleyDragAndDropManager : MonoBehaviour
     void Start()
     {
         explanationCanvas = FindObjectOfType<ExplanationCanvas>();
-        explanationCanvas.SetTextChecking(5, "Ahora que ya tenemos lo que necesitábamos, vamos a guardarlo en nuestra base de operaciones: “El Carro”. ¡Ten cuidado al colocarlo de que" +
-                    " no haya elementos muy pesados encima de elementos frágiles o se estropearán! \n" +
-                    "El color de fondo de cada elemento te indicará lo bien colocado que está. Aquí tienes una leyenda por si acaso:");
+
+        explanationCanvas.SetTextChecking("ExplicationCanvas", "Trolley_1", 5);
         SetTrolley();
         SetItemsToOrganize();
         lvlLoader = FindObjectOfType<LevelLoader>();

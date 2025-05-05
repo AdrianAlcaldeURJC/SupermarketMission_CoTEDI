@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -40,7 +41,7 @@ public class StoryBehaviour : MonoBehaviour
 
     private AgentDataCollector dataCollector;
 
-
+    [SerializeField] private LocalizedString[] m_localizedStrings;
 
     // Start is called before the first frame update
     void Start()
@@ -114,19 +115,19 @@ public class StoryBehaviour : MonoBehaviour
             case "StartingCinematic":
                 numLines = 5;
                 lines = new string[numLines];
-                lines[0] = "¡" + GameManager.GetInstance().playerName + "! ¿Puedes venir un momento, por favor?";
-                lines[1] = "Aquí estás. Pues verás, tengo una misión para ti.";
-                lines[2] = "Tu padre iba a ponerse a hacer la comida, pero al parecer nos faltan muchos ingredientes y tenemos un poco de prisa.";
-                lines[3] = "¿Crees que podrías conseguirlos todos por tu cuenta, agente " + GameManager.GetInstance().playerInitial + "? ";
-                lines[4] = "¿Si? Veo la decisión en tus ojos. Pues aquí tienes la lista. Prepárate para la misión.";
+                lines[0] = m_localizedStrings[0].GetLocalizedString();
+                lines[1] = m_localizedStrings[1].GetLocalizedString();
+                lines[2] = m_localizedStrings[2].GetLocalizedString();
+                lines[3] = m_localizedStrings[3].GetLocalizedString();
+                lines[4] = m_localizedStrings[4].GetLocalizedString();
                 break;
             case "FinalCinematic":
                 numLines = 6;
                 lines = new string[numLines];
-                lines[0] = "Por fin en la caja";
-                lines[1] = "¡Siguiente!";
-                lines[2] = "¡Ya has vuelto!";
-                lines[3] = "Veamos cual ha sido tu desempeño en esta misión…";
+                lines[0] = m_localizedStrings[5].GetLocalizedString();
+                lines[1] = m_localizedStrings[6].GetLocalizedString();
+                lines[2] = m_localizedStrings[7].GetLocalizedString();
+                lines[3] = m_localizedStrings[8].GetLocalizedString();
                 lines[4] = CalculateScore();
                 //Dependiendo estado de los alimentos sacar un dialogo distinto
                 lines[5] = CalculateTrolleyScore();
@@ -144,7 +145,16 @@ public class StoryBehaviour : MonoBehaviour
         int numPickedItems = GameManager.GetInstance().pickedListItems;
         int totalItems = GameManager.GetInstance().bakeryFoodList.Count + GameManager.GetInstance().fruitFoodList.Count + GameManager.GetInstance().legumeFoodList.Count +
             GameManager.GetInstance().fridgeFoodList.Count + GameManager.GetInstance().fishFoodList.Count + GameManager.GetInstance().perfumeryFoodList.Count;
-        return "Has tardado " + time + ", y has traído "+ numPickedItems+" de los "+ totalItems +" alimentos objetivo. Y además quisiste traerte "+ GameManager.GetInstance().numWrongPickedItems+" que no hacía falta.";
+
+
+        var dict1 = new Dictionary<string, string>() { { "time", time } };
+        var dict2 = new Dictionary<string, int>() { { "numPickedItems", numPickedItems } };
+        var dict3 = new Dictionary<string, int>() { { "totalItems", totalItems } };
+        var dict4 = new Dictionary<string, int>() { { "numWrongPickedItems", GameManager.GetInstance().numWrongPickedItems } };
+
+        m_localizedStrings[9].Arguments = new object[] {dict1, dict2, dict3, dict4};
+        string o = m_localizedStrings[9].GetLocalizedString();
+        return o;
     }
 
     string CalculateTrolleyScore()
@@ -155,17 +165,19 @@ public class StoryBehaviour : MonoBehaviour
         int moderatePosition = GameManager.GetInstance().numElementsModeratePositionTrolley;
         if(wrongPosition == 0 && moderatePosition == 0)
         {
-            line = "Y has traído todo en perfecto estado. Has organizado muy bien el carro, ¡enhorabuena!";
+            line = m_localizedStrings[10].GetLocalizedString();
         }
         else if(wrongPosition==0&&moderatePosition<4)
         {
-            line = "Y la mayoría del carro está en perfecto estado. Solo has tenido un par de errores leves que ya irás perfeccionando. ¡Muy bien!";
-        }else if (wrongPosition == 0 && moderatePosition >= 4)
+            line = m_localizedStrings[11].GetLocalizedString();
+        }
+        else if (wrongPosition == 0 && moderatePosition >= 4)
         {
-            line = "Has tenido algunos fallos leves al colocar las cosas en el carro. Tienes que tener un poco más de cuidado, pero por suerte nada se ha roto.";
-        }else
+            line = m_localizedStrings[12].GetLocalizedString();
+        }
+        else
         {
-            line = "Parece que alguno de los objetivos se ha roto. Tienes que prestar atención qué objetos pones encima de cuáles. Quizás tengas que volver a ir a hacer la compra...";
+            line = m_localizedStrings[13].GetLocalizedString();
         }
         return line;
     }

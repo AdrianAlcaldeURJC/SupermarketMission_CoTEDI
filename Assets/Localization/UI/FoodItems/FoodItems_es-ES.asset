@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: FoodItems_es-ES
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: 9af92913048a3e947b74e96dffd0ff88, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1916722917376
+    m_Localized: Pan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4724817833984
+    m_Localized: Tarta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4760440057856
+    m_Localized: "Cruas\xE1n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19928247087104
+    m_Localized: "Rosc\xF3n de Reyes"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5815986991104
+    m_Localized: Magdalena
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5884022796288
+    m_Localized: Pan de Molde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6051690098688
+    m_Localized: Pan Integral
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6213476986880
+    m_Localized: "Pastas de t\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7045400408064
+    m_Localized: Cangrejo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7161519714304
+    m_Localized: Emperador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7269535625216
+    m_Localized: Merluza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7326867566592
+    m_Localized: Pulpo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7415723896832
+    m_Localized: Ostra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7480249069568
+    m_Localized: Gamba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7555406802944
+    m_Localized: Salmon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7617469919232
+    m_Localized: Calamar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8033544876032
+    m_Localized: Mantequilla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8139132284928
+    m_Localized: Queso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8209705644032
+    m_Localized: Nata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8257680093184
+    m_Localized: "Jam\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8314751987712
+    m_Localized: Leche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8611209588736
+    m_Localized: Natillas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8369940639744
+    m_Localized: Salchichas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8658005438464
+    m_Localized: Yogur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11033332068352
+    m_Localized: Manzana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11088482971648
+    m_Localized: "Pl\xE1tano"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11161052819456
+    m_Localized: Coco
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11230166560768
+    m_Localized: Uvas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11274097700864
+    m_Localized: Kiwi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11325293375488
+    m_Localized: Mango
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11434529828864
+    m_Localized: "Mel\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11523390353408
+    m_Localized: Naranja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11578608365568
+    m_Localized: Pera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11624053649408
+    m_Localized: "Pi\xF1a"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11690650808320
+    m_Localized: "Sand\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11884876443648
+    m_Localized: Habas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12039591735296
+    m_Localized: Judias pintas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12354474913792
+    m_Localized: Garbanzo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12633857503232
+    m_Localized: Frijoles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12750291382272
+    m_Localized: Lentejas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12845695021056
+    m_Localized: Guisantes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12940939276288
+    m_Localized: "Jud\xEDas blancas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13077946216448
+    m_Localized: Tirita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13183693008896
+    m_Localized: Alcohol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13296893079552
+    m_Localized: Deshodorante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13432369098752
+    m_Localized: Goma de pelo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13646375071744
+    m_Localized: Peine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13805355970560
+    m_Localized: "Champ\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14040274743296
+    m_Localized: "Gel de ba\xF1o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14273591291904
+    m_Localized: Esponja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14388024487936
+    m_Localized: Tollita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14724327976960
+    m_Localized: Cepillo de dientes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14962291814400
+    m_Localized: Paste de dientes
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

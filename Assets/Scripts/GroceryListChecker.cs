@@ -1,8 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
+using Unity.VisualScripting;
+
 
 public class GroceryListChecker : MonoBehaviour
 {
@@ -85,7 +90,8 @@ public class GroceryListChecker : MonoBehaviour
         {
             Debug.Log("Hay algo mal");
             notificationCanvas.gameObject.SetActive(true);
-            notificationCanvas.GetComponentInChildren<TMP_Text>().text = "Hay algo mal clasificado o te faltan elementos por clasificar";
+            // Changed by a Localize Event String on the GameObject
+            //notificationCanvas.GetComponentInChildren<TMP_Text>().text = "Hay algo mal clasificado o te faltan elementos por clasificar";
         }
     }
 
@@ -152,10 +158,20 @@ public class GroceryListChecker : MonoBehaviour
             g.transform.localScale = new Vector3(1f, 1f, 1f);
             g.GetComponent<DragAndDropGroceryList>().canvas = canvas;
             g.GetComponent<DragAndDropGroceryList>().upperParent = canvas;
+            
             //set index
             int rand = Random.Range(0, numItems);
             g.transform.SetSiblingIndex(rand);
-            g.GetComponentInChildren<TMP_Text>().text = foodPendings[i].GetComponent<Food>().foodName;
+            g.GetComponent<Food>().foodName = foodPendings[i].GetComponent<Food>().foodName;
+
+            // Set localizaton text
+            g.GetComponentInChildren<LocalizeStringEvent>().OnUpdateString.RemoveAllListeners();
+            GameManager.GetInstance().UpdateTMPtoLocalization(g.GetComponentInChildren<LocalizeStringEvent>(),
+                                                                g.GetComponentInChildren<TMP_Text>(),
+                                                                "FoodItems", 
+                                                                foodPendings[i].GetComponent<Food>().foodName,
+                                                                true);
+            
             g.GetComponent<Food>().category = foodPendings[i].category;
             switch (g.GetComponent<Food>().category)
             {
@@ -187,6 +203,32 @@ public class GroceryListChecker : MonoBehaviour
     {
         foreach (Food f in list){
             f.alreadyTaken = false;
+        }
+    }
+
+    void SubscribeTMPToLocalizaiton(GameObject i_g, string i_localizerString)
+    {
+        LocalizeStringEvent strEvent = i_g.GetComponentInChildren<LocalizeStringEvent>();
+        TMP_Text targetText = i_g.GetComponentInChildren<TMP_Text>();
+        if (strEvent == null)
+        {
+            Debug.LogError("LocalizeStringEvent component not found");
+            return;
+        }
+
+        // Assign the correct string reference
+        strEvent.StringReference = new LocalizedString("FoodItems", i_localizerString);
+
+        // Suscribir el texto TMP
+        if (targetText != null)
+        {
+            strEvent.OnUpdateString.AddListener((translatedText) =>
+                targetText.text = translatedText
+            ); 
+        }
+        else
+        {
+            Debug.LogWarning("TMP_Text component is not linked to update");
         }
     }
 }

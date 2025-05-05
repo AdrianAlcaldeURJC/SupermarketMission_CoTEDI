@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Tables;
 
 public class Food : MonoBehaviour
 {
@@ -27,7 +31,6 @@ public class Food : MonoBehaviour
         mid,
         heavy
     };
-
     public enum colors
     {
         red,
@@ -50,7 +53,7 @@ public class Food : MonoBehaviour
 
     //Food properties
     [SerializeField]
-    public string foodName;// { get; private set; }
+    public string foodName; // { get; private set; }
     [SerializeField]
     public colors[] color; // { get; private set; }
     [SerializeField]
@@ -150,4 +153,5 @@ public class Food : MonoBehaviour
 
         return clone;
     }
+
 }

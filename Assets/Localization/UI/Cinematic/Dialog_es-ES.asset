@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Dialog_es-ES
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: 53ae91e32c3573346ba17c47478e5385, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 3978966006029877274
+  m_TableData:
+  - m_Id: 4984320000
+    m_Localized: "\xBFPuedes venir un momentito, por favor?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 657139871744
+    m_Localized: "\xA1Uff, por fin en la caja!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2167424856064
+    m_Localized: "\xA1Ah\xED est\xE1s! Mira, tengo una misi\xF3n para ti."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2268130095104
+    m_Localized: "Tu pap\xE1 iba a cocinar, \xA1pero nos faltan muchos ingredientes
+      y vamos con prisa! \xBFNos ayudas?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2286022995968
+    m_Localized: "\xBFCrees que podr\xEDas conseguirlos t\xFA solito, agente?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2296777191424
+    m_Localized: "\xA1S\xED! Veo la decisi\xF3n en tu mirada. Toma la lista\u2026
+      \xA1Prep\xE1rate para la misi\xF3n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3255465062400
+    m_Localized: "\xA1Siguiente!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3539394277376
+    m_Localized: "\xA1Ya has vuelto!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3639403261952
+    m_Localized: "Veamos cual ha sido tu desempe\xF1o en esta misi\xF3n\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3816713269248
+    m_Localized: "\xA1Lo has tra\xEDdo todo en perfecto estado y organizaste el carro
+      genial! \xA1Enhorabuena!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5133607284736
+    m_Localized: "Casi todo el carro est\xE1 impecable, solo unos detallitos para
+      mejorar. \xA1Muy bien!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5297499713536
+    m_Localized: "Algunos fallitos al organizar el carro. \xA1Pero tranqui, nada
+      se rompi\xF3! Practicaremos m\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5413027622912
+    m_Localized: "\xA1Ay! Algo se rompi\xF3 por c\xF3mo lo colocaste. F\xEDjate:
+      lo pesado abajo, lo fr\xE1gil arriba. Quiz\xE1 haya que repetir la misi\xF3n\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13431190499328
+    m_Localized: "Tiempo: {0.time}. \xA1Conseguiste {1.numPickedItems}/{2.totalItems}
+      objetivos! (y {3.numWrongPickedItems} cosas de m\xE1s). \xA1Buen trabajo!"
+    m_Metadata:
+      m_Items:
+      - rid: 3978966006029877274
+  references:
+    version: 2
+    RefIds:
+    - rid: 3978966006029877274
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00b05631370c0000

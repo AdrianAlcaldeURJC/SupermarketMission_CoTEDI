@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -260,6 +263,36 @@ public class GameManager : MonoBehaviour
                 if (trolleyStatus[i, 0].GetComponent<Food>().trolleyStatus == Food.positionStatus.good)
                     numElementsCorrectPositionTrolley++;
 
+        }
+    }
+
+    public void UpdateTMPtoLocalization(LocalizeStringEvent i_strEvent, TMP_Text i_tmp, string i_tableName, string i_keyName, bool add)
+    {
+        if (i_strEvent == null)
+        {
+            Debug.LogError("LocalizeStringEvent component not found");
+            return;
+        }
+
+        // Assign the correct string reference
+        i_strEvent.StringReference = new LocalizedString(i_tableName, i_keyName);
+
+        // Suscribir el texto TMP
+        if (i_tmp != null)
+        {
+            if(add)
+            {
+                i_strEvent.OnUpdateString.AddListener((translatedText) => i_tmp.text = translatedText);
+            } 
+            else
+            {
+                i_strEvent.OnUpdateString.RemoveListener((translatedText) => i_tmp.text = translatedText);
+            }
+            i_strEvent.RefreshString();
+        }
+        else
+        {
+            Debug.LogWarning("TMP_Text component is not linked to update");
         }
     }
 }

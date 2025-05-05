@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 
 public class LevelIntroLoader : MonoBehaviour
 {
 
     public Animator transition;
     public float transitionTime = 1;
+    public LocalizedString[] localizedStringStart;
 
     //Intro text
     //public string introSceneText;
@@ -25,13 +28,12 @@ public class LevelIntroLoader : MonoBehaviour
         switch (SceneManager.GetActiveScene().name)
         {
             case "StartingCinematic":
-                text = "¡" + GameManager.GetInstance().playerName + "! ¿Puedes venir un momento, por favor ? ";
+                text = localizedStringStart[0].GetLocalizedString();
                 break;
             case "FinalCinematic":
                 //transition.SetTrigger("ForceBlack");
-                Debug.Log("blaaaaaack");
                 //StartDarkTransition();
-                text = "Uff, por fin en la caja.";
+                text = localizedStringStart[1].GetLocalizedString();
                 break;
             default: 
                 break;

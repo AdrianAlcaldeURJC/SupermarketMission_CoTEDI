@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347bfa5ead7a60d47b16d27bac2cf770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodName: Salchichas
-  color: Brown
+  foodName: Fridge-Sausages
+  color: 
   price: 2
   category: 3
   height: 1
@@ -54,3 +54,16 @@ MonoBehaviour:
   hardness: 1
   sprite: {fileID: 21300000, guid: 618dc915739ae26479c91592062122e4, type: 3}
   alreadyTaken: 0
+  trolleyStatus: 0
+  localizedString:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
