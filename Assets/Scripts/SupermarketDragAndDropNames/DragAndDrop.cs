@@ -50,20 +50,22 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         if (eventData.pointerEnter==null)
         {
             //For the object to come back if it's drag outside the screen
-            transform.position = iniPos;
             transform.parent = initialParent;
+            transform.position = iniPos;
         }
         else
         {
             if (eventData.pointerEnter.GetComponent<DropField>() == null)
             {
-                transform.position = iniPos;
                 transform.parent = initialParent;
+                transform.position = iniPos;
             }
             else {
 
-                    transform.parent = eventData.pointerEnter.gameObject.transform;
-
+                transform.parent = eventData.pointerEnter.gameObject.transform;
+                //transform.position = new Vector3(0.0f, 0.0f, 1.0f);
+                GetComponent<RectTransform>().anchoredPosition = Vector2.zero; 
+                Debug.Log("first");
             }
         }
 

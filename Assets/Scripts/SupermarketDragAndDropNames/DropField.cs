@@ -33,7 +33,10 @@ public class DropField : MonoBehaviour, IDropHandler
                     Debug.Log("Bad");
                     //dndManager.SetResult(index, false);
                 }
-                eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = this.GetComponent<RectTransform>().anchoredPosition;
+                //eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = this.GetComponent<RectTransform>().anchoredPosition;
+
+                //eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
+                Debug.Log(eventData.pointerDrag.GetComponent<RectTransform>().gameObject);
             }
             else
             {
