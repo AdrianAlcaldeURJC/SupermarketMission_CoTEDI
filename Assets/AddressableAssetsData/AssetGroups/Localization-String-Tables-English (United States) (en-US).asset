@@ -17,14 +17,14 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 43035cbaa7043c345b732e375b0947a6
   m_SerializeEntries:
-  - m_GUID: bb72101a5c3341a479471fdd5aac2996
-    m_Address: MainMenu_en-US
+  - m_GUID: 19f62a6093724224c895da1249b926c8
+    m_Address: ExplicationCanvas_en-US
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-US
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b71a78d9358c48643acfca6d01f6ae5f
-    m_Address: Aisles_en-US
+  - m_GUID: 2c5717e8166f85743bf3ccffbc031a72
+    m_Address: Dialog_en-US
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-US
@@ -41,14 +41,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en-US
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 19f62a6093724224c895da1249b926c8
-    m_Address: ExplicationCanvas_en-US
+  - m_GUID: b71a78d9358c48643acfca6d01f6ae5f
+    m_Address: Aisles_en-US
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-US
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2c5717e8166f85743bf3ccffbc031a72
-    m_Address: Dialog_en-US
+  - m_GUID: bb72101a5c3341a479471fdd5aac2996
+    m_Address: MainMenu_en-US
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en-US
