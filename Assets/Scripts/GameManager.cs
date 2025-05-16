@@ -137,7 +137,8 @@ public class GameManager : MonoBehaviour
         numElementsModeratePositionTrolley = 0;
         numElementsWrongPositionTrolley = 0;
     }
-
+     
+    // Send user data to DB
     public void SendResultToDB()
     {
         Debug.Log(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -166,6 +167,13 @@ public class GameManager : MonoBehaviour
 
         Debug.Log(score);
         dbCom.SendInsertRequest(score);
+    }
+
+
+    public void SendUserToDB()
+    {
+        // Comprobar si el usuario ya se encuentra dentro de la DB
+
     }
 
     public void EvaluateFinalTrolley()
