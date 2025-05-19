@@ -18,7 +18,7 @@ public class DataBaseComunicator : MonoBehaviour
 
     IEnumerator SendGetPostRequest(string data)
     {
-        //Construye JSON para la petición REST
+        //Construye JSON para la peticiÃ³n REST
         
 
         //Construye UnityWebRequest para enviar solicitud 
@@ -44,11 +44,22 @@ public class DataBaseComunicator : MonoBehaviour
 
     public void SendInsertRequest(string scores)
     {
+
+        string scores2 = "{ \\r \\n \\\"username\\\" : 1 , \\\"Name\\\" : \\\"TestName\\\", \\\"vacio\\\" : \\\" \\\"  } ";
+
+        string data2 = @"{
+          ""username"":""TFMMGP2024"", ""password"":""2024TFMSupermercadoPC"",
+          ""table"":""testJson"",
+          ""data"":{ ""test"": "" " + scores2 + @" "" }"+
+        "}";
+
         string data = @"{
           ""username"":""TFMMGP2024"", ""password"":""2024TFMSupermercadoPC"",
-          ""table"":""PlayerScores"",
-          ""data"":{ " +scores+ "}"+
+          ""table"":""testJson"",
+          ""data"":{ ""test2"": "" " + scores + @" "" }" +
         "}";
+
+
 
         //string data = @"{
         //  ""username"":""TFMMGP2024"", ""password"":""2024TFMSupermercadoPC"",
@@ -63,8 +74,7 @@ public class DataBaseComunicator : MonoBehaviour
 
     IEnumerator SendInsertPostRequest(string data)
     {
-        //Construye JSON para la petición REST
-        
+
         //Construye UnityWebRequest para enviar solicitud 
         UnityWebRequest request = UnityWebRequest.Post("https://tfvj.etsii.urjc.es/insert", data, "application/json");
 
