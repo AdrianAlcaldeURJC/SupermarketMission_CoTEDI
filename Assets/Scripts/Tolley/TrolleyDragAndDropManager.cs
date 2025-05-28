@@ -27,7 +27,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
     LevelLoader lvlLoader;
     private ExplanationCanvas explanationCanvas;
 
-    public GameObject[,] trolley = new GameObject[8,3];
+    public GameObject[,] trolley = new GameObject[8, 3];
 
     GameObject foodManager;
 
@@ -71,7 +71,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
             //element.GetComponentInChildren<Image>().sprite = element.GetComponent<Food>().sprite;
             element.transform.Find("FoodImage").GetComponent<Image>().sprite = element.GetComponent<Food>().sprite;
             //Hardness
-            if(element.GetComponent<Food>().hardness == Food.hardnessLevel.hard)
+            if (element.GetComponent<Food>().hardness == Food.hardnessLevel.hard)
                 element.transform.Find("FrameImage").GetComponent<Image>().sprite = grossFrame;
             else if (element.GetComponent<Food>().hardness == Food.hardnessLevel.mid)
                 element.transform.Find("FrameImage").GetComponent<Image>().sprite = midFrame;
@@ -87,7 +87,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
             //}
         }
     }
-
+ 
     void SetTrolley()
     {
         //Colocar cada alimento dnd esta en e status
@@ -105,7 +105,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
                 GameObject element = Instantiate(TrolleyElementPrefab);
                 element.GetComponent<RectTransform>().position = layer2.transform.GetChild(i).GetComponent<RectTransform>().position;
                 //element.transform.localScale = new Vector3(1.08f, 1.08f, 1.08f);
-                element.transform.SetParent(layer2.transform.GetChild(i),true);
+                element.transform.SetParent(layer2.transform.GetChild(i), true);
                 element.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
                 element.GetComponent<TrolleyDragAndDrop>().upperParent = this.gameObject.GetComponent<Canvas>();
                 element.GetComponent<TrolleyDragAndDrop>().canvas = this.gameObject.GetComponent<Canvas>();
@@ -125,7 +125,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
                     element.transform.Find("WeightImage").GetComponent<Image>().sprite = midWeight;
                 else if (element.GetComponent<Food>().weight == Food.weightLevel.light)
                     element.transform.Find("WeightImage").GetComponent<Image>().sprite = lightWeight;
-                this.evaluatePosition(index[1], index[0], element);
+                this.EvaluatePosition(index[1], index[0], element);
                 trolley[index[1], index[0]] = element;
             }
         }
@@ -193,23 +193,23 @@ public class TrolleyDragAndDropManager : MonoBehaviour
     public void OnClickNext()
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickTechButtonSFX);
-        if (newFoodParent.transform.childCount==0)
+        if (newFoodParent.transform.childCount == 0)
         {
             SaveTrolley();
             GameManager.GetInstance().pickedItems = new List<Food>();
             EventManager.OnSaveTimer();
             lvlLoader.LoadNextLevel("SupermarketMapSelection");
         }
-        
+
     }
 
-    public void evaluatePosition(int indexI, int indexJ, GameObject element)
+    public void EvaluatePosition(int indexI, int indexJ, GameObject element)
     {
         //Comprobar si hay objeto encima
         Food thisFood = element.GetComponent<Food>();
         element.GetComponent<Image>().color = Color.green;
         element.GetComponent<Food>().trolleyStatus = Food.positionStatus.good;
-        if (indexJ>0)
+        if (indexJ > 0)
         {
             Food aboveFood = GameManager.GetInstance().trolleyStatus[indexI, indexJ - 1];
             if (aboveFood)
@@ -275,7 +275,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
         }
     }
 
-    public void evaluateColumn(int indexJ)
+    public void EvaluateColumn(int indexJ)
     {
         //Si existe el de arriba
         if (trolley[indexJ, 0])
@@ -291,7 +291,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
                 trolley[indexJ, 1].GetComponent<Image>().color = Color.yellow;
                 trolley[indexJ, 1].GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
             }
-            else 
+            else
             if (trolley[indexJ, 0].GetComponent<Food>().weight == Food.weightLevel.heavy && trolley[indexJ, 1].GetComponent<Food>().hardness == Food.hardnessLevel.fragile)
             {
                 trolley[indexJ, 1].GetComponent<Image>().color = Color.red;
@@ -308,7 +308,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
                 trolley[indexJ, 2].GetComponent<Image>().color = Color.yellow;
                 trolley[indexJ, 2].GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
             }
-            else   
+            else
             if (trolley[indexJ, 0].GetComponent<Food>().weight == Food.weightLevel.heavy && trolley[indexJ, 2].GetComponent<Food>().hardness == Food.hardnessLevel.fragile)
             {
                 trolley[indexJ, 2].GetComponent<Image>().color = Color.red;
@@ -319,7 +319,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
                 trolley[indexJ, 2].GetComponent<Image>().color = Color.yellow;
                 trolley[indexJ, 2].GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
             }
-            Debug.Log("Arriba: "+ trolley[indexJ, 0].GetComponent<Food>().foodName + "Medio: " + trolley[indexJ, 1].GetComponent<Food>().foodName + "Abajo: " + trolley[indexJ, 2].GetComponent<Food>().foodName);
+            Debug.Log("Arriba: " + trolley[indexJ, 0].GetComponent<Food>().foodName + "Medio: " + trolley[indexJ, 1].GetComponent<Food>().foodName + "Abajo: " + trolley[indexJ, 2].GetComponent<Food>().foodName);
         }
         else
         {
@@ -335,8 +335,9 @@ public class TrolleyDragAndDropManager : MonoBehaviour
             }
         }
         //Si existe el del medio
-        if (trolley[indexJ, 1] && trolley[indexJ, 2].GetComponent<Image>().color != Color.red) {
-            
+        if (trolley[indexJ, 1] && trolley[indexJ, 2].GetComponent<Image>().color != Color.red)
+        {
+
             if (trolley[indexJ, 1].GetComponent<Food>().weight == Food.weightLevel.mid && trolley[indexJ, 2].GetComponent<Food>().hardness == Food.hardnessLevel.fragile)
             {
                 trolley[indexJ, 2].GetComponent<Image>().color = Color.yellow;
@@ -367,4 +368,5 @@ public class TrolleyDragAndDropManager : MonoBehaviour
             }
         }
     }
+
 }

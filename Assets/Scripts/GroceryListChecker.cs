@@ -144,6 +144,10 @@ public class GroceryListChecker : MonoBehaviour
             //Eliminarlo del conjunto de todos
             allFoods.RemoveAt(randIndex);
         }
+
+        // Add all data to DB
+        DataStorage.Instance.groceryMapData.LoadGroceryListItems(foodPendings);
+
         GenerateClasificationList();
     }
 

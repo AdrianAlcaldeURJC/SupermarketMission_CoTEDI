@@ -22,6 +22,8 @@ public class SectionGenerator : MonoBehaviour
 
     [SerializeField] Canvas groceryListCanvas;
 
+    [SerializeField] private MinigameListener minigameListener;
+    private float StartTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,6 @@ public class SectionGenerator : MonoBehaviour
         minigameFigures = FindObjectOfType<SectionFigureMiniGame>();
         minigameColors = FindObjectOfType<SectionColorsMiniGame>();
         explanationCanvas = FindObjectOfType<ExplanationCanvas>();
-
 
         PopulateSection();
         groceryListCanvas.gameObject.SetActive(false);
@@ -248,8 +249,21 @@ public class SectionGenerator : MonoBehaviour
 
     public void OnClickGroceryList()
     {
+        if (groceryListCanvas.gameObject.activeSelf && minigameListener != null)
+        {
+            minigameListener.AddListOpened(
+                minigameListener.GetListOpenedIndex(),
+                StartTime,
+                minigameListener.GetElapsedTime());
+        }
+        else
+        {
+            StartTime = minigameListener.GetElapsedTime();
+        }
+
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         groceryListCanvas.gameObject.SetActive(!groceryListCanvas.gameObject.activeSelf);
         groceryListCanvas.gameObject.GetComponent<GroceryListDisplay>().RefreshSection();
+
     }
 }

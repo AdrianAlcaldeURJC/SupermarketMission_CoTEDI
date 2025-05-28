@@ -623,6 +623,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 015658fa3e4538b48ade88a7e46918d0, type: 3}
   listElements: []
   groceryListCanvas: {fileID: 365640804}
+  minigameListener: {fileID: 1157128883}
 --- !u!114 &327816870 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1715234712103916587, guid: 9e4f3e16e20e4e24e9126bc3fc5023cd, type: 3}
@@ -677,7 +678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.266}
-  m_AnchoredPosition: {x: -0.07922363, y: 4.770508}
+  m_AnchoredPosition: {x: -0.07910156, y: 4.770508}
   m_SizeDelta: {x: -184.3101, y: -39.93817}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519186574
@@ -1124,7 +1125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130.7096, y: -54.8936}
+  m_AnchoredPosition: {x: 130.70947, y: -54.893555}
   m_SizeDelta: {x: 236.1895, y: 84.7871}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1034242331
@@ -1396,6 +1397,66 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!1 &1157128881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1157128884}
+  - component: {fileID: 1157128883}
+  - component: {fileID: 1157128882}
+  m_Layer: 0
+  m_Name: MinigameListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1157128882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157128881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2688bb9649180c478e1ad2af313fe00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elapsedTime: []
+  isCounting: 
+--- !u!114 &1157128883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157128881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b470f5eb5e1754caf16837705fd547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerAux: {fileID: 1157128882}
+--- !u!4 &1157128884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157128881}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1157.2009, y: 600.1614, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1203879022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,7 +1595,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0045166016, y: 0}
+  m_AnchoredPosition: {x: -0.004638672, y: 0}
   m_SizeDelta: {x: -0.9000244, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1229796838
@@ -1641,6 +1702,7 @@ MonoBehaviour:
   darkIconsPanel: {fileID: 2041276343}
   lvlLoader: {fileID: 327816870}
   stopMiniGame: 0
+  minigameListener: {fileID: 1157128883}
 --- !u!1001 &1346203387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2111,6 +2173,7 @@ MonoBehaviour:
   filterImage: {fileID: 873055830}
   foodManager: {fileID: 7683565779563175617, guid: 735907f06c0e09a458799466401f043f, type: 3}
   lvlLoader: {fileID: 327816870}
+  minigameListener: {fileID: 1157128883}
 --- !u!1 &1934002454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,7 +2275,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.1920166, y: 1}
+  m_AnchoredPosition: {x: 0.19213867, y: 1}
   m_SizeDelta: {x: 0.38000488, y: 1.4759979}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2041276345
@@ -2310,3 +2373,4 @@ SceneRoots:
   - {fileID: 233435247}
   - {fileID: 1934002457}
   - {fileID: 228164493}
+  - {fileID: 1157128884}

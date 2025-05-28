@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public float groceryListSpentTime = 0f;
     public float SupermarketMapSpentTime = 0f;
     public float trolleySpentTime = 0f;
-    public float[] minigamesSpentTime = {0f,0f,0f,0f,0f,0f};
+    public float[] minigamesSpentTime = { 0f, 0f, 0f, 0f, 0f, 0f };
 
     public Food.Category actualSection;
     public Food.Category[] sectionDistribution = new Food.Category[6];
@@ -45,8 +45,10 @@ public class GameManager : MonoBehaviour
     public int numElementsModeratePositionTrolley = 0;
     public int numElementsWrongPositionTrolley = 0;
 
+    public string currentSceneName;
     DataBaseComunicator dbCom;
 
+    public Food.Category CurrentMinigame;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void LoadMain()
@@ -57,7 +59,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null) {
+        if (instance == null)
+        {
             instance = this;
             this.InitializeGame();
         }
@@ -82,6 +85,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToScene(string nameScene)
     {
+        currentSceneName = nameScene;
         SceneManager.LoadScene(nameScene);
     }
 
@@ -124,7 +128,7 @@ public class GameManager : MonoBehaviour
         //}
         pickedItems = new List<Food>();
 
-        bakeryFoodList=new List<Food>();
+        bakeryFoodList = new List<Food>();
         fruitFoodList = new List<Food>();
         legumeFoodList = new List<Food>();
         fridgeFoodList = new List<Food>();
@@ -137,7 +141,7 @@ public class GameManager : MonoBehaviour
         numElementsModeratePositionTrolley = 0;
         numElementsWrongPositionTrolley = 0;
     }
-     
+
     // Send user data to DB
     public void SendResultToDB()
     {
@@ -261,13 +265,13 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            if(trolleyStatus[i, 2])
-                if(trolleyStatus[i, 2].GetComponent<Food>().trolleyStatus == Food.positionStatus.good)
+            if (trolleyStatus[i, 2])
+                if (trolleyStatus[i, 2].GetComponent<Food>().trolleyStatus == Food.positionStatus.good)
                     numElementsCorrectPositionTrolley++;
-            if (trolleyStatus[i, 1]) 
+            if (trolleyStatus[i, 1])
                 if (trolleyStatus[i, 1].GetComponent<Food>().trolleyStatus == Food.positionStatus.good)
                     numElementsCorrectPositionTrolley++;
-            if (trolleyStatus[i, 0]) 
+            if (trolleyStatus[i, 0])
                 if (trolleyStatus[i, 0].GetComponent<Food>().trolleyStatus == Food.positionStatus.good)
                     numElementsCorrectPositionTrolley++;
 
@@ -288,10 +292,10 @@ public class GameManager : MonoBehaviour
         // Suscribir el texto TMP
         if (i_tmp != null)
         {
-            if(add)
+            if (add)
             {
                 i_strEvent.OnUpdateString.AddListener((translatedText) => i_tmp.text = translatedText);
-            } 
+            }
             else
             {
                 i_strEvent.OnUpdateString.RemoveListener((translatedText) => i_tmp.text = translatedText);
@@ -302,5 +306,15 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("TMP_Text component is not linked to update");
         }
+    }
+
+    public List<int> PickedItemsToIntList()
+    {
+        List<int> result = new List<int>();
+        for (int i = 0; i < pickedItems.Count; i++)
+        {
+            result.Add(DataStorage.GroceryMapData.GetIDfromStringFood(pickedItems[i].foodName));
+        }
+        return result;
     }
 }

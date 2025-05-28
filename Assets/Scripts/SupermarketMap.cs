@@ -14,6 +14,10 @@ public class SupermarketMap : MonoBehaviour
 
     [SerializeField] GameObject[] sections = new GameObject[7];
     [SerializeField] private Sprite[] sectionImages = new Sprite[6];
+    [SerializeField] MinigameListener minigameListener;
+    float StartTime = 0f;
+
+    private MapSelectorListener mapSelectorListener;
 
     // Start is called before the first frame update
     void Start()
@@ -25,20 +29,34 @@ public class SupermarketMap : MonoBehaviour
 
         groceryListCanvas.SetActive(false);
         MapGeneration();
+
+        mapSelectorListener = FindObjectOfType<MapSelectorListener>();
     }
 
     public void OnClickSection(Food.Category category)
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         GameManager.GetInstance().actualSection = category;
-        if(category == Food.Category.cashier)
+        if (category == Food.Category.cashier)
             lvlLoader.LoadNextLevel("ObstaclesGame");
         else
             lvlLoader.LoadNextLevel("SupermarketSection");
+
+        // Save map picked order
+        mapSelectorListener.AddPickedMap((int)category);
+        GameManager.GetInstance().CurrentMinigame = category;
     }
 
     public void ShowAndHideList()
-    {
+    {   
+        if (groceryListCanvas.gameObject.activeSelf && minigameListener != null)
+        {
+            minigameListener.AddListOpened(
+                minigameListener.GetListOpenedIndex(),
+                StartTime,
+                minigameListener.GetElapsedTime());
+        }
+
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         groceryListCanvas.SetActive(!groceryListCanvas.activeSelf);
     }
@@ -52,9 +70,7 @@ public class SupermarketMap : MonoBehaviour
         Food.Category[] order = GameManager.GetInstance().sectionDistribution;
 
         for (int i = 0; i < order.Length; i++)
-        {
-            Debug.Log(order.Length);
-
+        {            
             switch (order[i])
             {
                 case Food.Category.bakery:

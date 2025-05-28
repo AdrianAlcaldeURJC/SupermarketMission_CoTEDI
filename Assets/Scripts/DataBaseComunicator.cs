@@ -44,34 +44,15 @@ public class DataBaseComunicator : MonoBehaviour
 
     public void SendInsertRequest(string scores)
     {
-
-        string scores2 = "{ \\r \\n \\\"username\\\" : 1 , \\\"Name\\\" : \\\"TestName\\\", \\\"vacio\\\" : \\\" \\\"  } ";
-
-        string data2 = @"{
-          ""username"":""TFMMGP2024"", ""password"":""2024TFMSupermercadoPC"",
-          ""table"":""testJson"",
-          ""data"":{ ""test"": "" " + scores2 + @" "" }"+
-        "}";
-
         string data = @"{
           ""username"":""TFMMGP2024"", ""password"":""2024TFMSupermercadoPC"",
           ""table"":""testJson"",
           ""data"":{ ""test2"": "" " + scores + @" "" }" +
         "}";
 
-
-
-        //string data = @"{
-        //  ""username"":""TFMMGP2024"", ""password"":""2024TFMSupermercadoPC"",
-        //  ""table"":""test"",
-        //  ""data"":{""name"": ""name1"", ""start"": ""2023-12-01 00:01:00"", ""end"": ""2023-11-10 00:01:00""}
-        //}";
-
-
         StartCoroutine(SendInsertPostRequest(data));
     }
-
-
+     
     IEnumerator SendInsertPostRequest(string data)
     {
 

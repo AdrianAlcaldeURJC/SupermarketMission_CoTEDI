@@ -69,7 +69,11 @@ public class AgentDataCollector : MonoBehaviour
     {
         if (nameInput.text != "" && gender != "")
         {
-            GameManager.GetInstance().SavePlayerData(nameInput.text, age, gender);
+            DataStorage.UserData userData = DataStorage.Instance.userData;
+            userData.Name = nameInput.text;
+
+            DataStorage.Instance.userData.setData(nameInput.text, age, gender);
+            //GameManager.GetInstance().SavePlayerData(nameInput.text, age, gender);
             return true;
         }
         else

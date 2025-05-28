@@ -23,6 +23,9 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
 
     private TrolleyDragAndDropManager dndManager;
 
+    // Drag data
+    private TrolleyListener trolleyListener;
+    private int timerIndex;
 
     void Start()
     {
@@ -32,6 +35,11 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
         iniPos = transform.localPosition;
         initialParent = GameObject.Find("NewElementsPanel").transform;
         scrollIndex = transform.GetSiblingIndex();
+
+        // Initialize drag data
+        trolleyListener = FindObjectOfType<TrolleyListener>();
+        timerIndex = trolleyListener.GetTimerAux().InitTimer();
+        
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -47,6 +55,9 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
         }
 
         this.transform.SetParent(upperParent.gameObject.transform);
+
+        // Save drag data
+        trolleyListener.GetTimerAux().StartTimer(timerIndex);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -67,11 +78,17 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
         {
             if (eventData.pointerEnter.GetComponent<TrolleyDropField>() == null)
             {
-                transform.SetParent(initialParent) ;
-                    this.GetComponent<Image>().color = Color.white;
+                transform.SetParent(initialParent);
+                this.GetComponent<Image>().color = Color.white;
             }
         }
 
+
+        // Save drag data
+        int numItem = -1;
+        float takenTime = trolleyListener.GetElapsedTime();
+        float takenDuration = trolleyListener.GetTimerAux().elapsedTime[timerIndex];
+        int isDropCorrect = -1;
     }
 
     public string getValue()

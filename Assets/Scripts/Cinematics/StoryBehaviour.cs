@@ -62,12 +62,16 @@ public class StoryBehaviour : MonoBehaviour
                 //dataCollector = FindObjectOfType<AgentDataCollector>();
                 SetLines();
                 StartCoroutine(showIntroMessage());
+                DataStorage.Instance.gameData.OnAwakeData();
+
                 break;
             case "FinalCinematic":
                 momAnimator.gameObject.SetActive(false);
 
                 SetLines();
                 StartCoroutine(showIntroMessage());
+                DataStorage.Instance.gameData.OnDestroyData();
+
                 break;
             default:
                 break;
