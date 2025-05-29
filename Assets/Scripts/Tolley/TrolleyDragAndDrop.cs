@@ -26,6 +26,7 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
     // Drag data
     private TrolleyListener trolleyListener;
     private int timerIndex;
+    private TrolleyListener.TrolleyDrop trolleyDrop;
 
     void Start()
     {
@@ -57,7 +58,10 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
         this.transform.SetParent(upperParent.gameObject.transform);
 
         // Save drag data
+        trolleyDrop = new TrolleyListener.TrolleyDrop();
         trolleyListener.GetTimerAux().StartTimer(timerIndex);
+        trolleyDrop.TakenTime = trolleyListener.GetElapsedTime();
+        trolleyDrop.NumItem = DataStorage.GroceryMapData.GetIDfromStringFood(GetComponent<Food>().foodName);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -68,6 +72,7 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
     public void OnEndDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = true;
+        int isDropCorrect = 0;
         if (eventData.pointerEnter == null)
         {
             //For the object to come back if it's drag outside the screen
@@ -81,17 +86,74 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
                 transform.SetParent(initialParent);
                 this.GetComponent<Image>().color = Color.white;
             }
+            isDropCorrect = 1;
+
         }
 
 
         // Save drag data
-        int numItem = -1;
-        float takenTime = trolleyListener.GetElapsedTime();
+
+
         float takenDuration = trolleyListener.GetTimerAux().elapsedTime[timerIndex];
-        int isDropCorrect = -1;
+
+        List<int> finalPos = GetPosition();
+        trolleyDrop.FinalPos = finalPos[0] * 3 + finalPos[1]; // Reads in vertical order
+        trolleyDrop.IsDropCorrect = isDropCorrect;
+        trolleyDrop.TakenDuration = takenDuration;
+        FillColData(finalPos[0], finalPos[1]);
+        trolleyListener.AddTrolleyDrop(trolleyDrop);
     }
 
-    public string getValue()
+    public List<int> GetPosition()
+    {
+        if(this.transform.parent.GetComponentInParent<TrolleyDropField>())
+        {
+            int[] indexes = this.transform.parent.GetComponentInParent<TrolleyDropField>().GetIndexes();
+            return new List<int>() { indexes[0], indexes[1] };
+        }
+        else
+        {
+            return new List<int>() { -1, -1 };
+        }
+    }
+
+    public void FillColData(int row, int col)
+    {
+        if(row == -1 && col == -1)
+        {
+            // If the item is not dropped in a valid position, we don't fill the data
+            trolleyDrop.ColStatus = "";
+            trolleyDrop.ColWeight = "";
+            trolleyDrop.ColHardness = "";
+            return;
+        }
+        List<int> status = new List<int>();
+        List<int> weight = new List<int>();
+        List<int> hardness = new List<int>();
+
+        for (int i = 0; i < 3; ++i)
+        {
+            if (dndManager.trolley[col, i] != null)
+            {
+                Food food = dndManager.trolley[col, i].GetComponent<Food>();
+                status.Add((int)food.trolleyStatus);
+                weight.Add((int)food.weight);
+                hardness.Add((int)food.hardness);
+            }
+            else
+            {
+                status.Add(-1);
+                weight.Add(-1);
+                hardness.Add(-1);
+            }
+        }
+
+        trolleyDrop.ColStatus = trolleyListener.ListToString(status,    "()");
+        trolleyDrop.ColWeight = trolleyListener.ListToString(weight,    "()");
+        trolleyDrop.ColHardness = trolleyListener.ListToString(hardness,  "()");
+    }
+
+    public string GetValue()
     {
         return this.value;
     }

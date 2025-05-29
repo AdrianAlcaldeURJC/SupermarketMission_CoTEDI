@@ -8,10 +8,30 @@ public class TrolleyListener : MonoBehaviour
     {
         public int Item;
         public int Status;
+        public int Weight;
+        public int Hardness;
 
         override readonly public string ToString()
         {
-            return $"({Item}, {Status})";
+            return $"({Item}, {Status}, {Weight}, {Hardness})";
+        }
+    }
+
+    public struct TrolleyDrop
+    {
+        public int NumItem;
+        public float TakenTime;
+        public float TakenDuration;
+        public int IsDropCorrect;
+        public string ColStatus;
+        public string ColWeight;
+        public string ColHardness;
+        public int InitialPos;
+        public int FinalPos;
+
+        override readonly public string ToString()
+        {
+            return $"({NumItem}, {TakenTime}, {TakenDuration}, {IsDropCorrect}, {ColStatus}, {ColWeight}, {ColHardness}, {InitialPos}, {FinalPos})";
         }
     }
 
@@ -22,6 +42,7 @@ public class TrolleyListener : MonoBehaviour
     const int TrolleySizeY = 3; // Rows
     const int TrolleySize = TrolleySizeY * TrolleySizeX; 
     List<TrolleyResult> trolleyResults = new List<TrolleyResult>();
+    List<TrolleyDrop> trolleyDrops = new List<TrolleyDrop>();
 
     private void Awake()
     {
@@ -36,6 +57,7 @@ public class TrolleyListener : MonoBehaviour
 
         minigameIndex = (int)GameManager.GetInstance().CurrentMinigame;
         DataStorage.Instance.minigamesData[minigameIndex].TrolleyResult = ListToString(trolleyResults);
+        DataStorage.Instance.minigamesData[minigameIndex].TrolleyDrops = ListToString(trolleyDrops);
     }
 
     private void InitTrolleyResult()
@@ -44,18 +66,22 @@ public class TrolleyListener : MonoBehaviour
         {
             trolleyResults.Add(new TrolleyResult()
             {
-                Item = -1, // Default value for item
-                Status = -1 // Default value for status
+                Item = -1,      // Default value for item
+                Status = -1,    // Default value for status
+                Weight = -1,    // Default value for weight
+                Hardness = -1   // Default value for hardness
             });
         }
     }
 
-    private void SaveTrolleyResult(int col, int row, int item, int status)
+    private void SaveTrolleyResult(int col, int row, int item, int status, int weight, int hardness)
     {
         int index = row + col * TrolleySizeY;
         TrolleyResult result = trolleyResults[index];
         result.Item = item;
         result.Status = status;
+        result.Weight = weight;
+        result.Hardness = hardness; 
         trolleyResults[index] = result;
     }
 
@@ -71,10 +97,35 @@ public class TrolleyListener : MonoBehaviour
                 {
                     int Item = DataStorage.GroceryMapData.GetIDfromStringFood(trolley[col, row].foodName);
                     int Status = (int)trolley[col, row].trolleyStatus;
-                    SaveTrolleyResult(col, row, Item, Status);
+                    int Weight = (int)trolley[col, row].weight;
+                    int Hardness = (int)trolley[col, row].hardness;
+                    SaveTrolleyResult(col, row, Item, Status, Weight, Hardness);
                 } 
             }
         }
+    }
+
+    public void AddTrolleyDrop(int numItem, float takenTime, float takenDuration, int isDropCorrect, string colStatus, string colWeight, string colHardness, int initialPos, int finalPos)
+    {
+        TrolleyDrop drop = new TrolleyDrop()
+        {
+            NumItem = numItem,
+            TakenTime = takenTime,
+            TakenDuration = takenDuration,
+            IsDropCorrect = isDropCorrect,
+            ColStatus = colStatus,
+            ColWeight = colWeight,
+            ColHardness = colHardness,
+            InitialPos = initialPos,
+            FinalPos = finalPos
+        };
+
+        trolleyDrops.Add(drop);
+    }
+
+    public void AddTrolleyDrop(TrolleyDrop drop)
+    {
+        trolleyDrops.Add(drop);
     }
 
     public float GetElapsedTime()
@@ -87,7 +138,7 @@ public class TrolleyListener : MonoBehaviour
         return timerAux;
     }
 
-    private string ListToString<T>(List<T> ts)
+    public string ListToString<T>(List<T> ts, string brackets = "[]")
     {
         List<string> list = new List<string>();
         foreach (var item in ts)
@@ -95,7 +146,7 @@ public class TrolleyListener : MonoBehaviour
             list.Add(item.ToString());
         }
 
-        return "[" + string.Join(", ", list) + "]";
+        return brackets[0] + string.Join(", ", list) + brackets[1];
     }
 
 }
