@@ -1,14 +1,11 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
-using Unity.VisualScripting;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine.Localization.Settings;
-using System.Linq;
+using System.IO;
 
 /// <summary>
 /// Singleton class to store multiple JSON DATA. 
@@ -19,7 +16,8 @@ public class DataStorage : MonoBehaviour
     public static DataStorage Instance { get; private set; }
 
     // Necesary to transform it into a JSON
-    [Serializable] public class UserData
+    [Serializable]
+    public class UserData
     {
         public string UserID;
         public string Name;
@@ -27,10 +25,10 @@ public class DataStorage : MonoBehaviour
         public int Age;
         public string Gender;
         public string Country;
-        public string UserAux1; 
+        public string UserAux1;
         public string UserAux2;
 
-        public void setData(string _Name, int _Age, string _Gender,  
+        public void setData(string _Name, int _Age, string _Gender,
                             string _UserAux1 = null, string _UserAux2 = null)
         {
             Name = _Name.Replace(" ", "_").ToLower();
@@ -78,27 +76,28 @@ public class DataStorage : MonoBehaviour
     }
 
     [Serializable]
-    public class SesionData
+    public class SessionData
     {
-        public int SesionID;
+        public int SessionID;
         public int NumGames;
-        public string SesionStartTime;  
-        public string SesionEndTime;
+        public string SessionStartTime;
+        public string SessionEndTime;
         public int Platform;
-        public string SesionAux1;
-        public string SesionAux2;
+        public string SessionAux1;
+        public string SessionAux2;
 
 
         public void OnAwakeData()
         {
-            SesionStartTime = DateTime.Now.ToString("M/d/yyyy/hh:mm:ss");
-            SesionID = 1; // TODO: CORRECT ID OF THE SESION
+            SessionStartTime = DateTime.Now.ToString("M/d/yyyy/hh:mm:ss");
+            SessionID = 0; 
             Platform = (int)Environment.OSVersion.Platform;
         }
 
         public void OnDestroyData()
         {
-            SesionEndTime = DateTime.Now.ToString("M/d/yyyy/hh:mm:ss");
+            
+            SessionEndTime = DateTime.Now.ToString("M/d/yyyy/hh:mm:ss") ;
         }
     }
 
@@ -110,7 +109,7 @@ public class DataStorage : MonoBehaviour
         public string GameEndTime;
         public string GameAux1;
         public string GameAux2;
-    
+
         public void OnAwakeData()
         {
             GameStartTime = DateTime.Now.ToString("M/d/yyyy/hh:mm:ss");
@@ -241,9 +240,10 @@ public class DataStorage : MonoBehaviour
     [Serializable]
     public class TrolleyDodgeData
     {
-        public string TrolleyDodgeDuration;
+        public float TrolleyDodgeDuration;
         public string ScenesFinished;
         public string TrolleyDodgeSlides;
+        public string TrolleyImpacts;
         public string TrolleyDodgeAux1;
         public string TrolleyDodgeAux2;
         public string TrolleyDodgeAux3;
@@ -260,7 +260,7 @@ public class DataStorage : MonoBehaviour
 
     // Data containers
     public UserData userData;
-    public SesionData sesionData;
+    public SessionData sessionData;
     public GameData gameData;
     public GroceryMapData groceryMapData;
     public List<MinigamesData> minigamesData;
@@ -268,7 +268,7 @@ public class DataStorage : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -279,51 +279,50 @@ public class DataStorage : MonoBehaviour
             Debug.LogError("SE HA INTENTADO CREAR DOS VECES UN SINGLETON");
         }
 
-        startClasses();
+        StartClasses();
 
     }
 
     private void OnDestroy()
     {
-        // Fill the necessary classes data
         EndClasses();
     }
 
-    private void startClasses()
+    private void StartClasses()
     {
         userData = new UserData();
-        sesionData = new SesionData();
+        sessionData = new SessionData();
         gameData = new GameData();
         groceryMapData = new GroceryMapData();
         trolleyDodgeData = new TrolleyDodgeData();
 
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 6; i++)
         {
             minigamesData.Add(new MinigamesData());
         }
 
         // Init necessary data
-        sesionData.OnAwakeData();
+        sessionData.OnAwakeData();
     }
 
     private void EndClasses()
     {
 
-        sesionData.OnDestroyData();
+        sessionData.OnDestroyData();
     }
 
 
     public string GetUserDataJson()
     {
         string aux = JsonUtility.ToJson(userData, true);
-        
+
 
         return JsonUtility.ToJson(userData, true);
     }
 
     public string GetSesionDataJson()
     {
-        return JsonUtility.ToJson(sesionData);
+        return JsonUtility.ToJson(sessionData);
     }
 
 
@@ -339,7 +338,7 @@ public class DataStorage : MonoBehaviour
 
     public string GetMinigamesDataJson()
     {
-        return JsonUtility.ToJson(new Wrapper<MinigamesData> { items = minigamesData});
+        return JsonUtility.ToJson(new Wrapper<MinigamesData> { items = minigamesData });
     }
 
     public string GetSingleMinigameDataJson(int minigame)
@@ -366,6 +365,48 @@ public class DataStorage : MonoBehaviour
 
 
         return finalJson.ToString();
+    }
+
+    public void SaveCombinedJsonToFile()
+    {
+
+        try
+        {
+            string FolderName = $"{Application.persistentDataPath}/DataCollection/{userData.UserID}_Session{sessionData.SessionID}_Game{gameData.GameID}/";
+            if(!Directory.Exists(FolderName))
+                Directory.CreateDirectory(FolderName);
+            
+            for (int i = 0; i < minigamesData.Count; i++)
+            {
+                string fileName = $"Minigame{i}.json";
+                string jsonData = GetCombinedJsons(i);
+
+                File.WriteAllText(Path.Combine(FolderName, fileName), jsonData);
+                Debug.Log("JSON data saved to " + Path.Combine(FolderName, fileName));
+            }
+            
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Failed to save JSON data: " + e.Message);
+        }
+    }
+
+    public void OnEndData()
+    {
+        gameData.GameID += 1;
+        gameData.GameStartTime = null;
+        gameData.GameEndTime = null;
+        gameData.GameAux1 = null;
+        gameData.GameAux2 = null;
+        groceryMapData = new GroceryMapData();
+        trolleyDodgeData = new TrolleyDodgeData();
+        for (int i = 0; i < minigamesData.Count; i++)
+        {
+            minigamesData[i] = new MinigamesData();
+        }
+        sessionData.NumGames++;
+        // Increment the session ID for the next game
     }
 
 }

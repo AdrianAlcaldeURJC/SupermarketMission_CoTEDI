@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
     DataBaseComunicator dbCom;
 
     public Food.Category CurrentMinigame;
+    
+    private DataBaseComunicator dataBaseCommunicator;
+    private bool isSessionUpdated = false;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void LoadMain()
@@ -76,6 +79,7 @@ public class GameManager : MonoBehaviour
         musicVolume = 0.5f;
         SFXVolume = 0.5f;
         dbCom = this.gameObject.GetComponent<DataBaseComunicator>();
+        dataBaseCommunicator = gameObject.AddComponent<DataBaseComunicator>();
     }
 
     public static GameManager GetInstance()
@@ -316,5 +320,13 @@ public class GameManager : MonoBehaviour
             result.Add(DataStorage.GroceryMapData.GetIDfromStringFood(pickedItems[i].foodName));
         }
         return result;
+    }
+
+    public void UpdateSessionID()
+    {
+        if (isSessionUpdated)
+            return;
+        dataBaseCommunicator.ProcessSessionGamesCount();
+        isSessionUpdated = true;
     }
 }

@@ -14,13 +14,17 @@ public class TestingDB : MonoBehaviour
     {
         //DataStorage.Instance.userData.setData("name", 14, 1);
 
+        DataStorage.Instance.groceryMapData.MapDrops = "[(1, 2, 3), (4, 5, 6)]";
+
         string JSON = DataStorage.Instance.GetCombinedJsons(0);
-        string excapedJSON = JSON.Replace("\r\n", "\\r\\n");
+
+/*         string excapedJSON = JSON.Replace("\r\n", "\\r\\n");
         excapedJSON = excapedJSON.Replace(@"""", @"\""");
+        excapedJSON = excapedJSON.Replace("\n", "\\n"); */
 
-        //excapedJSON = excapedJSON.Replace("\n", "\\n");
 
-        db.SendInsertRequest(excapedJSON);
+
+        db.SendInsertRequest(JSON);
     }
-       
+
 }

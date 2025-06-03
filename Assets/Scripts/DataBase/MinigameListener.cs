@@ -91,6 +91,9 @@ public class MinigameListener : MonoBehaviour
     {
         minigameIndex = (int)GameManager.GetInstance().CurrentMinigame;
 
+        if (minigameIndex < 0 || minigameIndex >= 6)
+            return;
+            
         DataStorage.Instance.minigamesData[minigameIndex].MinigameDuration = timerAux.elapsedTime[timerIndex];
         DataStorage.Instance.minigamesData[minigameIndex].Minigame = (int)GameManager.GetInstance().CurrentMinigame;
         DataStorage.Instance.minigamesData[minigameIndex].ColorsOpened = ListToString(colorsOpenedList);

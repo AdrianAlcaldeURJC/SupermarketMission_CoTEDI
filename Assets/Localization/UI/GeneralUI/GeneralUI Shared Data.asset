@@ -51,6 +51,18 @@ MonoBehaviour:
     m_Key: Agent Profile
     m_Metadata:
       m_Items: []
+  - m_Id: 14808782741090304
+    m_Key: GameOver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14810603383599104
+    m_Key: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14811599392387072
+    m_Key: Congratulations
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -54,6 +54,18 @@ MonoBehaviour:
     m_Localized: Perfil del Agente
     m_Metadata:
       m_Items: []
+  - m_Id: 14808782741090304
+    m_Localized: Fin del juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14810603383599104
+    m_Localized: Continuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14811599392387072
+    m_Localized: "\xA1Enhorabuena!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
