@@ -30,15 +30,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 273532350541824
-    m_Localized: "\xA1Ups! \xA1Aqu\xED usan camuflaje! Ponte las gafas especiales
-      para ver la comida. \nElige un color abajo y \xA1date prisa! Solo tienes segundos
-      para coger lo necesario. Escapar\xE1s cuando lo consigas."
+    m_Localized: "\xA1Una fruta, un color! \xA1Coge las frutas que necesites!"
     m_Metadata:
       m_Items: []
   - m_Id: 273545109614592
-    m_Localized: "\xA1Zona con sensores! \nSolo podr\xE1s coger la comida cuando
-      su silueta entre en el recuadro brillante.\n\xA1Hazlo r\xE1pido o se cerrar\xE1!
-      Sales al completar tu misi\xF3n."
+    m_Localized: "\xA1Mira las sombras de los objetos! \xA1Selecciona las que necesites!"
     m_Metadata:
       m_Items: []
   - m_Id: 301768975495168

@@ -271,21 +271,49 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2541066423625511428, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783193472303582405, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.83100003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783193472303582405, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.3582593
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783193472303582405, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.17025001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783193472303582405, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.19251858
+      objectReference: {fileID: 0}
     - target: {fileID: 4783193472303582405, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -644.8291
+      value: -0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 4783193472303582405, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -619.7073
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4783193472303582405, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.5081177
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4783193472303582405, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 41
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062258329303052529, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
+      propertyPath: m_text
+      value: "\xA1Una fruta, un color! \xA1Coge las frutas que necesites!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6062258329303052529, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
+      propertyPath: m_fontSize
+      value: 77
       objectReference: {fileID: 0}
     - target: {fileID: 8070372598227836448, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
       propertyPath: m_Pivot.x
@@ -692,8 +720,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 70}
-  m_SizeDelta: {x: 1209.0283, y: 680.852}
+  m_AnchoredPosition: {x: 0, y: 161.2}
+  m_SizeDelta: {x: 1065.113, y: 599.8076}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!328 &365162987
 VideoPlayer:
