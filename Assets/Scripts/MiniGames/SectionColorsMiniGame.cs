@@ -12,13 +12,16 @@ public class SectionColorsMiniGame : MonoBehaviour
 
     [SerializeField] private FoodResourcesManager foodManager;
     [SerializeField] private LevelLoader lvlLoader;
-
+    [SerializeField] private MinigameListener minigameListener;
     private List<Food> sectionFood = new List<Food>();
     private List<Food> groceryList = new List<Food>();
     private List<Food> correctItems = new List<Food>();
     private int correctSelected;
     private int wrongSelected;
     private Toggle[] toggles;
+
+    private int picksAfterColorOpen = 0; // Añade esta variable para contar los picks
+    private Food.colors currentOpenedColor; // Para saber qué color está abierto
 
     //private bool stopMiniGame = false;
 
@@ -30,7 +33,7 @@ public class SectionColorsMiniGame : MonoBehaviour
 
     private void PrepareMiniGame()
     {
-        filterImage.color = new Color32(0,0,0,0);
+        filterImage.color = new Color32(0, 0, 0, 0);
         //Coger los alimentos de section de food resource manager
         switch (GameManager.GetInstance().actualSection)
         {
@@ -66,9 +69,9 @@ public class SectionColorsMiniGame : MonoBehaviour
         CountAlreadyTakenItems(groceryList);
         //Instancia los botones de los colores que tenga los alimentos
         List<Food.colors> sectionColors = new List<Food.colors>();
-        foreach(Food f in sectionFood)
+        foreach (Food f in sectionFood)
         {
-            foreach(Food.colors color in f.color)
+            foreach (Food.colors color in f.color)
             {
                 if (!sectionColors.Contains(color))
                 {
@@ -91,7 +94,7 @@ public class SectionColorsMiniGame : MonoBehaviour
         switch (color)
         {
             case Food.colors.red:
-                return new Color32(255,0,0,255);
+                return new Color32(255, 0, 0, 255);
             case Food.colors.orange:
                 return new Color32(255, 159, 0, 255);
             case Food.colors.yellow:
@@ -118,7 +121,8 @@ public class SectionColorsMiniGame : MonoBehaviour
         toggles = FindObjectsOfType<Toggle>();
         foreach (Toggle t in toggles)
         {
-            t.onValueChanged.AddListener(delegate {
+            t.onValueChanged.AddListener(delegate
+            {
                 ObjectSelected(t.gameObject);
             });
             t.GetComponent<CanvasGroup>().alpha = 0;
@@ -170,6 +174,10 @@ public class SectionColorsMiniGame : MonoBehaviour
                 }
             }
             filterImage.GetComponent<Animator>().SetTrigger("Fade");
+
+            picksAfterColorOpen = 0; // Reinicia el contador al abrir un color
+            currentOpenedColor = color; // Guarda el color abierto
+
             StartCoroutine(MakeItemsDisappear());
         }
     }
@@ -185,6 +193,14 @@ public class SectionColorsMiniGame : MonoBehaviour
             t.GetComponent<CanvasGroup>().alpha = 0;
             t.GetComponent<CanvasGroup>().interactable = false;
         }
+        Debug.Log("Termino la rutina");
+
+        int openedOrder = minigameListener.GetColorOpenedIndex();
+        int isCorrect = CheckCorrectColor(currentOpenedColor);
+        float openedTime = minigameListener.GetElapsedTime();
+        int numPicks = picksAfterColorOpen;
+        int numPossiblePicks = GetNumPossiblePicks(currentOpenedColor);
+        minigameListener.AddColorOpened((int)currentOpenedColor, openedOrder, isCorrect, openedTime, numPicks, numPossiblePicks);
     }
 
     void ObjectSelected(GameObject foodSelected)
@@ -198,9 +214,11 @@ public class SectionColorsMiniGame : MonoBehaviour
         int index = groceryList.FindIndex(s => s.foodName == foodSelected.GetComponent<Food>().foodName);
         int index2 = -1;
         bool alreadyTaken = false;
+        int isCorrect = 0;
+
         if (index != -1)
         {
-            Debug.Log("Esta en la listaaaa");
+            Debug.Log("Esta en la lista");
             switch (GameManager.GetInstance().actualSection)
             {
                 case Food.Category.bakery:
@@ -248,30 +266,44 @@ public class SectionColorsMiniGame : MonoBehaviour
                 default:
                     break;
             }
+
             Debug.Log("valor alreadyTaken: " + alreadyTaken);
             if (!alreadyTaken)
             {
-                //Si no habia sido aun cogido, se a�ade a la lista de correctos
+                //Si no habia sido aun cogido, se a�ade a la lista de correctos
                 correctItems.Add(groceryList[index]);
                 correctSelected++;
                 GameManager.GetInstance().pickedListItems++;
+                isCorrect = 1;
             }
             else
             {
                 wrongSelected++;
+                isCorrect = 0;
             }
+
             //groceryList.RemoveAt(index);
             Debug.Log("se han cogido correctos " + correctItems.Count + " y en la lista hay " + groceryList.Count);
             //if (correctItems.Count == groceryList.Count)
-                //stopMiniGame = true;
-            if(correctSelected== groceryList.Count)
+            //stopMiniGame = true;
+            if (correctSelected == groceryList.Count)
                 SaveCorrectItems();
         }
         else
         {
             //No esta en la lista de la compra
             wrongSelected++;
+            isCorrect = 0;
         }
+
+        if (currentOpenedColor != null)
+        {
+            picksAfterColorOpen++; // Incrementa el contador si hay un color abierto
+            Debug.Log("Picks realizados desde que se abrió el color " + currentOpenedColor + ": " + picksAfterColorOpen);
+        }
+        int order = minigameListener.GetColorPickedIndex();
+        int pick = DataStorage.GroceryMapData.GetIDfromStringFood(foodSelected.GetComponent<Food>().foodName);
+        minigameListener.AddColorPick((int)currentOpenedColor, order, isCorrect, minigameListener.GetElapsedTime(), pick);
     }
 
     void SaveCorrectItems()
@@ -281,5 +313,41 @@ public class SectionColorsMiniGame : MonoBehaviour
         GameManager.GetInstance().numWrongPickedItems += wrongSelected;
         EventManager.OnSaveTimer();
         lvlLoader.LoadNextLevel("TrolleyScene 1");
+    }
+
+    /// <summary>
+    /// Checks if the given color should be opened
+    /// </summary>
+    /// <param name="color"></param>
+    /// <returns></returns>
+    int CheckCorrectColor(Food.colors color)
+    {
+        foreach (Food f in groceryList)
+        {
+            foreach (Food.colors fColor in f.color)
+            {
+                if (fColor == color)
+                {
+                    return 1;
+                }
+            }
+        }
+        return 0;
+    }
+
+    int GetNumPossiblePicks(Food.colors color)
+    {
+        int count = 0;
+        foreach (Food f in groceryList)
+        {
+            foreach (Food.colors fColor in f.color)
+            {
+                if (fColor == color)
+                {
+                    count += 1;
+                }
+            }
+        }
+        return count;
     }
 }

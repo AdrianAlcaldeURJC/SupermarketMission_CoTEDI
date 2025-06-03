@@ -10,14 +10,13 @@ public class ToggleControl : MonoBehaviour
     void Start()
     {
         toggles = GetComponentsInChildren<Toggle>();
-        Debug.Log("Leentg" +toggles.Length);
     }
 
     public void selectedObjects()
     {
         foreach (Toggle t in toggles)
         {
-            Debug.Log(t.isOn);
+            //Debug.Log(t.isOn);
         }
     }
 

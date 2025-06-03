@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using Random = UnityEngine.Random;
 
 public class SectionGenerator : MonoBehaviour
@@ -22,6 +23,13 @@ public class SectionGenerator : MonoBehaviour
 
     [SerializeField] Canvas groceryListCanvas;
 
+    [SerializeField] private MinigameListener minigameListener;
+    private float StartTime;
+    [SerializeField] private VideoClip colorsTutorial;
+    [SerializeField] private VideoClip figuresTutorial;
+    [SerializeField] private VideoPlayer videoPlayer;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +38,6 @@ public class SectionGenerator : MonoBehaviour
         minigameColors = FindObjectOfType<SectionColorsMiniGame>();
         explanationCanvas = FindObjectOfType<ExplanationCanvas>();
 
-
         PopulateSection();
         groceryListCanvas.gameObject.SetActive(false);
         ChooseMiniGame();
@@ -38,9 +45,10 @@ public class SectionGenerator : MonoBehaviour
 
     void ChooseMiniGame()
     {
-        if(GameManager.GetInstance().actualSection == Food.Category.fruit && !GameManager.GetInstance().daltonicUser)
+        if (GameManager.GetInstance().actualSection == Food.Category.fruit && !GameManager.GetInstance().daltonicUser)
         {
             explanationCanvas.SetTextChecking("ExplicationCanvas", "SupermarketSection_1", 3);
+            videoPlayer.clip = colorsTutorial;
 
             minigameColors.StartMiniGame();
             minigameFigures.gameObject.SetActive(false);
@@ -48,6 +56,7 @@ public class SectionGenerator : MonoBehaviour
         else
         {
             explanationCanvas.SetTextChecking("ExplicationCanvas", "SupermarketSection_2", 4);
+            videoPlayer.clip = figuresTutorial;
 
             minigameFigures.StartMiniGame();
             minigameColors.gameObject.SetActive(false);
@@ -248,8 +257,21 @@ public class SectionGenerator : MonoBehaviour
 
     public void OnClickGroceryList()
     {
+        if (groceryListCanvas.gameObject.activeSelf && minigameListener != null)
+        {
+            minigameListener.AddListOpened(
+                minigameListener.GetListOpenedIndex(),
+                StartTime,
+                minigameListener.GetElapsedTime());
+        }
+        else
+        {
+            StartTime = minigameListener.GetElapsedTime();
+        }
+
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         groceryListCanvas.gameObject.SetActive(!groceryListCanvas.gameObject.activeSelf);
         groceryListCanvas.gameObject.GetComponent<GroceryListDisplay>().RefreshSection();
+
     }
 }

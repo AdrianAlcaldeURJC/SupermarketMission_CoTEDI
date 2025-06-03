@@ -37,7 +37,7 @@ public class DragAndDropManager : MonoBehaviour
                     correct = false;
                     Debug.Log("Algo mal con " + this.dropFields[i].getValue());
                     notificationCanvas.gameObject.SetActive(true);
-                    notificationCanvas.GetComponentInChildren<TMP_Text>().text = "Hay alguna sección mal identificada.";
+                    notificationCanvas.GetComponentInChildren<TMP_Text>().text = "Hay alguna secciï¿½n mal identificada.";
                 }
                 else
                 {
@@ -77,44 +77,51 @@ public class DragAndDropManager : MonoBehaviour
         //Ponerle la imagen correspondiente
         //Ponerle el valor correspodiente al dropfield
 
-        for(int i=0; i < sections.Length; i++)
+        for (int i = 0; i < sections.Length; i++)
         {
-            int rand = Random.Range(0,sectionsAvaliability.Count);
+            int rand = Random.Range(0, sectionsAvaliability.Count);
             switch (sectionsAvaliability[rand])
             {
                 case "bakery":
                     sections[i].GetComponent<Image>().sprite = sectionImages[0];
                     sections[i].GetComponent<DropField>().setValue(Food.Category.bakery);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.bakery;
+                    MapListener.Instance.mapLayout.Add(1);
                     break;
                 case "fruits":
                     sections[i].GetComponent<Image>().sprite = sectionImages[1];
                     sections[i].GetComponent<DropField>().setValue(Food.Category.fruit);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.fruit;
+                    MapListener.Instance.mapLayout.Add(0);
                     break;
                 case "legumes":
                     sections[i].GetComponent<Image>().sprite = sectionImages[2];
                     sections[i].GetComponent<DropField>().setValue(Food.Category.legume);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.legume;
+                    MapListener.Instance.mapLayout.Add(2);
                     break;
                 case "fridge":
                     sections[i].GetComponent<Image>().sprite = sectionImages[3];
                     sections[i].GetComponent<DropField>().setValue(Food.Category.fridge);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.fridge;
+                    MapListener.Instance.mapLayout.Add(3);
                     break;
                 case "fish":
                     sections[i].GetComponent<Image>().sprite = sectionImages[4];
                     sections[i].GetComponent<DropField>().setValue(Food.Category.fish);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.fish;
+                    MapListener.Instance.mapLayout.Add(4);
                     break;
                 case "perfumery":
                     sections[i].GetComponent<Image>().sprite = sectionImages[5];
                     sections[i].GetComponent<DropField>().setValue(Food.Category.perfumery);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.perfumery;
+                    MapListener.Instance.mapLayout.Add(5);
                     break;
             }
             sectionsAvaliability.RemoveAt(rand);
         }
+        MapListener.Instance.mapLayout.Add(6);
     }
 
 }

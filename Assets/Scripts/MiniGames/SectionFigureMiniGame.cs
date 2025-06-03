@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
@@ -24,15 +25,18 @@ public class SectionFigureMiniGame : MonoBehaviour
     private int wrongSelected = 0;
     List<Food> correctItems = new List<Food>();
 
+    // Saving data
+    [SerializeField] private MinigameListener minigameListener;
+    private bool itemSkipped = true;
     public void StartMiniGame()
     {
         PrepareMiniGame();
         PrepareToggles();
         //Esperar 3 segundos y mostrar el siguiente item
-        StartCoroutine(PickedItemCorrutine());
+        StartCoroutine(PickedItemCoroutine());
     }
 
-    IEnumerator PickedItemCorrutine()
+    IEnumerator PickedItemCoroutine()
     {
         int pid = ++actualPID;
         Debug.Log("Mi PID es: " + pid);
@@ -40,6 +44,18 @@ public class SectionFigureMiniGame : MonoBehaviour
         {
             this.NextItem();
             yield return new WaitForSeconds(2);
+
+            if (itemSkipped)
+            {
+                int itemID = DataStorage.GroceryMapData.GetIDfromStringFood(darkIcons.Peek().GetComponent<Food>().foodName);
+                minigameListener.AddShadowSkipped(
+                        itemID,
+                        IsCorrectItem(darkIcons.Peek()),
+                        minigameListener.GetElapsedTime()
+                    );
+            }
+
+            itemSkipped = true;
         }
         if (stopMiniGame)
         {
@@ -53,7 +69,8 @@ public class SectionFigureMiniGame : MonoBehaviour
         Toggle[] toggles = FindObjectsOfType<Toggle>();
         foreach (Toggle t in toggles)
         {
-            t.onValueChanged.AddListener(delegate{ 
+            t.onValueChanged.AddListener(delegate
+            {
                 ObjectSelected(t.gameObject);
             });
         }
@@ -62,7 +79,7 @@ public class SectionFigureMiniGame : MonoBehaviour
     void PrepareMiniGame()
     {
         currentIndex = 0;
-        
+
         switch (GameManager.GetInstance().actualSection)
         {
             case Food.Category.bakery:
@@ -96,8 +113,8 @@ public class SectionFigureMiniGame : MonoBehaviour
         }
         CountAlreadyTakenItems(groceryList);
         ShuffleList(possibilities);
-        //Instanciar la fial de figuras
-        for (currentIndex=0; currentIndex<6; currentIndex++)
+        //Instanciar la fila de figuras
+        for (currentIndex = 0; currentIndex < 6; currentIndex++)
         {
             GameObject gO = Instantiate(darkIconPrefab);
             gO.transform.GetChild(0).GetComponent<Image>().sprite = possibilities[currentIndex].sprite;
@@ -117,15 +134,15 @@ public class SectionFigureMiniGame : MonoBehaviour
         }
         if (countAlreadytaken == list.Count)
             stopMiniGame = true;
-        Debug.Log("alimento cogidos anteriormente " + countAlreadytaken + " alimentos en la lista "+list.Count);
+        Debug.Log("alimento cogidos anteriormente " + countAlreadytaken + " alimentos en la lista " + list.Count);
     }
 
     void ShuffleList(List<Food> list)
     {
 
         Food food1;
-        int randIndex = Random.Range(0,list.Count);
-        for(int i=0; i < list.Count; i++)
+        int randIndex = Random.Range(0, list.Count);
+        for (int i = 0; i < list.Count; i++)
         {
             food1 = list[i];
             list[i] = list[randIndex];
@@ -135,8 +152,9 @@ public class SectionFigureMiniGame : MonoBehaviour
 
     void NextItem()
     {
+        // Recoger datos del item 
+
         //Borrar el primero
-        //darkIcons.Dequeue();
         Destroy(darkIcons.Dequeue());
         //Crear un ultimo
         GameObject gO = Instantiate(darkIconPrefab);
@@ -152,81 +170,44 @@ public class SectionFigureMiniGame : MonoBehaviour
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         GameObject food = darkIcons.Peek();
-        //Check if the toggle activated is the actual posiible object
-        if(foodSelected.GetComponent<Food>().foodName == food.GetComponent<Food>().foodName)
+        bool alreadyTaken = false;
+        bool isCorrect = false;
+
+        //Check if the toggle activated is the actual possible object
+
+        if (foodSelected.GetComponent<Food>().foodName == food.GetComponent<Food>().foodName)
         {
             //correcto
+            itemSkipped = false;
             //foodSelected.GetComponent<Renderer>().enabled = false;
             //ColorBlock c = foodSelected.GetComponent<Toggle>().colors;
             //c.pressedColor = new Color(0,0,0, 1f);
             foodSelected.GetComponent<Toggle>().interactable = false;
             int index = groceryList.FindIndex(s => s.foodName == foodSelected.GetComponent<Food>().foodName);
             int index2 = -1;
-            bool alreadyTaken = false;
             if (index != -1)
             {
                 Debug.Log("Esta en la listaaaa");
-                switch (GameManager.GetInstance().actualSection)
-                {
-                    case Food.Category.bakery:
-                        index2 = GameManager.GetInstance().bakeryFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
-                        if (GameManager.GetInstance().bakeryFoodList[index2].alreadyTaken)
-                            alreadyTaken = true;
-                        else
-                            GameManager.GetInstance().bakeryFoodList[index2].alreadyTaken = true;
-                        break;
-                    case Food.Category.fruit:
-                        index2 = GameManager.GetInstance().fruitFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
-                        if (GameManager.GetInstance().fruitFoodList[index2].alreadyTaken)
-                            alreadyTaken = true;
-                        else
-                            GameManager.GetInstance().fruitFoodList[index2].alreadyTaken = true;
-                        break;
-                    case Food.Category.legume:
-                        index2 = GameManager.GetInstance().legumeFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
-                        if (GameManager.GetInstance().legumeFoodList[index2].alreadyTaken)
-                            alreadyTaken = true;
-                        else
-                            GameManager.GetInstance().legumeFoodList[index2].alreadyTaken = true;
-                        break;
-                    case Food.Category.fridge:
-                        index2 = GameManager.GetInstance().fridgeFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
-                        if (GameManager.GetInstance().fridgeFoodList[index2].alreadyTaken)
-                            alreadyTaken = true;
-                        else
-                            GameManager.GetInstance().fridgeFoodList[index2].alreadyTaken = true;
-                        break;
-                    case Food.Category.fish:
-                        index2 = GameManager.GetInstance().fishFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
-                        if (GameManager.GetInstance().fishFoodList[index2].alreadyTaken)
-                            alreadyTaken = true;
-                        else
-                            GameManager.GetInstance().fishFoodList[index2].alreadyTaken = true;
-                        break;
-                    case Food.Category.perfumery:
-                        index2 = GameManager.GetInstance().perfumeryFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
-                        if (GameManager.GetInstance().perfumeryFoodList[index2].alreadyTaken)
-                            alreadyTaken = true;
-                        else
-                            GameManager.GetInstance().perfumeryFoodList[index2].alreadyTaken = true;
-                        break;
-                    default:
-                        break;
-                }
-                Debug.Log("valor alreadyTaken: "+alreadyTaken);
+                alreadyTaken = CheckIfTaken(foodSelected, ref index2);
+                if (!alreadyTaken)
+                    ModifyFoodTaken(index2);
+
+                Debug.Log("valor alreadyTaken: " + alreadyTaken);
                 if (!alreadyTaken)
                 {
                     correctItems.Add(groceryList[index]);
                     GameManager.GetInstance().pickedListItems++;
+                    isCorrect = true;
                 }
                 else
                 {
                     wrongSelected++;
                 }
-                //groceryList.RemoveAt(index);
-                Debug.Log("se han cogido correctos " + correctItems.Count +" y en la lista hay "+ groceryList.Count);
+
+                Debug.Log("se han cogido correctos " + correctItems.Count + " y en la lista hay " + groceryList.Count);
                 if (correctItems.Count == groceryList.Count)
                 {
+                    isCorrect = true;
                     stopMiniGame = true;
                     EventManager.OnTimerStop();
                 }
@@ -236,13 +217,91 @@ public class SectionFigureMiniGame : MonoBehaviour
                 //No esta en la lista de la compra
                 wrongSelected++;
             }
-            StartCoroutine(PickedItemCorrutine());
+
+            StartCoroutine(PickedItemCoroutine());
         }
         else
         {
             foodSelected.GetComponent<Toggle>().isOn = false;
         }
+
+        int isCorrectMoment = foodSelected.GetComponent<Food>().foodName == food.GetComponent<Food>().foodName ? 1 : 0;
         
+        minigameListener.AddShadowPick(
+            DataStorage.GroceryMapData.GetIDfromStringFood(foodSelected.GetComponent<Food>().foodName),
+            isCorrect ? 1 : 0,
+            minigameListener.GetElapsedTime(),
+            isCorrectMoment
+        );
+
+    }
+
+    private bool CheckIfTaken(GameObject foodSelected, ref int index2)
+    {
+        switch (GameManager.GetInstance().actualSection)
+        {
+            case Food.Category.bakery:
+                index2 = GameManager.GetInstance().bakeryFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
+                if (GameManager.GetInstance().bakeryFoodList[index2].alreadyTaken)
+                    return true;
+                break;
+            case Food.Category.fruit:
+                index2 = GameManager.GetInstance().fruitFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
+                if (GameManager.GetInstance().fruitFoodList[index2].alreadyTaken)
+                    return true;
+                break;
+            case Food.Category.legume:
+                index2 = GameManager.GetInstance().legumeFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
+                if (GameManager.GetInstance().legumeFoodList[index2].alreadyTaken)
+                    return true;
+                break;
+            case Food.Category.fridge:
+                index2 = GameManager.GetInstance().fridgeFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
+                if (GameManager.GetInstance().fridgeFoodList[index2].alreadyTaken)
+                    return true;
+                break;
+            case Food.Category.fish:
+                index2 = GameManager.GetInstance().fishFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
+                if (GameManager.GetInstance().fishFoodList[index2].alreadyTaken)
+                    return true;
+                break;
+            case Food.Category.perfumery:
+                index2 = GameManager.GetInstance().perfumeryFoodList.FindIndex(s => s.GetComponent<Food>().foodName == foodSelected.GetComponent<Food>().foodName);
+                if (GameManager.GetInstance().perfumeryFoodList[index2].alreadyTaken)
+                    return true;
+                break;
+            default:
+                break;
+        }
+        return false; // No section matches
+    }
+
+    private bool ModifyFoodTaken(int index)
+    {
+        switch (GameManager.GetInstance().actualSection)
+        {
+            case Food.Category.bakery:
+                GameManager.GetInstance().bakeryFoodList[index].alreadyTaken = true;
+                break;
+            case Food.Category.fruit:
+                GameManager.GetInstance().fruitFoodList[index].alreadyTaken = true;
+                break;
+            case Food.Category.legume:
+                GameManager.GetInstance().legumeFoodList[index].alreadyTaken = true;
+                break;
+            case Food.Category.fridge:
+                    GameManager.GetInstance().fridgeFoodList[index].alreadyTaken = true;
+                break;
+            case Food.Category.fish:
+                GameManager.GetInstance().fishFoodList[index].alreadyTaken = true;
+                break;
+            case Food.Category.perfumery:
+                GameManager.GetInstance().perfumeryFoodList[index].alreadyTaken = true;
+                break;
+            default:
+                break;
+        }
+        return false; // No section matches
     }
 
     void SaveCorrectItems()
@@ -252,5 +311,20 @@ public class SectionFigureMiniGame : MonoBehaviour
         GameManager.GetInstance().numWrongPickedItems += wrongSelected;
         EventManager.OnSaveTimer();
         lvlLoader.LoadNextLevel("TrolleyScene 1");
+
+
+    }
+
+    int IsCorrectItem(GameObject foodSelected)
+    {
+        string foodName = foodSelected.GetComponent<Food>().foodName;
+        int index = groceryList.FindIndex(s => s.foodName == foodName);
+        if (index != -1)
+        {
+            if (!CheckIfTaken(foodSelected, ref index))
+                return 1; // Correct item
+        }
+        return 0;
     }
 }
+

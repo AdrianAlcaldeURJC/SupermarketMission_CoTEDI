@@ -59,7 +59,7 @@ public class TrolleyDropField : MonoBehaviour, IDropHandler
                 element.transform.SetParent(columnDropFields[indexI].transform, true);
                 //
                 dndManager.trolley[indexJ, indexI] = element.gameObject;
-                dndManager.evaluateColumn(indexJ);
+                dndManager.EvaluateColumn(indexJ);
             }
             else
             {
@@ -71,7 +71,7 @@ public class TrolleyDropField : MonoBehaviour, IDropHandler
             element.GetComponent<RectTransform>().position = columnDropFields[indexI].GetComponent<RectTransform>().position;
             element.transform.SetParent(columnDropFields[indexI].transform, true) ;
             dndManager.trolley[indexJ, indexI] = element.gameObject;
-            dndManager.evaluateColumn(indexJ);
+            dndManager.EvaluateColumn(indexJ);
         }
     }
 
@@ -98,12 +98,12 @@ public class TrolleyDropField : MonoBehaviour, IDropHandler
             else
             {
                 //Si no lo hay, acabar
-                dndManager.evaluateColumn(indexJ);
+                dndManager.EvaluateColumn(indexJ);
             }
         }
         else
         {
-            dndManager.evaluateColumn(indexJ);
+            dndManager.EvaluateColumn(indexJ);
         }
     }
 

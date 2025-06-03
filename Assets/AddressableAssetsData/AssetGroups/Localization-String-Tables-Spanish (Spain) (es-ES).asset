@@ -17,6 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 0888dc531a5e04f418c0a9eb943beab5
   m_SerializeEntries:
+  - m_GUID: 3b4f7459ab17cc64f9bb45a5286c5a8d
+    m_Address: Obstacles_es-ES
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 54743d4065bc5d74b83ba6e4fa97ca9c
     m_Address: FoodItems_es-ES
     m_ReadOnly: 1
