@@ -44,9 +44,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 301843139178496
-    m_Localized: "\xA1\xDAltimo desaf\xEDo! Escapa esquivando obst\xE1culos rumbo
-      a las cajas. Mucha suerte, Agente [Player Initial]. Usa las flechas y \xA1no
-      pierdas vidas!"
+    m_Localized: "\xA1\xDAltimo desaf\xEDo! \xA1Desl\xEDzate!"
     m_Metadata:
       m_Items: []
   references:

@@ -37,7 +37,7 @@ public class DragAndDropManager : MonoBehaviour
                     correct = false;
                     Debug.Log("Algo mal con " + this.dropFields[i].getValue());
                     notificationCanvas.gameObject.SetActive(true);
-                    notificationCanvas.GetComponentInChildren<TMP_Text>().text = "Hay alguna secci�n mal identificada.";
+                    //notificationCanvas.GetComponentInChildren<TMP_Text>().text = "Hay alguna secci�n mal identificada.";
                 }
                 else
                 {

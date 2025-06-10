@@ -45,9 +45,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 301843139178496
-    m_Localized: "Final mission stretch! Escape this place\u2014dodge all obstacles
-      on your way to checkout! Good luck, Agent [Player Initial]. Use arrow keys
-      to move, and don\u2019t run out of lives!"
+    m_Localized: Final mission stretch! Slide!
     m_Metadata:
       m_Items: []
   references:

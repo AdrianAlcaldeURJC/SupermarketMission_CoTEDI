@@ -548,6 +548,7 @@ GameObject:
   - component: {fileID: 233435245}
   - component: {fileID: 233435244}
   - component: {fileID: 233435248}
+  - component: {fileID: 233435249}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -671,9 +672,53 @@ MonoBehaviour:
   listElements: []
   groceryListCanvas: {fileID: 365640804}
   minigameListener: {fileID: 1157128883}
-  colorsTutorial: {fileID: 32900000, guid: 46d71c77fc6d40e42a4e3229064d0b60, type: 3}
-  figuresTutorial: {fileID: 32900000, guid: 57da758bd4cfa824aa1164f494418426, type: 3}
+  colorsTutorial: {fileID: 32900000, guid: 5a9c13dbcf84eab498be7a8e31b094c0, type: 3}
+  figuresTutorial: {fileID: 32900000, guid: bf53e7d32dd176e4c9af3a21ad76e483, type: 3}
   videoPlayer: {fileID: 365162987}
+--- !u!114 &233435249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233435242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69beb381e244f92449b8c4cf954630e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjects:
+  - rid: 4724020058872610820
+  references:
+    version: 2
+    RefIds:
+    - rid: 4724020058872610820
+      type: {class: TrackedMonoBehaviourObject, ns: UnityEngine.Localization.PropertyVariants.TrackedObjects, asm: Unity.Localization}
+      data:
+        m_Target: {fileID: 233435248}
+        m_TrackedProperties:
+          items:
+          - rid: 4724020058872610821
+        m_UpdateType: 0
+        m_Changed:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 4724020058872610821
+      type: {class: LocalizedAssetProperty, ns: UnityEngine.Localization.PropertyVariants.TrackedProperties, asm: Unity.Localization}
+      data:
+        m_Localized:
+          rid: 4724020058872610822
+        m_PropertyPath: colorsTutorial
+    - rid: 4724020058872610822
+      type: {class: LocalizedObject, ns: UnityEngine.Localization, asm: Unity.Localization}
+      data:
+        m_TableReference:
+          m_TableCollectionName: 
+        m_TableEntryReference:
+          m_KeyId: 0
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
 --- !u!114 &327816870 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1715234712103916587, guid: 9e4f3e16e20e4e24e9126bc3fc5023cd, type: 3}
@@ -744,7 +789,7 @@ VideoPlayer:
   m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
+  m_AudioOutputMode: 0
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:

@@ -66,6 +66,7 @@ public class SectionColorsMiniGame : MonoBehaviour
                 groceryList = new List<Food>();
                 break;
         }
+
         CountAlreadyTakenItems(groceryList);
         //Instancia los botones de los colores que tenga los alimentos
         List<Food.colors> sectionColors = new List<Food.colors>();
@@ -86,7 +87,6 @@ public class SectionColorsMiniGame : MonoBehaviour
                 }
             }
         }
-        Debug.Log("Numero de colores en esta seccion: " + sectionColors.Count);
     }
 
     Color SetColorButton(Food.colors color)

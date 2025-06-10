@@ -38,6 +38,20 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a9c13dbcf84eab498be7a8e31b094c0
+    m_Address: Colors_Tutorial_mk0.25
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84515e3436874d847aa965b1e3241355
+    m_Address: ObstaclesTutorialMk01
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9af92913048a3e947b74e96dffd0ff88
     m_Address: Assets/Localization/UI/FoodItems/FoodItems Shared Data.asset
     m_ReadOnly: 1
@@ -47,6 +61,18 @@ MonoBehaviour:
     m_Address: Assets/Localization/UI/GroceryList/GroceryList Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb412fe75fee1124cba74fbad9ef87d0
+    m_Address: Assets/Localization/UI/Videos/Tutorials/TutorialVideos Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf53e7d32dd176e4c9af3a21ad76e483
+    m_Address: FiguresTutorial_mk0.2.mp4
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    - Locale-es-ES
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e8f3334009d261f4b97f63a2c84f2144
     m_Address: Assets/Localization/UI/MainMenu Shared Data.asset

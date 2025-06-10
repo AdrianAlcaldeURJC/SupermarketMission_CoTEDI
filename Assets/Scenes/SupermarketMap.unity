@@ -1718,6 +1718,10 @@ PrefabInstance:
       propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
       value: 15527885320192
       objectReference: {fileID: 0}
+    - target: {fileID: 527374487791778868, guid: bcca1d2406176fc42b27594958532bb4, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3059199244535052995, guid: bcca1d2406176fc42b27594958532bb4, type: 3}
       propertyPath: m_text
       value: Hay algo mal clasificado
@@ -4314,6 +4318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerAux: {fileID: 1555761313}
   dragMapList: []
+  mapLayout: 
 --- !u!114 &1555761313
 MonoBehaviour:
   m_ObjectHideFlags: 0

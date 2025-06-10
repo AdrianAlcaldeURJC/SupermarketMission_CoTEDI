@@ -16,7 +16,14 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: aca499c4e65fb9a42b2c12c079773b86
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 849f3f35f165a9c4799a485acdff47c7
+    m_Address: TutorialVideos_es-ES
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-es-ES
+    - Preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 043810b411557f044812f2f311844d9a, type: 2}
   m_SchemaSet:
