@@ -675,6 +675,7 @@ MonoBehaviour:
   colorsTutorial: {fileID: 32900000, guid: 5a9c13dbcf84eab498be7a8e31b094c0, type: 3}
   figuresTutorial: {fileID: 32900000, guid: bf53e7d32dd176e4c9af3a21ad76e483, type: 3}
   videoPlayer: {fileID: 365162987}
+  fruitAnimation: {fileID: 9100000, guid: ec99b3cc0a3fd53409c027cdf1c4f858, type: 2}
 --- !u!114 &233435249
 MonoBehaviour:
   m_ObjectHideFlags: 0

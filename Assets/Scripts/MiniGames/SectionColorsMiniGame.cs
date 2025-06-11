@@ -135,7 +135,7 @@ public class SectionColorsMiniGame : MonoBehaviour
         int countAlreadytaken = 0;
         foreach (Food f in list)
         {
-            if (f.alreadyTaken)
+              if (f.alreadyTaken)
                 countAlreadytaken++;
         }
         if (countAlreadytaken == list.Count)
@@ -170,7 +170,9 @@ public class SectionColorsMiniGame : MonoBehaviour
                 if (hasColor)
                 {
                     toggle.GetComponent<CanvasGroup>().alpha = 1;
+                    toggle.GetComponent<Animator>().SetTrigger("Appear");
                     toggle.GetComponent<CanvasGroup>().interactable = true;
+                    toggle.GetComponent<Animator>().SetTrigger("Fade");
                 }
             }
             filterImage.GetComponent<Animator>().SetTrigger("Fade");

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -28,7 +29,7 @@ public class SectionGenerator : MonoBehaviour
     [SerializeField] private VideoClip colorsTutorial;
     [SerializeField] private VideoClip figuresTutorial;
     [SerializeField] private VideoPlayer videoPlayer;
-
+    [SerializeField] private AnimatorController fruitAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -177,7 +178,6 @@ public class SectionGenerator : MonoBehaviour
                 backgroungSection.sprite = backgrounds[0];
                 listElements.AddRange(GameManager.GetInstance().bakeryFoodList);
                 allSectionFoods.AddRange(foodResources.GetComponent<FoodResourcesManager>().bakeryFoods);
-                //foodSprites.AddRange(foodResources.GetComponent<FoodResourcesManager>().bakery);
                 break;
             case Food.Category.fruit:
                 backgroungSection.sprite = backgrounds[1];
@@ -206,17 +206,15 @@ public class SectionGenerator : MonoBehaviour
                 break;
             default:
                 listElements = new List<Food>();
-                //foodSprites = new List<Sprite>();
                 allSectionFoods = new List<Food>();
                 break;
         }
 
-        //NUmero aleatorio de elementos (entre 3 y size list)
+        // Numero aleatorio de elementos (entre 3 y size list)
         var numElements = Random.Range(listElements.Count, 12);
-        //var numElements = Random.Range(listElements.Count, allSectionFoods.Count);
         Debug.Log("numelements: " + numElements);
-        //Crear toggles
-        //Instanciar los elemntos de la lista de la compra y guardar su referencia
+        // Crear toggles
+        // Instanciar los elemntos de la lista de la compra y guardar su referencia
         GameObject[] toBuyElements = new GameObject[listElements.Count];
         Debug.Log("Num obligatorios: " + listElements.Count);
         Debug.Log("Num sprites: " + allSectionFoods.Count);
@@ -230,23 +228,27 @@ public class SectionGenerator : MonoBehaviour
             element.transform.Find("Background").GetComponent<Image>().sprite = s;
             element.transform.Find("Background").Find("Checkmark").GetComponent<Image>().sprite = s;
             element.GetComponent<Food>().CopyFood(listElements[i].GetComponent<Food>());
+            element.AddComponent<Animator>();
+            element.GetComponent<Animator>().runtimeAnimatorController = fruitAnimation;
             allSectionFoods.RemoveAt(index);
             toBuyElements[i] = element;
         }
-        //Instanciar elementos de relleno
+
+        // Instanciar elementos de relleno
         for (int i = 0; i < numElements - listElements.Count; i++)
         {
             GameObject element = Instantiate(foodElement);
-            element.transform.SetParent(sectionPanel.transform,false);
-            //Asignar imagenes aleatorias de la seccion a los toogles
+            element.transform.SetParent(sectionPanel.transform, false);
+            // Asignar imagenes aleatorias de la seccion a los toogles
             var rand = Random.Range(0, allSectionFoods.Count);
             Sprite s = allSectionFoods[rand].sprite;
             element.transform.Find("Background").GetComponent<Image>().sprite = s;
             element.transform.Find("Background").Find("Checkmark").GetComponent<Image>().sprite = s;
             element.GetComponent<Food>().CopyFood(allSectionFoods[rand].GetComponent<Food>());
-            //allSectionFoods.RemoveAt(rand);
-            //Debug.Log("randFoodIndex: " + rand + "-- count food remaining " + allSectionFoods.Count);
+            element.AddComponent<Animator>();
+            element.GetComponent<Animator>().runtimeAnimatorController = fruitAnimation;
         }
+
         // Dar una posicion aleatoria entre los hijos a los elemtos iniciales
         for (int i = 0; i < listElements.Count; i++)
         {
