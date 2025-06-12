@@ -9,6 +9,7 @@ public class TrolleyMovement : MonoBehaviour
     private Animator anim;
     
     [SerializeField] private ObstaclesListener obstaclesListener;
+    [SerializeField] private float dashCooldown = 0.5f;
     private bool isMoving = false;
 
     // Start is called before the first frame update
@@ -39,7 +40,7 @@ public class TrolleyMovement : MonoBehaviour
         int isCorrect = isMoving ? 0 : 1;
         isMoving = true;
         obstaclesListener.AddSlide(direction, isCorrect);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(dashCooldown);
         isMoving = false;
         anim.ResetTrigger("MoveLeft");
         anim.ResetTrigger("MoveRight");

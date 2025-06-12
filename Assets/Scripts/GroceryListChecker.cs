@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using Unity.VisualScripting;
+using System;
+using Random = UnityEngine.Random;
 
 
 public class GroceryListChecker : MonoBehaviour
@@ -20,8 +22,7 @@ public class GroceryListChecker : MonoBehaviour
     [SerializeField] private GameObject parentList;
     [SerializeField] private Canvas canvas;
 
-    [SerializeField] Sprite bakeryIcons, fruitsIcons, legumesIcons, fridgeIcons, fishIcons, perfumeryIcons;
-
+    [SerializeField] List<Sprite> itemsIcons = new List<Sprite>(); 
     //List of pending to classify item
     List<Food> foodPendings = new List<Food>();
     int numItems = 20;
@@ -31,10 +32,10 @@ public class GroceryListChecker : MonoBehaviour
     private void Awake()
     {
         explanationCanvas = FindObjectOfType<ExplanationCanvas>();
-
-        explanationCanvas.SetText("Para ser un buen agente, lo primero que hay que hacer es planificar la misión. " +
-                "Así que vamos a clasificar los objetivos en las distintas secciones del supermercado donde podemos encontrarlos. \n" +
-                "¿Listo? ¡Pues vamos allá! Arrastra los elementos en cada sección.");
+        
+        // explanationCanvas.SetText("Para ser un buen agente, lo primero que hay que hacer es planificar la misiï¿½n. " +
+        //         "Asï¿½ que vamos a clasificar los objetivos en las distintas secciones del supermercado donde podemos encontrarlos. \n" +
+        //         "ï¿½Listo? ï¿½Pues vamos allï¿½! Arrastra los elementos en cada secciï¿½n.");
     }
 
     void Start()
@@ -42,14 +43,13 @@ public class GroceryListChecker : MonoBehaviour
         levelLoader = FindObjectOfType<LevelLoader>();
         AudioManager.GetInstance().PlayMusicClip(AudioManager.GetInstance().generalMusic);
         notificationCanvas.gameObject.SetActive(false);
-        this.GenerateGroceryListV2();
+        GenerateGroceryListV2();
         dropFields = FindObjectsOfType<DropFieldGroceryList>();
     }
 
     bool checkClassification()
     {
         bool isCorrect = true;
-        //Todo: Check is groceries are correctly classify
         //Check if pending item list is empty
         if(parentList.transform.childCount != 0)
         {
@@ -176,29 +176,9 @@ public class GroceryListChecker : MonoBehaviour
                                                                 true);
             
             g.GetComponent<Food>().category = foodPendings[i].category;
-            switch (g.GetComponent<Food>().category)
-            {
-                case Food.Category.bakery:
-                    g.transform.Find("Icons").GetComponent<Image>().sprite = bakeryIcons;
-                    break;
-                case Food.Category.fruit:
-                    g.transform.Find("Icons").GetComponent<Image>().sprite = fruitsIcons;
-                    break;
-                case Food.Category.legume:
-                    g.transform.Find("Icons").GetComponent<Image>().sprite = legumesIcons;
-                    break;
-                case Food.Category.fridge:
-                    g.transform.Find("Icons").GetComponent<Image>().sprite = fridgeIcons;
-                    break;
-                case Food.Category.fish:
-                    g.transform.Find("Icons").GetComponent<Image>().sprite = fishIcons;
-                    break;
-                case Food.Category.perfumery:
-                    g.transform.Find("Icons").GetComponent<Image>().sprite = perfumeryIcons;
-                    break;
-                default:
-                    break;
-            }
+            int itemID = DataStorage.GroceryMapData.GetIDfromStringFood(g.GetComponent<Food>().foodName);
+            g.transform.Find("IconR").GetComponent<Image>().sprite = itemsIcons[itemID];
+            g.transform.Find("IconL").GetComponent<Image>().sprite = itemsIcons[itemID];
         }
     }
 
