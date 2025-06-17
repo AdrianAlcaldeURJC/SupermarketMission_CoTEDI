@@ -22,12 +22,12 @@ public class TrolleyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.touchCount > 0 && Input.GetTouch(0).position.x < Screen.width / 2)
         {
             anim.SetTrigger("MoveLeft");
             StartCoroutine(DeactivateTrigger(0));
         }
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) || Input.touchCount > 0 && Input.GetTouch(0).position.x > Screen.width / 2)
         {
             anim.SetTrigger("MoveRight");
             StartCoroutine(DeactivateTrigger(1));

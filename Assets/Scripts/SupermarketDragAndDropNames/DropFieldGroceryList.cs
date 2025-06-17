@@ -17,7 +17,6 @@ public class DropFieldGroceryList : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Item dropped "+eventData);
         if(eventData.pointerDrag != null)
         {
             if (eventData.pointerDrag.GetComponent<Food>())

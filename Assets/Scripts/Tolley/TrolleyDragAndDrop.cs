@@ -27,6 +27,8 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
     private TrolleyListener trolleyListener;
     private int timerIndex;
     private TrolleyListener.TrolleyDrop trolleyDrop;
+    [SerializeField]
+    public Image statusImage;
 
     void Start()
     {
@@ -77,14 +79,14 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
         {
             //For the object to come back if it's drag outside the screen
             transform.SetParent(initialParent);
-            this.GetComponent<Image>().color = Color.white;
+            statusImage.color = new Color(1,1,1, 0.65f);
         }
         else
         {
             if (eventData.pointerEnter.GetComponent<TrolleyDropField>() == null)
             {
                 transform.SetParent(initialParent);
-                this.GetComponent<Image>().color = Color.white;
+                statusImage.color = new Color(1,1,1, 0.65f);
             }
             isDropCorrect = 1;
 
@@ -92,8 +94,6 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
 
 
         // Save drag data
-
-
         float takenDuration = trolleyListener.GetTimerAux().elapsedTime[timerIndex];
 
         List<int> finalPos = GetPosition();
@@ -159,6 +159,6 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
     }
     public void SendBackToIni()
     {
-        this.GetComponent<Image>().color = Color.white;
+        statusImage.color = new Color(1,1,1, 0.65f);
     }
 }

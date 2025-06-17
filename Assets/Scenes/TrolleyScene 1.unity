@@ -179,7 +179,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 185, y: 185}
+  m_CellSize: {x: 170, y: 170}
   m_Spacing: {x: 20, y: 40}
   m_Constraint: 1
   m_ConstraintCount: 1
@@ -989,9 +989,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layer2: {fileID: 1217172528}
-  lightFrame: {fileID: 21300000, guid: cabe11a09d62ebe4b95e766808f99184, type: 3}
-  midFrame: {fileID: 21300000, guid: 27c377b16b2272b418387f08ff2d90ac, type: 3}
-  grossFrame: {fileID: 21300000, guid: 10ef67c01884b994a9967bd38307b464, type: 3}
+  lightFrame: {fileID: 21300000, guid: fdcca5f1413c9df4f80cd5b50d99c707, type: 3}
+  midFrame: {fileID: 21300000, guid: 3fa757a1f9d7eba4fa88b76913b51bd6, type: 3}
+  grossFrame: {fileID: 21300000, guid: 092ed627d9ccf3244a5348b0db488495, type: 3}
   lightWeight: {fileID: 21300000, guid: 87d99d2203d60ff498217eadad3d37c7, type: 3}
   midWeight: {fileID: 21300000, guid: 497360c2a54aa164fa4077c8a9f277fe, type: 3}
   heavyWeight: {fileID: 21300000, guid: 3ddc412150d3dde4483fb8e86dbabfe2, type: 3}
@@ -1184,6 +1184,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!1 &471225966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3848,7 +3849,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 83.5
+  m_fontSize: 64.2
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1

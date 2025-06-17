@@ -63,7 +63,6 @@ public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDrag
         //Borrar el objecto de la lista cuando se le esta sacando de un drop field
         if (this.transform.parent.GetComponentInParent<DropFieldGroceryList>())
         {
-            Debug.Log("El padre es un drop field " + this.transform.parent);
             this.transform.parent.GetComponentInParent<DropFieldGroceryList>().items.Remove(this.gameObject);
         }
 
