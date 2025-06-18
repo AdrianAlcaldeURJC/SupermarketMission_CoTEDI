@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Localized: "\xA1\xDAltimo desaf\xEDo! \xA1Desl\xEDzate!"
     m_Metadata:
       m_Items: []
+  - m_Id: 20235511286640640
+    m_Localized: "\xA1Mueve los objetos a su secci\xF3n!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

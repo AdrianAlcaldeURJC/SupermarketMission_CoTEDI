@@ -48,6 +48,10 @@ MonoBehaviour:
     m_Localized: Final mission stretch! Slide!
     m_Metadata:
       m_Items: []
+  - m_Id: 20235511286640640
+    m_Localized: Move the items to it's aisle!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -39,6 +39,10 @@ MonoBehaviour:
     m_Key: ObstaclesGame_1
     m_Metadata:
       m_Items: []
+  - m_Id: 20235511286640640
+    m_Key: GroceryListMinigame_1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
