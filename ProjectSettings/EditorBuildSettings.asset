@@ -6,34 +6,34 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/00 Scenes/MainMenu.unity
     guid: deecea255d662f9459590f640e5b2124
   - enabled: 1
-    path: Assets/Scenes/StartingCinematic.unity
+    path: Assets/00 Scenes/StartingCinematic.unity
     guid: fa914a62695c66c47836eb6fbef1aef4
   - enabled: 1
-    path: Assets/Scenes/GroceryList.unity
+    path: Assets/00 Scenes/GroceryList.unity
     guid: a96dcbfeb465b5e40a6c43f3090df719
   - enabled: 1
-    path: Assets/Scenes/SupermarketMap.unity
+    path: Assets/00 Scenes/SupermarketMap.unity
     guid: 6a640fd8441055c4e9fa6188d264f564
   - enabled: 1
-    path: Assets/Scenes/ObstaclesGame.unity
+    path: Assets/00 Scenes/ObstaclesGame.unity
     guid: 863fd43b3969ccf4b976d7ca24d14c65
   - enabled: 1
-    path: Assets/Scenes/FinalCinematic.unity
+    path: Assets/00 Scenes/FinalCinematic.unity
     guid: dfcba55a5e37faf46b4dadfd60cfb2dc
   - enabled: 1
-    path: Assets/Scenes/SupermarketSection.unity
+    path: Assets/00 Scenes/SupermarketSection.unity
     guid: 4fa546cf3f08d1e4d8539ca89b4aff86
   - enabled: 1
-    path: Assets/Scenes/SupermarketMapSelection.unity
+    path: Assets/00 Scenes/SupermarketMapSelection.unity
     guid: 2e27fe631a63f814280ff29c00740919
   - enabled: 1
-    path: Assets/Scenes/TrolleyScene 1.unity
+    path: Assets/00 Scenes/TrolleyScene 1.unity
     guid: a525b77b1053ed846b1c13f74cb26181
   - enabled: 1
-    path: Assets/Scenes/NameScene.unity
+    path: Assets/00 Scenes/NameScene.unity
     guid: 7ed8e15e0ee3d0342901ae1b390747df
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: a269486342739d848978f08a2f2a0d34, type: 2}

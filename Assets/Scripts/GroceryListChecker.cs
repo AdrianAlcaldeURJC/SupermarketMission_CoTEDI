@@ -25,7 +25,7 @@ public class GroceryListChecker : MonoBehaviour
     [SerializeField] List<Sprite> itemsIcons = new List<Sprite>(); 
     //List of pending to classify item
     List<Food> foodPendings = new List<Food>();
-    int numItems = 20;
+    [SerializeField] int numItems = 18;
     DropFieldGroceryList[] dropFields = new DropFieldGroceryList[6];
 
     // Start is called before the first frame update

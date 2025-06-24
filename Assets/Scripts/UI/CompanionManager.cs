@@ -88,7 +88,7 @@ public class CompanionManager : MonoBehaviour
         {
             stringIndex = 0;
         }
-        else if (remainingMinigames != 1)
+        else if (remainingMinigames != 0)
         {
             var dict1 = new Dictionary<string, int> { { "remainingMinigames", remainingMinigames } };
             var dict2 = new Dictionary<string, int> { { "maxMinigames", maxMinigames } };
@@ -105,6 +105,4 @@ public class CompanionManager : MonoBehaviour
 
     }
     
-
-
 }
