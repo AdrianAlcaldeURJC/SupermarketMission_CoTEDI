@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -29,7 +28,6 @@ public class SectionGenerator : MonoBehaviour
     [SerializeField] private VideoClip colorsTutorial;
     [SerializeField] private VideoClip figuresTutorial;
     [SerializeField] private VideoPlayer videoPlayer;
-    [SerializeField] private AnimatorController fruitAnimation;
 
     // Start is called before the first frame update
     void Start()
@@ -228,8 +226,6 @@ public class SectionGenerator : MonoBehaviour
             element.transform.Find("Background").GetComponent<Image>().sprite = s;
             element.transform.Find("Background").Find("Checkmark").GetComponent<Image>().sprite = s;
             element.GetComponent<Food>().CopyFood(listElements[i].GetComponent<Food>());
-            element.AddComponent<Animator>();
-            element.GetComponent<Animator>().runtimeAnimatorController = fruitAnimation;
             allSectionFoods.RemoveAt(index);
             toBuyElements[i] = element;
         }
@@ -245,8 +241,6 @@ public class SectionGenerator : MonoBehaviour
             element.transform.Find("Background").GetComponent<Image>().sprite = s;
             element.transform.Find("Background").Find("Checkmark").GetComponent<Image>().sprite = s;
             element.GetComponent<Food>().CopyFood(allSectionFoods[rand].GetComponent<Food>());
-            element.AddComponent<Animator>();
-            element.GetComponent<Animator>().runtimeAnimatorController = fruitAnimation;
         }
 
         // Dar una posicion aleatoria entre los hijos a los elemtos iniciales

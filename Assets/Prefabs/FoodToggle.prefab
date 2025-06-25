@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 1507342209377933708}
   - component: {fileID: -5476151198818560426}
   - component: {fileID: 1480180555694313705}
+  - component: {fileID: 9074811631635636704}
   m_Layer: 5
   m_Name: FoodToggle
   m_TagString: Untagged
@@ -184,6 +185,7 @@ MonoBehaviour:
   hardness: 1
   sprite: {fileID: 0}
   alreadyTaken: 0
+  trolleyStatus: 0
 --- !u!225 &1480180555694313705
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -196,6 +198,27 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!95 &9074811631635636704
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387802453792661310}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec99b3cc0a3fd53409c027cdf1c4f858, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8648302130778431350
 GameObject:
   m_ObjectHideFlags: 0

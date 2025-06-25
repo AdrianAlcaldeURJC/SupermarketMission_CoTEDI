@@ -989,9 +989,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layer2: {fileID: 1217172528}
-  lightFrame: {fileID: 21300000, guid: fdcca5f1413c9df4f80cd5b50d99c707, type: 3}
-  midFrame: {fileID: 21300000, guid: 3fa757a1f9d7eba4fa88b76913b51bd6, type: 3}
-  grossFrame: {fileID: 21300000, guid: 092ed627d9ccf3244a5348b0db488495, type: 3}
+  lightFrame: {fileID: 21300000, guid: 487ce4e7d7f25724ebdfcf988233e01f, type: 3}
+  midFrame: {fileID: 21300000, guid: bfaa206320d79984292fc410f514df07, type: 3}
+  grossFrame: {fileID: 21300000, guid: dc0387cc8900d3b40ae4924deb4a28d9, type: 3}
   lightWeight: {fileID: 21300000, guid: 87d99d2203d60ff498217eadad3d37c7, type: 3}
   midWeight: {fileID: 21300000, guid: 497360c2a54aa164fa4077c8a9f277fe, type: 3}
   heavyWeight: {fileID: 21300000, guid: 3ddc412150d3dde4483fb8e86dbabfe2, type: 3}
