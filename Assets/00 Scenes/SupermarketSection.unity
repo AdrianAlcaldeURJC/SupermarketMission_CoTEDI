@@ -432,7 +432,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 15106044278979491, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 283241320123025652, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -464,11 +464,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1560175781195403367, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2448111069240400884, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3627064693147142067, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -512,15 +512,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4433596692784682397, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4836539610506160838, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4980808106309466957, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8914783440849120772, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_Name
@@ -528,7 +528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8914783440849120772, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1702,10 +1702,10 @@ RectTransform:
   - {fileID: 54775870}
   m_Father: {fileID: 1765945498}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.12825002, y: 0.010222223}
-  m_AnchorMax: {x: 0.8732916, y: 0.224}
-  m_AnchoredPosition: {x: -0.2998047, y: 6.350586}
-  m_SizeDelta: {x: -12.6396, y: -51.1806}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.2001953, y: -407.1494}
+  m_SizeDelta: {x: 1418.3604, y: 179.8194}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!156049354 &1203879024
 Grid:
@@ -1874,7 +1874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1343745471
 RectTransform:
   m_ObjectHideFlags: 0
