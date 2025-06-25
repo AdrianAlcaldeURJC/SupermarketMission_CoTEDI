@@ -17,18 +17,14 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 52e45da9d00c8c34f904a1ef8356ab92
   m_SerializeEntries:
-  - m_GUID: e8f3334009d261f4b97f63a2c84f2144
-    m_Address: Assets/Localization/UI/MainMenu Shared Data.asset
+  - m_GUID: 156367ae9e65d074e88f82b1455d7621
+    m_Address: Assets/Localization/UI/ExplicationCanvas/ExplicationCanvas Shared
+      Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: abe1616bb0034a94093a7ac6da0a0e9b
-    m_Address: Assets/Localization/UI/GroceryList/GroceryList Shared Data.asset
-    m_ReadOnly: 1
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9af92913048a3e947b74e96dffd0ff88
-    m_Address: Assets/Localization/UI/FoodItems/FoodItems Shared Data.asset
+  - m_GUID: 1df2ac73afaad864d8d8e6310cc07b65
+    m_Address: Assets/Localization/UI/Companion/CompanionDialog Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -37,14 +33,54 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 156367ae9e65d074e88f82b1455d7621
-    m_Address: Assets/Localization/UI/ExplicationCanvas/ExplicationCanvas Shared
-      Data.asset
+  - m_GUID: 427d79c8e7cc9fa4080008c3a8dd8d58
+    m_Address: Assets/Localization/UI/ObstacleGame/Obstacles Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 53ae91e32c3573346ba17c47478e5385
     m_Address: Assets/Localization/UI/Cinematic/Cinematic Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5a9c13dbcf84eab498be7a8e31b094c0
+    m_Address: Colors_Tutorial_mk0.25
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84515e3436874d847aa965b1e3241355
+    m_Address: ObstaclesTutorialMk01
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9af92913048a3e947b74e96dffd0ff88
+    m_Address: Assets/Localization/UI/FoodItems/FoodItems Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abe1616bb0034a94093a7ac6da0a0e9b
+    m_Address: Assets/Localization/UI/GroceryList/GroceryList Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb412fe75fee1124cba74fbad9ef87d0
+    m_Address: Assets/Localization/UI/Videos/Tutorials/TutorialVideos Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf53e7d32dd176e4c9af3a21ad76e483
+    m_Address: FiguresTutorial_mk0.2.mp4
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8f3334009d261f4b97f63a2c84f2144
+    m_Address: Assets/Localization/UI/MainMenu Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

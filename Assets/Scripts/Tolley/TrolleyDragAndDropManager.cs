@@ -27,7 +27,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
     LevelLoader lvlLoader;
     private ExplanationCanvas explanationCanvas;
 
-    public GameObject[,] trolley = new GameObject[8,3];
+    public GameObject[,] trolley = new GameObject[8, 3];
 
     GameObject foodManager;
 
@@ -41,7 +41,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
         SetItemsToOrganize();
         lvlLoader = FindObjectOfType<LevelLoader>();
         foodManager = Instantiate(foodResourcesPrefab);
-        //Debug.Log(trolleyStatus.ToString());
+        EvaluateTrolley();
     }
 
     void SetItemsToOrganize()
@@ -71,7 +71,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
             //element.GetComponentInChildren<Image>().sprite = element.GetComponent<Food>().sprite;
             element.transform.Find("FoodImage").GetComponent<Image>().sprite = element.GetComponent<Food>().sprite;
             //Hardness
-            if(element.GetComponent<Food>().hardness == Food.hardnessLevel.hard)
+            if (element.GetComponent<Food>().hardness == Food.hardnessLevel.hard)
                 element.transform.Find("FrameImage").GetComponent<Image>().sprite = grossFrame;
             else if (element.GetComponent<Food>().hardness == Food.hardnessLevel.mid)
                 element.transform.Find("FrameImage").GetComponent<Image>().sprite = midFrame;
@@ -105,8 +105,8 @@ public class TrolleyDragAndDropManager : MonoBehaviour
                 GameObject element = Instantiate(TrolleyElementPrefab);
                 element.GetComponent<RectTransform>().position = layer2.transform.GetChild(i).GetComponent<RectTransform>().position;
                 //element.transform.localScale = new Vector3(1.08f, 1.08f, 1.08f);
-                element.transform.SetParent(layer2.transform.GetChild(i),true);
-                element.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+                element.transform.SetParent(layer2.transform.GetChild(i), true);
+                element.transform.localScale = new Vector3(1f, 1f, 1f);
                 element.GetComponent<TrolleyDragAndDrop>().upperParent = this.gameObject.GetComponent<Canvas>();
                 element.GetComponent<TrolleyDragAndDrop>().canvas = this.gameObject.GetComponent<Canvas>();
                 element.GetComponent<Food>().CopyFood(GameManager.GetInstance().trolleyStatus[index[1], index[0]]);
@@ -125,7 +125,6 @@ public class TrolleyDragAndDropManager : MonoBehaviour
                     element.transform.Find("WeightImage").GetComponent<Image>().sprite = midWeight;
                 else if (element.GetComponent<Food>().weight == Food.weightLevel.light)
                     element.transform.Find("WeightImage").GetComponent<Image>().sprite = lightWeight;
-                this.evaluatePosition(index[1], index[0], element);
                 trolley[index[1], index[0]] = element;
             }
         }
@@ -193,178 +192,104 @@ public class TrolleyDragAndDropManager : MonoBehaviour
     public void OnClickNext()
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickTechButtonSFX);
-        if (newFoodParent.transform.childCount==0)
+        if (newFoodParent.transform.childCount == 0)
         {
             SaveTrolley();
             GameManager.GetInstance().pickedItems = new List<Food>();
             EventManager.OnSaveTimer();
             lvlLoader.LoadNextLevel("SupermarketMapSelection");
         }
-        
+
     }
 
-    public void evaluatePosition(int indexI, int indexJ, GameObject element)
+    private void EvaluateTrolley()
     {
-        //Comprobar si hay objeto encima
-        Food thisFood = element.GetComponent<Food>();
-        element.GetComponent<Image>().color = Color.green;
-        element.GetComponent<Food>().trolleyStatus = Food.positionStatus.good;
-        if (indexJ>0)
+        for (int col = 0; col < trolley.GetLength(0); ++col)
         {
-            Food aboveFood = GameManager.GetInstance().trolleyStatus[indexI, indexJ - 1];
-            if (aboveFood)
-            {
-
-                //Si lo hay, comprobar dureza de este objeto
-                //Si no es duro, comprobar peso del objeto de encima
-                //Poner tinte al alo segun sea su relacion
-                if (thisFood.hardness == Food.hardnessLevel.fragile)
-                {
-                    if (aboveFood.weight == Food.weightLevel.mid)
-                    {
-                        //Orange
-                        element.GetComponent<Image>().color = Color.yellow;
-                        element.GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
-                    }
-                    else if (aboveFood.weight == Food.weightLevel.heavy)
-                    {
-                        //Red
-                        element.GetComponent<Image>().color = Color.red;
-                        element.GetComponent<Food>().trolleyStatus = Food.positionStatus.wrong;
-                    }
-                }
-                else if (thisFood.hardness == Food.hardnessLevel.mid)
-                {
-                    if (aboveFood.weight == Food.weightLevel.heavy)
-                    {
-                        //Orange
-                        element.GetComponent<Image>().color = Color.yellow;
-                        element.GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
-                    }
-                }
-            }
-        }
-        if (indexJ > 1)
-        {
-            //Si tiene dos objetos encima, comporbar los dos
-            Food aboveFood = GameManager.GetInstance().trolleyStatus[indexI, indexJ - 2];
-            if (aboveFood)
-            {
-                if (thisFood.hardness == Food.hardnessLevel.fragile)
-                {
-                    if (aboveFood.weight == Food.weightLevel.mid)
-                    {
-                        element.GetComponent<Image>().color = Color.yellow;
-                        element.GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
-                    }
-                    else if (aboveFood.weight == Food.weightLevel.heavy)
-                    {
-                        element.GetComponent<Image>().color = Color.red;
-                        element.GetComponent<Food>().trolleyStatus = Food.positionStatus.wrong;
-                    }
-                }
-                else if (thisFood.hardness == Food.hardnessLevel.mid)
-                {
-                    if (aboveFood.weight == Food.weightLevel.heavy)
-                    {
-                        element.GetComponent<Image>().color = Color.yellow;
-                        element.GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
-                    }
-                }
-            }
+            EvaluateColumn(col);
         }
     }
 
-    public void evaluateColumn(int indexJ)
+    /// <summary>
+    /// Evaluate the column with the given indexJ.
+    /// If the top food exists, check if the middle food is fragile and the above food is mid or heavy weight.
+    /// If the middle food exists, check if the bottom food is fragile and the middle food is mid or heavy weight.
+    /// </summary>
+    /// <param name="indexJ">Index of the column to evaluate.</param>
+    /// 
+    public void EvaluateColumn(int indexJ)
     {
-        //Si existe el de arriba
-        if (trolley[indexJ, 0])
+        int topWeight = 0;
+        for (int row = 2; row >= 0; --row)
         {
-            trolley[indexJ, 0].GetComponent<Image>().color = Color.green;
-            trolley[indexJ, 0].GetComponent<Food>().trolleyStatus = Food.positionStatus.good;
-            trolley[indexJ, 1].GetComponent<Image>().color = Color.green;
-            trolley[indexJ, 1].GetComponent<Food>().trolleyStatus = Food.positionStatus.good;
-            trolley[indexJ, 2].GetComponent<Image>().color = Color.green;
-            trolley[indexJ, 2].GetComponent<Food>().trolleyStatus = Food.positionStatus.good;
-            if (trolley[indexJ, 0].GetComponent<Food>().weight == Food.weightLevel.mid && trolley[indexJ, 1].GetComponent<Food>().hardness == Food.hardnessLevel.fragile)
-            {
-                trolley[indexJ, 1].GetComponent<Image>().color = Color.yellow;
-                trolley[indexJ, 1].GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
-            }
-            else 
-            if (trolley[indexJ, 0].GetComponent<Food>().weight == Food.weightLevel.heavy && trolley[indexJ, 1].GetComponent<Food>().hardness == Food.hardnessLevel.fragile)
-            {
-                trolley[indexJ, 1].GetComponent<Image>().color = Color.red;
-                trolley[indexJ, 1].GetComponent<Food>().trolleyStatus = Food.positionStatus.wrong;
-            }
-            else
-            if (trolley[indexJ, 0].GetComponent<Food>().weight == Food.weightLevel.heavy && trolley[indexJ, 1].GetComponent<Food>().hardness == Food.hardnessLevel.mid)
-            {
-                trolley[indexJ, 1].GetComponent<Image>().color = Color.yellow;
-                trolley[indexJ, 1].GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
-            }
-            if (trolley[indexJ, 0].GetComponent<Food>().weight == Food.weightLevel.mid && trolley[indexJ, 2].GetComponent<Food>().hardness == Food.hardnessLevel.fragile)
-            {
-                trolley[indexJ, 2].GetComponent<Image>().color = Color.yellow;
-                trolley[indexJ, 2].GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
-            }
-            else   
-            if (trolley[indexJ, 0].GetComponent<Food>().weight == Food.weightLevel.heavy && trolley[indexJ, 2].GetComponent<Food>().hardness == Food.hardnessLevel.fragile)
-            {
-                trolley[indexJ, 2].GetComponent<Image>().color = Color.red;
-                trolley[indexJ, 2].GetComponent<Food>().trolleyStatus = Food.positionStatus.wrong;
-            }
-            else if (trolley[indexJ, 0].GetComponent<Food>().weight == Food.weightLevel.heavy && trolley[indexJ, 2].GetComponent<Food>().hardness == Food.hardnessLevel.mid)
-            {
-                trolley[indexJ, 2].GetComponent<Image>().color = Color.yellow;
-                trolley[indexJ, 2].GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
-            }
-            Debug.Log("Arriba: "+ trolley[indexJ, 0].GetComponent<Food>().foodName + "Medio: " + trolley[indexJ, 1].GetComponent<Food>().foodName + "Abajo: " + trolley[indexJ, 2].GetComponent<Food>().foodName);
+            if (!trolley[indexJ, row]) break;
+            topWeight = EvaluateWeight(indexJ, row);
+            Food.positionStatus itemStatus = EvaluateRules(topWeight, (int)trolley[indexJ, row].GetComponent<Food>().hardness);
+            Color newColor = EvaluateColor(itemStatus);
+            newColor.a = 0.65f;
+            trolley[indexJ, row].GetComponent<TrolleyDragAndDrop>().statusImage.color = newColor;
+            trolley[indexJ, row].GetComponent<Food>().trolleyStatus = itemStatus;
         }
-        else
-        {
-            if (trolley[indexJ, 1])
-            {
-                trolley[indexJ, 1].GetComponent<Image>().color = Color.green;
-                trolley[indexJ, 1].GetComponent<Food>().trolleyStatus = Food.positionStatus.good;
-            }
-            if (trolley[indexJ, 2])
-            {
-                trolley[indexJ, 2].GetComponent<Image>().color = Color.green;
-                trolley[indexJ, 2].GetComponent<Food>().trolleyStatus = Food.positionStatus.good;
-            }
-        }
-        //Si existe el del medio
-        if (trolley[indexJ, 1] && trolley[indexJ, 2].GetComponent<Image>().color != Color.red) {
-            
-            if (trolley[indexJ, 1].GetComponent<Food>().weight == Food.weightLevel.mid && trolley[indexJ, 2].GetComponent<Food>().hardness == Food.hardnessLevel.fragile)
-            {
-                trolley[indexJ, 2].GetComponent<Image>().color = Color.yellow;
-                trolley[indexJ, 2].GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
-            }
-            else
-            if (trolley[indexJ, 1].GetComponent<Food>().weight == Food.weightLevel.heavy && trolley[indexJ, 2].GetComponent<Food>().hardness == Food.hardnessLevel.fragile)
-            {
-                trolley[indexJ, 2].GetComponent<Image>().color = Color.red;
-                trolley[indexJ, 2].GetComponent<Food>().trolleyStatus = Food.positionStatus.wrong;
-            }
-            else
-            if (trolley[indexJ, 1].GetComponent<Food>().weight == Food.weightLevel.heavy && trolley[indexJ, 2].GetComponent<Food>().hardness == Food.hardnessLevel.mid)
-            {
-                trolley[indexJ, 2].GetComponent<Image>().color = Color.yellow;
-                trolley[indexJ, 2].GetComponent<Food>().trolleyStatus = Food.positionStatus.moderate;
-            }
-            Debug.Log("Medio: " + trolley[indexJ, 1].GetComponent<Food>().foodName + "Abajo: " + trolley[indexJ, 2].GetComponent<Food>().foodName);
+    }
 
-        }
-        else
+    private int EvaluateWeight(int column, int row)
+    {
+        int accumulate = 0;
+        for (int r = row - 1; r >= 0; --r)
         {
-            if (trolley[indexJ, 2] && trolley[indexJ, 2].GetComponent<Image>().color != Color.red)
+            if (!trolley[column, r]) break;
+            accumulate += (int)trolley[column, r].GetComponent<Food>().weight + 1;
+        }
+        return accumulate;
+    }
+
+    private Food.positionStatus EvaluateRules(int topWeight, int hardness)
+    {
+        if (hardness == (int)Food.hardnessLevel.fragile)
+        {
+            if (topWeight == 2)
             {
-                trolley[indexJ, 2].GetComponent<Image>().color = Color.green;
-                trolley[indexJ, 2].GetComponent<Food>().trolleyStatus = Food.positionStatus.good;
-                Debug.Log("Abajo: " + trolley[indexJ, 2].GetComponent<Food>().foodName);
+                return Food.positionStatus.moderate;
+            }
+            else if (topWeight > 2)
+            {
+                return Food.positionStatus.wrong;
+            }
+            Debug.Log($"Fragile TopWeight: {topWeight}");
+        }
+        if (hardness == (int)Food.hardnessLevel.mid)
+        {
+            if (topWeight == 3)
+            {
+                return Food.positionStatus.moderate;
+            }
+            else if (topWeight > 3)
+            {
+                return Food.positionStatus.wrong;
             }
         }
+        if (hardness == (int)Food.hardnessLevel.hard)
+        {
+            if (topWeight == 4)
+            {
+                return Food.positionStatus.moderate;
+            }
+            else if (topWeight > 4)
+            {
+                return Food.positionStatus.wrong;
+            }
+        }
+        return Food.positionStatus.good;
+    }
+
+    private Color EvaluateColor(Food.positionStatus status)
+    {
+        return status switch
+        {
+            Food.positionStatus.good => Color.green,
+            Food.positionStatus.moderate => Color.yellow,
+            Food.positionStatus.wrong => Color.red,
+            _ => Color.white,
+        };
     }
 }

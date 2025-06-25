@@ -3,6 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+    // Struct to load Drag data. To be sent to database later
+    class Drag
+    {
+        public int NumItem { get; set; }
+        public string TakenTime { get; set; }
+        public string TakenDuration { get; set; }
+        public int IsDropCorrect { get; set; }
+        public string Aux1 { get; set; }
+
+        override public string ToString()
+        {
+            return "(" + NumItem + ", " + TakenTime + ", " + TakenDuration + ", " + IsDropCorrect + ")";
+        }
+    }
+
 public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
 
@@ -15,12 +30,14 @@ public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDrag
     public Canvas upperParent;
     private Canvas targetParent;
     private Transform initialParent;
-    
+
     [SerializeField]
     public Canvas canvas;
     [SerializeField]
     private string value;
 
+    Drag dragItem;
+    int timerIndex;
 
     //Scara como hijo del panel para que no le afecte la mascara al dragear
     //Guardar indice del scroll con transform.GetSiblingIndex() & transform.SetSiblingIndex() posiblemente, pero ni idea
@@ -46,11 +63,17 @@ public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDrag
         //Borrar el objecto de la lista cuando se le esta sacando de un drop field
         if (this.transform.parent.GetComponentInParent<DropFieldGroceryList>())
         {
-            Debug.Log("El padre es un drop field "+ this.transform.parent);
             this.transform.parent.GetComponentInParent<DropFieldGroceryList>().items.Remove(this.gameObject);
         }
 
         this.transform.SetParent(upperParent.gameObject.transform);
+
+        // Save drag data
+        dragItem = new Drag();
+        dragItem.NumItem = DataStorage.GroceryMapData.GetIDfromStringFood(GetComponent<Food>().foodName);
+        dragItem.TakenTime = ListListener.Instance.GetElapsedTime().ToString();
+        timerIndex = ListListener.Instance.timerAux.InitTimer();
+        ListListener.Instance.timerAux.StartTimer(timerIndex);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -61,12 +84,11 @@ public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //Debug.Log("Enddrag");
+        bool isCorrect = false;
         canvasGroup.blocksRaycasts = true;
-        if (eventData.pointerEnter==null)
+        if (eventData.pointerEnter == null)
         {
             //For the object to come back if it's drag outside the screen
-            //transform.position = iniPos;
             transform.SetParent(initialParent, false);
             this.transform.SetSiblingIndex(scrollIndex);
         }
@@ -81,8 +103,6 @@ public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDrag
                     {
                         GameObject usefulParent = eventData.pointerEnter.gameObject.GetComponentInParent<DropFieldGroceryList>().gameObject;
                         //Si se suelta encima de un alimento que ya esta asignado, meterlo en su misma asignacion
-                    
-                        Debug.Log("Nombre objeto hihihi " + usefulParent.gameObject.name);
 
                         this.GetComponent<RectTransform>().anchoredPosition = usefulParent.GetComponent<RectTransform>().anchoredPosition;
                         //usefulParent.GetComponent<DropFieldGroceryList>().AddItemToList(this.gameObject);
@@ -94,20 +114,30 @@ public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDrag
                         transform.SetParent(initialParent);
                         this.transform.SetSiblingIndex(scrollIndex);
                     }
+                    isCorrect = true;
+
                 }
-                else {
+                else
+                {
                     transform.position = iniPos;
                     transform.SetParent(initialParent);
                     this.transform.SetSiblingIndex(scrollIndex);
                 }
-                
+
             }
         }
 
+        // Save drag data
+        dragItem.TakenDuration = ListListener.Instance.timerAux.elapsedTime[timerIndex].ToString();
+        ListListener.Instance.timerAux.StopTimer(timerIndex);
+        dragItem.IsDropCorrect = isCorrect ? 1 : 0;
+        ListListener.Instance.dragGroceryList.Add(dragItem.ToString());
     }
 
     public string getValue()
     {
         return this.value;
     }
+
+
 }

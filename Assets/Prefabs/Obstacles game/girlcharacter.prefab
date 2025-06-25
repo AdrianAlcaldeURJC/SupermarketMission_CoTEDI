@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  obstacleID: 2
 --- !u!54 &-1884874644833113468
 Rigidbody:
   m_ObjectHideFlags: 0

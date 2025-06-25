@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97269afb30aa84742ae3f3342603618a, type: 3}
+  m_Name: TutorialVideos_es-ES
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: bb412fe75fee1124cba74fbad9ef87d0, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6578155520
+    m_Localized: 5a9c13dbcf84eab498be7a8e31b094c0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 130058465280
+    m_Localized: 84515e3436874d847aa965b1e3241355
+    m_Metadata:
+      m_Items: []
+  - m_Id: 96445313024
+    m_Localized: bf53e7d32dd176e4c9af3a21ad76e483
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

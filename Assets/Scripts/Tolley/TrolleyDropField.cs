@@ -48,20 +48,20 @@ public class TrolleyDropField : MonoBehaviour, IDropHandler
     {
         Debug.Log("Indices: " + indexJ + ", "+ indexI);
 
+        // If item dropped on not bottom row
         if (indexI < 2)
         {
             
+            // There is an element below
             if (dndManager.trolley[indexJ, indexI + 1])
             {
-                Debug.Log("El de abajo ocupado" + element.name);
                 //Con el nuevo padre
                 element.GetComponent<RectTransform>().position = columnDropFields[indexI].GetComponent<RectTransform>().position;
                 element.transform.SetParent(columnDropFields[indexI].transform, true);
-                //
-                dndManager.trolley[indexJ, indexI] = element.gameObject;
-                dndManager.evaluateColumn(indexJ);
+                dndManager.trolley[indexJ, indexI] = element;
+                dndManager.EvaluateColumn(indexJ);
             }
-            else
+            else // There is no element below
             {
                 PositionElement(indexJ, indexI + 1, element);
             }
@@ -69,9 +69,9 @@ public class TrolleyDropField : MonoBehaviour, IDropHandler
         else
         {
             element.GetComponent<RectTransform>().position = columnDropFields[indexI].GetComponent<RectTransform>().position;
-            element.transform.SetParent(columnDropFields[indexI].transform, true) ;
-            dndManager.trolley[indexJ, indexI] = element.gameObject;
-            dndManager.evaluateColumn(indexJ);
+            element.transform.SetParent(columnDropFields[indexI].transform, true);
+            dndManager.trolley[indexJ, indexI] = element;
+            dndManager.EvaluateColumn(indexJ);
         }
     }
 
@@ -98,12 +98,12 @@ public class TrolleyDropField : MonoBehaviour, IDropHandler
             else
             {
                 //Si no lo hay, acabar
-                dndManager.evaluateColumn(indexJ);
+                dndManager.EvaluateColumn(indexJ);
             }
         }
         else
         {
-            dndManager.evaluateColumn(indexJ);
+            dndManager.EvaluateColumn(indexJ);
         }
     }
 

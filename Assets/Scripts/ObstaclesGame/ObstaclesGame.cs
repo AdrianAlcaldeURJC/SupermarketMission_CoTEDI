@@ -18,10 +18,10 @@ public class ObstaclesGame : MonoBehaviour
 
     private Vector3[] spawnPoints = { new Vector3(-4.5f, 0, 63.2000008f), new Vector3(0, 0, 63.2000008f), new Vector3(4.5f, 0, 63.2000008f) };
     private Vector3[] standSpawnPoints = { new Vector3(11.0100002f, 3.72000003f, 63.7299995f), new Vector3(-10.79f, 3.72000003f, 63.7299995f) };
-    private Quaternion[] charactersRotation = {new Quaternion(0, 0, 0, 1), new Quaternion(0, -0.707106829f, 0, 0.707106829f), new Quaternion(0, 0.707106829f, 0, 0.707106829f), new Quaternion(0, 0.382683426f, 0, 0.923879564f), new Quaternion(0, -0.382683426f, 0, 0.923879564f) };
+    private Quaternion[] charactersRotation = { new Quaternion(0, 0, 0, 1), new Quaternion(0, -0.707106829f, 0, 0.707106829f), new Quaternion(0, 0.707106829f, 0, 0.707106829f), new Quaternion(0, 0.382683426f, 0, 0.923879564f), new Quaternion(0, -0.382683426f, 0, 0.923879564f) };
     //private Vector3[] standSpawnPoints = { new Vector3(-11.5100002f, 2.99039865f, 63.8699989f), new Vector3(11.7370729f, 2.99039841f, 63.8699989f) };
 
-    private int playerLifes;
+    private int playerLives;
     private bool isGameOver;
     private int numObstacles;
 
@@ -45,17 +45,11 @@ public class ObstaclesGame : MonoBehaviour
 
         numObstacles = 0;
         isGameOver = false;
-        playerLifes = hearts.Count-1;
-        numObstaclesText.text = numObstacles + "/"+ MAX_NUMOBSTACLES;
+        playerLives = hearts.Count - 1;
+        numObstaclesText.text = numObstacles + "/" + MAX_NUMOBSTACLES;
         AudioManager.GetInstance().PlayMusicClip(AudioManager.GetInstance().obstaclesSceneMusic);
         StartCoroutine(SpawnStands());
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void StartGame()
@@ -66,7 +60,7 @@ public class ObstaclesGame : MonoBehaviour
     IEnumerator SpawnObjects()
     {
         Quaternion rotation;
-        while (!isGameOver&&numObstacles< MAX_NUMOBSTACLES)
+        while (!isGameOver && numObstacles < MAX_NUMOBSTACLES)
         {
             var index = Random.Range(0, 3);
             rotation = new Quaternion(0, 0, 0, 1);
@@ -93,7 +87,7 @@ public class ObstaclesGame : MonoBehaviour
             else
             {
                 var rand = Random.Range(0, obstacle.Length);
-                if(rand ==0|| rand == 1)
+                if (rand == 0 || rand == 1)
                 {
                     var rand2 = Random.Range(0, charactersRotation.Length);
                     rotation = charactersRotation[rand2];
@@ -126,9 +120,9 @@ public class ObstaclesGame : MonoBehaviour
         if (!isGameOver)
         {
             Debug.Log("AUCH");
-            hearts[playerLifes].gameObject.SetActive(false);
-            playerLifes--;
-            if (playerLifes < 0)
+            hearts[playerLives].gameObject.SetActive(false);
+            playerLives--;
+            if (playerLives < 0)
             {
                 this.GameOver();
             }
@@ -138,14 +132,14 @@ public class ObstaclesGame : MonoBehaviour
     public void ObstacleReachedTheEnd()
     {
         this.numObstacles++;
-        numObstaclesText.text = numObstacles + "/"+ MAX_NUMOBSTACLES;
+        numObstaclesText.text = numObstacles + "/" + MAX_NUMOBSTACLES;
         Debug.Log(numObstacles);
     }
 
     private void GameOver()
     {
         ObstacleMovement[] elements = FindObjectsOfType<ObstacleMovement>();
-        foreach(ObstacleMovement elem in elements)
+        foreach (ObstacleMovement elem in elements)
         {
             elem.SetStop(true);
         }
@@ -153,7 +147,7 @@ public class ObstaclesGame : MonoBehaviour
         this.isGameOver = true;
         //Pausar carrito y obstaculos
         //Mostrar canvas de GameOver para pasar a la siguiente escena
-        if (playerLifes >= 0)
+        if (playerLives >= 0)
             this.CongratsPanel.SetActive(true);
         else
             this.GameOverPanel.SetActive(true);
@@ -163,5 +157,15 @@ public class ObstaclesGame : MonoBehaviour
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickTechButtonSFX);
         introLoader.LoadNextLevel("FinalCinematic");
+    }
+
+    public int GetNumObstacles()
+    {
+        return numObstacles;
+    }
+
+    public int GetPlayerLives()
+    {
+        return playerLives;
     }
 }
