@@ -522,13 +522,17 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 5942091435267993705, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8914783440849120772, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_Name
       value: GroceryList
       objectReference: {fileID: 0}
     - target: {fileID: 8914783440849120772, guid: a29cb1fccefa4cd4eb9595cfe4fb07dc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
