@@ -298,11 +298,9 @@ public class SectionColorsMiniGame : MonoBehaviour
             isCorrect = 0;
         }
 
-        if (currentOpenedColor != null)
-        {
-            picksAfterColorOpen++; // Incrementa el contador si hay un color abierto
-            Debug.Log("Picks realizados desde que se abrió el color " + currentOpenedColor + ": " + picksAfterColorOpen);
-        }
+        picksAfterColorOpen++; // Incrementa el contador si hay un color abierto
+        Debug.Log("Picks realizados desde que se abrió el color " + currentOpenedColor + ": " + picksAfterColorOpen);
+
         int order = minigameListener.GetColorPickedIndex();
         int pick = DataStorage.GroceryMapData.GetIDfromStringFood(foodSelected.GetComponent<Food>().foodName);
         minigameListener.AddColorPick((int)currentOpenedColor, order, isCorrect, minigameListener.GetElapsedTime(), pick);
