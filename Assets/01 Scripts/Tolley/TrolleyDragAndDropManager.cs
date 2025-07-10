@@ -197,7 +197,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
             SaveTrolley();
             GameManager.GetInstance().pickedItems = new List<Food>();
             EventManager.OnSaveTimer();
-            lvlLoader.LoadNextLevel("SupermarketMapSelection");
+            lvlLoader.LoadNextLevel("Maze_Test2");
         }
 
     }

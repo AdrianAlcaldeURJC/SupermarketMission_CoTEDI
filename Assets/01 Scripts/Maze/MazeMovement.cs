@@ -5,10 +5,23 @@ public class MazeMovement : MonoBehaviour
 {
     [SerializeField] List<MazeNode> mazeNodes;
     [SerializeField] List<GameObject> arrows;
-
     [SerializeField] Vector2Int mazeSize; // x z
     [SerializeField] int spawnIndex;
     private int currentIndex;
+
+    private static MazeMovement Instance;
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MazeMinigameLauncher : MonoBehaviour
@@ -7,9 +5,16 @@ public class MazeMinigameLauncher : MonoBehaviour
     [SerializeField] Food.Category foodCategory;
     [SerializeField] LevelLoader lvlLoader;
 
+    public void Start()
+    {
+        if (lvlLoader == null)
+        {
+            lvlLoader = FindObjectOfType<LevelLoader>();
+        }
+    }
 
     public void LoadMinigame()
-    { 
+    {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         GameManager.GetInstance().actualSection = foodCategory;
         if (foodCategory == Food.Category.cashier)
@@ -21,5 +26,10 @@ public class MazeMinigameLauncher : MonoBehaviour
         GameManager.GetInstance().CurrentMinigame = foodCategory;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        LoadMinigame();
+        GetComponent<Collider>().enabled = false;
+    }
 
 }

@@ -68,7 +68,8 @@ public class GroceryListChecker : MonoBehaviour
                     if (item.GetComponent<Food>().category != dropFields[i].GetComponent<DropFieldGroceryList>().value)
                     {
                         isCorrect = false;
-                        Debug.Log("Algo mal con "+item.GetComponent<Food>().category);
+                        Debug.LogError("Algo mal con " + item.GetComponent<Food>().category);
+                        Debug.LogError("Algo mal con objeto: " + item.GetComponent<Food>().category);
                     }
                 }
             }

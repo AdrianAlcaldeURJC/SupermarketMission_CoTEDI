@@ -315,11 +315,6 @@ public class SectionColorsMiniGame : MonoBehaviour
         lvlLoader.LoadNextLevel("TrolleyScene 1");
     }
 
-    /// <summary>
-    /// Checks if the given color should be opened
-    /// </summary>
-    /// <param name="color"></param>
-    /// <returns></returns>
     int CheckCorrectColor(Food.colors color)
     {
         foreach (Food f in groceryList)

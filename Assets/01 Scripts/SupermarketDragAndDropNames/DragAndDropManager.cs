@@ -60,13 +60,8 @@ public class DragAndDropManager : MonoBehaviour
         var correct = this.CheckResults();
         if (correct)
         {
-            Debug.Log("Muy bien");
             EventManager.OnSaveTimer();
-            lvlLoader.LoadNextLevel("SupermarketMapSelection");
-        }
-        else
-        {
-            Debug.Log("Hay algo mal");
+            lvlLoader.LoadNextLevel("Maze_Test2");
         }
     }
 

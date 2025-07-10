@@ -13,25 +13,9 @@ public class MazeConditionsClass
 [ExecuteInEditMode]
 public class ObstaclesManager : MonoBehaviour
 {
-
     [SerializeField] List<MazeNode> obstaclesNodes;
     [SerializeField] int obstaclesNumber;
     [SerializeField] List<MazeConditionsClass> obstaclesConditions;
-
-    private void Awake()
-    {
-        // int remainingObstacles = obstaclesNumber;
-
-        // while (remainingObstacles != 0)
-        // {
-        //     int obstacleNodeIndex = UnityEngine.Random.Range(0, obstaclesNodes.Count - 1);
-        //     if (!obstaclesNodes[obstacleNodeIndex].GetObstacle() && CheckConditions(obstaclesNodes[obstacleNodeIndex]))
-        //     {
-        //         obstaclesNodes[obstacleNodeIndex].SetObstacle();
-        //         remainingObstacles--;
-        //     }
-        // }
-    }
 
     private bool CheckConditions(MazeNode node)
     {

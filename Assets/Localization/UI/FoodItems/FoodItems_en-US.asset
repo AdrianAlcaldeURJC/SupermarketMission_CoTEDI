@@ -79,7 +79,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7617469919232
-    m_Localized: Squib
+    m_Localized: Squid
     m_Metadata:
       m_Items: []
   - m_Id: 8033544876032
@@ -187,7 +187,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 13077946216448
-    m_Localized: Aid band
+    m_Localized: Band Aid
     m_Metadata:
       m_Items: []
   - m_Id: 13183693008896
@@ -195,11 +195,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 13296893079552
-    m_Localized: Dehodorant
+    m_Localized: Deodorant
     m_Metadata:
       m_Items: []
   - m_Id: 13432369098752
-    m_Localized: Rubber band
+    m_Localized: Hair Rubber
     m_Metadata:
       m_Items: []
   - m_Id: 13646375071744
