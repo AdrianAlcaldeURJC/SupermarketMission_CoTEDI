@@ -250,7 +250,8 @@ public class MazeGenerator : MonoBehaviour
             Debug.Log(randomNodeIndex);
             yield return new WaitForSeconds(0.1f);
         }
-        
+
     }
-    
+
 }
+

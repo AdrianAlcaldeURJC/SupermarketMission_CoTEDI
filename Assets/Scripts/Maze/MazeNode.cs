@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -9,7 +7,8 @@ public enum NodeState
     Current,
     Completed,
     ObstaclesMinigame,
-    RandomMinigame
+    RandomMinigame,
+    Blocked
 }
 
 public enum NodeDir
@@ -24,27 +23,40 @@ public class MazeNode : MonoBehaviour
 {
     [SerializeField] GameObject[] walls;
     [SerializeField] MeshRenderer floor;
+    [SerializeField] bool obstacle = false;
+
+    private void Awake()
+    {
+        if (obstacle)
+        {
+            SetObstacle();
+        }
+    }
 
     public void SetState(NodeState state)
     {
         switch (state)
         {
             case NodeState.Available:
-                floor.material.color = Color.white;
+                floor.sharedMaterial.color = Color.white;
                 break;
             case NodeState.Current:
-                floor.material.color = Color.yellow;
+                floor.sharedMaterial.color = Color.yellow;
                 break;
             case NodeState.Completed:
-                floor.material.color = Color.blue;
+                floor.sharedMaterial.color = Color.blue;
                 break;
             case NodeState.ObstaclesMinigame:
-                floor.material.color = Color.red;
+                floor.sharedMaterial.color = Color.green;
                 break;
             case NodeState.RandomMinigame:
-                floor.material.color = Color.magenta;
+                floor.sharedMaterial.color = Color.magenta;
+                break;
+            case NodeState.Blocked:
+                floor.sharedMaterial.color = Color.red;
                 break;
         }
+        floor.transform.position = new Vector3(floor.transform.position.x, -0.5f, floor.transform.position.z);
     }
 
     public void RemoveWall(int wallToRemove)
@@ -55,5 +67,52 @@ public class MazeNode : MonoBehaviour
     public bool GetWallStatus(NodeDir wallDirection)
     {
         return walls[(int)wallDirection].activeSelf;
+    }
+
+    public void SetObstacle()
+    {
+        obstacle = true;
+        foreach (var wall in walls)
+        {
+            wall.SetActive(true);
+            SetState(NodeState.Blocked);
+        }
+        floor.transform.position = new Vector3(floor.transform.position.x, 0.5f, floor.transform.position.z);
+    }
+
+    public bool GetObstacle()
+    {
+        return obstacle;
+    }
+
+    public void ResetToObstacle()
+    {
+        // Remove walls
+        RemoveWall(0);
+        RemoveWall(1);
+        RemoveWall(2);
+        RemoveWall(3);
+        floor.transform.position = new Vector3(floor.transform.position.x, -0.5f, floor.transform.position.z);
+        SetState(NodeState.ObstaclesMinigame);
+    }
+}
+
+static class NodeDirMethods
+{
+    public static NodeDir GetOppositeDirection(this NodeDir direction)
+    {
+        switch (direction)
+        {
+            case NodeDir.Top:
+                return NodeDir.Down;
+            case NodeDir.Down:
+                return NodeDir.Top;
+            case NodeDir.Right:
+                return NodeDir.Left;
+            case NodeDir.Left:
+                return NodeDir.Right;
+            default:
+                return NodeDir.Top;
+        }
     }
 }

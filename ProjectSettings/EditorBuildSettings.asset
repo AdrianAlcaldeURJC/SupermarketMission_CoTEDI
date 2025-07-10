@@ -5,36 +5,39 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/00 Scenes/MainMenu.unity
     guid: deecea255d662f9459590f640e5b2124
-  - enabled: 1
+  - enabled: 0
     path: Assets/00 Scenes/StartingCinematic.unity
     guid: fa914a62695c66c47836eb6fbef1aef4
-  - enabled: 1
+  - enabled: 0
     path: Assets/00 Scenes/GroceryList.unity
     guid: a96dcbfeb465b5e40a6c43f3090df719
-  - enabled: 1
+  - enabled: 0
     path: Assets/00 Scenes/SupermarketMap.unity
     guid: 6a640fd8441055c4e9fa6188d264f564
-  - enabled: 1
+  - enabled: 0
     path: Assets/00 Scenes/ObstaclesGame.unity
     guid: 863fd43b3969ccf4b976d7ca24d14c65
-  - enabled: 1
+  - enabled: 0
     path: Assets/00 Scenes/FinalCinematic.unity
     guid: dfcba55a5e37faf46b4dadfd60cfb2dc
-  - enabled: 1
+  - enabled: 0
     path: Assets/00 Scenes/SupermarketSection.unity
     guid: 4fa546cf3f08d1e4d8539ca89b4aff86
-  - enabled: 1
+  - enabled: 0
     path: Assets/00 Scenes/SupermarketMapSelection.unity
     guid: 2e27fe631a63f814280ff29c00740919
-  - enabled: 1
+  - enabled: 0
     path: Assets/00 Scenes/TrolleyScene 1.unity
     guid: a525b77b1053ed846b1c13f74cb26181
-  - enabled: 1
+  - enabled: 0
     path: Assets/00 Scenes/NameScene.unity
     guid: 7ed8e15e0ee3d0342901ae1b390747df
+  - enabled: 1
+    path: Assets/00 Scenes/Testing/Maze_Test2.unity
+    guid: 3e4831437f6a0ed489fea188e6acb325
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: a269486342739d848978f08a2f2a0d34, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 2aa28f05368c87a47abdadc95daec880, type: 2}
