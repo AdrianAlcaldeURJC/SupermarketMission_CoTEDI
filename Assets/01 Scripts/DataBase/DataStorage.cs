@@ -173,7 +173,7 @@ public class DataStorage : MonoBehaviour
                 case "Fish-Oyster": return 12;
                 case "Fish-Prawn": return 13;
                 case "Fish-Salmon": return 14;
-                case "Fish-Squib": return 15;
+                case "Fish-Squid": return 15;
                 case "Fridge-Butter": return 16;
                 case "Fridge-Cheese": return 17;
                 case "Fridge-Cream": return 18;
@@ -202,7 +202,7 @@ public class DataStorage : MonoBehaviour
                 case "Legumes-WhiteBeans": return 41;
                 case "Perfumery-AidBand": return 42;
                 case "Perfumery-Alcohol": return 43;
-                case "Perfumery-Dehodorant": return 44;
+                case "Perfumery-Deodorant": return 44;
                 case "Perfumery-HairBrush": return 45;
                 case "Perfumery-HairRubberBand": return 46;
                 case "Perfumery-Shampoo": return 47;

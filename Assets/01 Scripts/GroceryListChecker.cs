@@ -149,10 +149,10 @@ public class GroceryListChecker : MonoBehaviour
         // Add all data to DB
         DataStorage.Instance.groceryMapData.LoadGroceryListItems(foodPendings);
 
-        GenerateClasificationList();
+        GenerateClassificationList();
     }
 
-    void GenerateClasificationList()
+    void GenerateClassificationList()
     {
         for(int i=0; i<foodPendings.Count; i++)
         {

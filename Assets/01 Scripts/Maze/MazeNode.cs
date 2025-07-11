@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public enum NodeState
@@ -24,14 +23,6 @@ public class MazeNode : MonoBehaviour
     [SerializeField] GameObject[] walls;
     [SerializeField] MeshRenderer floor;
     [SerializeField] bool obstacle = false;
-
-    private void Awake()
-    {
-        if (obstacle)
-        {
-            SetObstacle();
-        }
-    }
 
     public void SetState(NodeState state)
     {
@@ -74,10 +65,14 @@ public class MazeNode : MonoBehaviour
         obstacle = true;
         foreach (var wall in walls)
         {
-            wall.SetActive(true);
-            SetState(NodeState.Blocked);
+            if (wall.activeSelf == false)
+            {
+                wall.SetActive(true);  
+                wall.GetComponent<MeshRenderer>().enabled = false;
+            }
         }
-        floor.transform.position = new Vector3(floor.transform.position.x, 0.5f, floor.transform.position.z);
+        
+        SetState(NodeState.Blocked);    
     }
 
     public bool GetObstacle()

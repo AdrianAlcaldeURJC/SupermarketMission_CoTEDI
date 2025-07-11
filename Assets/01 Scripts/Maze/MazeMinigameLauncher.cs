@@ -15,6 +15,11 @@ public class MazeMinigameLauncher : MonoBehaviour
 
     public void LoadMinigame()
     {
+        if (lvlLoader == null)
+        {
+            lvlLoader = FindObjectOfType<LevelLoader>();
+        }
+
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         GameManager.GetInstance().actualSection = foodCategory;
         if (foodCategory == Food.Category.cashier)
@@ -28,8 +33,8 @@ public class MazeMinigameLauncher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        LoadMinigame();
         GetComponent<Collider>().enabled = false;
+        LoadMinigame();
     }
 
 }

@@ -20,6 +20,16 @@ public class LevelLoader : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(scene);
+
+        // Special case for maze lvl
+        if (scene == "ObstaclesGame")
+        {
+            GameObject maze = FindObjectOfType<ObstaclesManagerSingleton>().gameObject;
+            GameObject trolley = FindObjectOfType<MazeMovement>().gameObject;
+
+            maze.SetActive(false);
+            trolley.SetActive(false);
+        }
     }
 
     public void StartFakeTransition()

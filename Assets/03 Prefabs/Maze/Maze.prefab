@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3916386612904082141}
   - component: {fileID: 7296744315672509552}
   - component: {fileID: 1139910065692240558}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bakery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 416474391265542324}
   - component: {fileID: 231024063613821035}
   - component: {fileID: 6291631478184778880}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fruits_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,10 +323,10 @@ Transform:
   m_Children:
   - {fileID: 2598383747223201758}
   - {fileID: 6766154356964362946}
-  - {fileID: 5545056712715625121}
   - {fileID: 8302727903834198648}
   - {fileID: 5898738344189125177}
   - {fileID: 422756539352796187}
+  - {fileID: 5545056712715625121}
   - {fileID: 4410959976786197004}
   - {fileID: 444585397174054145}
   - {fileID: 8602953113900724131}
@@ -486,7 +486,7 @@ GameObject:
   - component: {fileID: 2480660617153541182}
   - component: {fileID: 5893673296929573159}
   - component: {fileID: 9190488608490662521}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fish_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2262209304208554851}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sections
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +666,7 @@ GameObject:
   - component: {fileID: 4791468581025714320}
   - component: {fileID: 5308652883913291544}
   - component: {fileID: 3211587986725028861}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Beauty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ GameObject:
   - component: {fileID: 734623434009484807}
   - component: {fileID: 3526228916978066680}
   - component: {fileID: 7902762049640317124}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Legumes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 6492094958115691602}
   - component: {fileID: 1643347416283411585}
   - component: {fileID: 3515520785609808960}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fish_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1105,7 +1105,7 @@ GameObject:
   - component: {fileID: 5915870512794919520}
   - component: {fileID: 5483737848480673351}
   - component: {fileID: 4777402298400129677}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fruits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1255,7 +1255,7 @@ GameObject:
   - component: {fileID: 7128312133925360712}
   - component: {fileID: 3798636626440400457}
   - component: {fileID: 179314520606569009}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Checkout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1431,7 +1431,7 @@ GameObject:
   - component: {fileID: 7576382418369391511}
   - component: {fileID: 8451634915192543943}
   - component: {fileID: 8611564086491792925}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Beauty_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1572,7 +1572,7 @@ GameObject:
   - component: {fileID: 7629110437554928572}
   - component: {fileID: 320343839757706530}
   - component: {fileID: 1147210999242853961}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bakery_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1713,7 +1713,7 @@ GameObject:
   - component: {fileID: 1010372382909684989}
   - component: {fileID: 8514497281801652486}
   - component: {fileID: 2374714461430598511}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Legumes_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1854,7 +1854,7 @@ GameObject:
   - component: {fileID: 5331745789403583924}
   - component: {fileID: 2104626983016109392}
   - component: {fileID: 2554190550976075626}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bakery_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1997,7 +1997,7 @@ GameObject:
   - component: {fileID: 1794256989811825512}
   - component: {fileID: 5792564406971929757}
   - component: {fileID: 5534042736042499696}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Refrigerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2173,7 +2173,7 @@ GameObject:
   - component: {fileID: 2450005607409191083}
   - component: {fileID: 4799091037333365138}
   - component: {fileID: 1080767117874361555}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Beauty_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2314,7 +2314,7 @@ GameObject:
   - component: {fileID: 1300815723816463020}
   - component: {fileID: 7853146129875622580}
   - component: {fileID: 6441351177034956942}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Legumes_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2456,7 +2456,7 @@ GameObject:
   - component: {fileID: 7328351967835305364}
   - component: {fileID: 4158264501132200259}
   - component: {fileID: 4953151755257552946}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2604,7 +2604,7 @@ GameObject:
   - component: {fileID: 7548972653583524328}
   - component: {fileID: 8892901222810300895}
   - component: {fileID: 929098724564423866}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Fruits_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6889,6 +6889,10 @@ PrefabInstance:
     - target: {fileID: 4175038328648619161, guid: db9b4d51d05759f41ae819cdc115b1e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519204506655416704, guid: db9b4d51d05759f41ae819cdc115b1e2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7045480954894067284, guid: db9b4d51d05759f41ae819cdc115b1e2, type: 3}
       propertyPath: m_Materials.Array.data[0]

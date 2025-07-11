@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class MazeMovement : MonoBehaviour
 {
-    [SerializeField] List<MazeNode> mazeNodes;
     [SerializeField] List<GameObject> arrows;
     [SerializeField] Vector2Int mazeSize; // x z
     [SerializeField] int spawnIndex;
-    private int currentIndex;
-
     private static MazeMovement Instance;
+    private List<MazeNode> mazeNodes;    
+    private int currentIndex;
 
     void Awake()
     {
@@ -25,7 +24,15 @@ public class MazeMovement : MonoBehaviour
 
     void Start()
     {
+        mazeNodes = new List<MazeNode>();
+        var obj = FindObjectOfType<ObstaclesManagerSingleton>();
+        for (int i = 0; i < mazeSize.x * mazeSize.y; ++i)
+        {
+            mazeNodes.Add(obj.transform.GetChild(i).GetComponent<MazeNode>());
+        }
+
         currentIndex = spawnIndex;
+
     }
 
     void Update()

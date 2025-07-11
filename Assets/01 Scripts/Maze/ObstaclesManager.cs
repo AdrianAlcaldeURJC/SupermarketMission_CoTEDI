@@ -17,6 +17,7 @@ public class ObstaclesManager : MonoBehaviour
     [SerializeField] int obstaclesNumber;
     [SerializeField] List<MazeConditionsClass> obstaclesConditions;
 
+    private List<MazeNode> SelectedObstaclesNodes = new List<MazeNode>();
     private bool CheckConditions(MazeNode node)
     {
         bool conditionMet = false;
@@ -63,8 +64,14 @@ public class ObstaclesManager : MonoBehaviour
             if (!obstaclesNodes[obstacleNodeIndex].GetObstacle() && CheckConditions(obstaclesNodes[obstacleNodeIndex]))
             {
                 obstaclesNodes[obstacleNodeIndex].SetObstacle();
+                SelectedObstaclesNodes.Add(obstaclesNodes[obstacleNodeIndex]);
                 remainingObstacles--;
             }
         }
+    }
+
+    public List<MazeNode> GetSelectedObstaclesNodes()
+    {
+        return SelectedObstaclesNodes;
     }
 }
