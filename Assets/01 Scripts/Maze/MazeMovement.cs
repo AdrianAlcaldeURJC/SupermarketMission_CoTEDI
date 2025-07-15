@@ -1,14 +1,38 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MazeMovement : MonoBehaviour
 {
+
+    private class MazeStep
+    {
+        public int Direction;
+        public bool IsCorrect;
+        public float Time;
+
+        public MazeStep(int dir, bool isCorrect, float time)
+        {
+            Direction = dir;
+            IsCorrect = isCorrect;
+            Time = time;
+        }
+
+        public override string ToString()
+        {
+            return $"({Direction}, {IsCorrect}, {Time})";
+        }
+    }
+
     [SerializeField] List<GameObject> arrows;
     [SerializeField] Vector2Int mazeSize; // x z
+    [SerializeField] GameObject trolleyModel;
     [SerializeField] int spawnIndex;
     private static MazeMovement Instance;
-    private List<MazeNode> mazeNodes;    
+    private List<MazeNode> mazeNodes;
+    private List<string> mazeStepsString;
     private int currentIndex;
+
 
     void Awake()
     {
@@ -20,6 +44,7 @@ public class MazeMovement : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        mazeStepsString = new List<string>();
     }
 
     void Start()
@@ -32,7 +57,6 @@ public class MazeMovement : MonoBehaviour
         }
 
         currentIndex = spawnIndex;
-
     }
 
     void Update()
@@ -57,25 +81,28 @@ public class MazeMovement : MonoBehaviour
 
     void Move(NodeDir direction)
     {
-
         int nextNodeIndex = -1;
         // Move to correct node
         switch (direction)
         {
             case NodeDir.Top:
                 nextNodeIndex = currentIndex + mazeSize[0];
+                trolleyModel.transform.eulerAngles = new Vector3(0f, 180f, 0f);
                 break;
 
             case NodeDir.Down:
                 nextNodeIndex = currentIndex - mazeSize[0];
+                trolleyModel.transform.eulerAngles = new Vector3(0f, 0f, 0f);
                 break;
 
             case NodeDir.Right:
                 nextNodeIndex = currentIndex + 1;
+                trolleyModel.transform.eulerAngles = new Vector3(0f, 270f, 0f);
                 break;
 
             case NodeDir.Left:
                 nextNodeIndex = currentIndex - 1;
+                trolleyModel.transform.eulerAngles = new Vector3(0f, 90f, 0f);
                 break;
         }
 
@@ -84,7 +111,7 @@ public class MazeMovement : MonoBehaviour
             return;
 
         // Check if direction is blocked
-        if (!mazeNodes[nextNodeIndex].GetWallStatus(direction.GetOppositeDirection()))
+        if (CheckIfDirectionIsAvailable(nextNodeIndex, direction))
         {
             currentIndex = nextNodeIndex;
             Vector3 destination = mazeNodes[nextNodeIndex].transform.position;
@@ -92,6 +119,22 @@ public class MazeMovement : MonoBehaviour
             transform.position = destination;
         }
 
+        SaveMovementData(direction, CheckIfDirectionIsAvailable(nextNodeIndex, direction));
+    }
+
+    bool CheckIfDirectionIsAvailable(int nextNodeIndex, NodeDir direction)
+    {
+        return !mazeNodes[nextNodeIndex].GetWallStatus(direction.GetOppositeDirection());
+    }
+
+    void SaveMovementData(NodeDir direction, bool directionAvailable)
+    {
+        DataStorage.Instance.mazeMapData.MazeStepsCount++;
+
+        float time = ObstaclesManagerSingleton.Instance.timerAux.elapsedTime[ObstaclesManagerSingleton.Instance.timerID];
+        MazeStep step = new MazeStep((int)direction, directionAvailable, time);
+        mazeStepsString.Add(step.ToString());
+        DataStorage.Instance.mazeMapData.MazeSteps = string.Join(",", mazeStepsString);
     }
 
     public void MoveTop()
@@ -113,6 +156,5 @@ public class MazeMovement : MonoBehaviour
     {
         Move(NodeDir.Left);
     }
-
 
 }

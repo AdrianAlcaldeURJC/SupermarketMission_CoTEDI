@@ -14,7 +14,7 @@ public class GameEnd : MonoBehaviour
         DataStorage.Instance.SaveCombinedJsonToFile();
         for (int i = 0; i < DataStorage.Instance.minigamesData.Count; i++)
         {
-            jsons.Add(DataStorage.Instance.GetCombinedJsons(i));    // Get JSON data
+            jsons.Add(DataStorage.Instance.GetCombinedJson(i));    // Get JSON data
             dataBaseCommunicator.SendInsertRequest(jsons[i]);        // Send JSON data
         }
 

@@ -70,7 +70,5 @@ public class ObstaclesManagerEditor : EditorWindow
 
         // Destroy this code component, so the build does not give any problem   
         DestroyImmediate(spawnedPrefab.GetComponent<ObstaclesManager>());
-
-
     }
 }

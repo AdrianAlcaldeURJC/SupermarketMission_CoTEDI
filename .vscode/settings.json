@@ -59,8 +59,13 @@
     "dotnet.defaultSolution": "SupermarketMission_CoTEDI.sln",
     "cSpell.words": [
         "Behaviour",
+        "CREAR",
         "Dont",
+        "INTENTADO",
         "Mathf",
-        "Minigame"
+        "Minigame",
+        "Newtonsoft",
+        "Stringbuilder",
+        "VECES"
     ]
 }

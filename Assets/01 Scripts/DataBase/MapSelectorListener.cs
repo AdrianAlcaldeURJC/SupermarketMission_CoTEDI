@@ -15,6 +15,7 @@ public class MapSelectorListener : MonoBehaviour
         timerAux.StartTimer(timerIndex);
     }
 
+    /*
     private void UpdateDecisionTime(int nextMinigame)
     {
         string mapsDecision = DataStorage.Instance.groceryMapData.DecisionTime;
@@ -64,6 +65,6 @@ public class MapSelectorListener : MonoBehaviour
         DataStorage.Instance.groceryMapData.MapPickOrder = mapsPicked;
         
     }
-
+    */
 
 }

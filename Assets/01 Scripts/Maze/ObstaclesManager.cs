@@ -1,6 +1,8 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 using UnityEngine;
 
 
@@ -14,10 +16,12 @@ public class MazeConditionsClass
 public class ObstaclesManager : MonoBehaviour
 {
     [SerializeField] List<MazeNode> obstaclesNodes;
+    [SerializeField] List<MazeNode> sectionsNodes;
     [SerializeField] int obstaclesNumber;
     [SerializeField] List<MazeConditionsClass> obstaclesConditions;
-
+    [SerializeField] Material[] floorMaterials;
     private List<MazeNode> SelectedObstaclesNodes = new List<MazeNode>();
+
     private bool CheckConditions(MazeNode node)
     {
         bool conditionMet = false;
@@ -53,6 +57,34 @@ public class ObstaclesManager : MonoBehaviour
         }
     }
 
+    private void FillFloorColors()
+    {
+        List<MazeNode> nodes = transform.GetComponentsInChildren<MazeNode>().ToList();
+
+        int colorID = 0;
+        foreach (MazeNode node in nodes)
+        {
+            if (colorID == 0)
+            {
+                node.SetFloorColor(floorMaterials[0]);
+                colorID = 1;
+            }
+            else if (colorID == 1)
+            {
+                node.SetFloorColor(floorMaterials[1]);
+                colorID = 0;
+            }
+        }
+    }
+
+    private void FillSectionsColors()
+    {
+        foreach (MazeNode node in sectionsNodes)
+        {
+            node.SetFloorColor(floorMaterials[2]);
+        }
+    }
+
     public void GenerateObstacles()
     {
         //ResetObstacles();
@@ -68,10 +100,14 @@ public class ObstaclesManager : MonoBehaviour
                 remainingObstacles--;
             }
         }
+
+        FillFloorColors();
+        FillSectionsColors();
     }
 
     public List<MazeNode> GetSelectedObstaclesNodes()
     {
         return SelectedObstaclesNodes;
     }
+
 }

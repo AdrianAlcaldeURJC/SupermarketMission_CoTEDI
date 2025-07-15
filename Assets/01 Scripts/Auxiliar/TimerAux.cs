@@ -54,7 +54,7 @@ public class TimerAux : MonoBehaviour
         }
     }
 
-    // Restart all timers but without reseting the time
+    // Restart all timers but without resetting the time
 
     public void RestartAllTimers()
     {

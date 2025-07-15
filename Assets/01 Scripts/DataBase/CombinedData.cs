@@ -43,8 +43,6 @@ public class CombinedData
     public string MapOrder;
     public string MapDrops;
     public string MapClicks;
-    public string MapPickOrder;
-    public string DecisionTime;
     public string GroceryAux1;
     public string GroceryAux2;
     public string MapAux1;

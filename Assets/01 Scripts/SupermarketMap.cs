@@ -43,7 +43,7 @@ public class SupermarketMap : MonoBehaviour
             lvlLoader.LoadNextLevel("SupermarketSection");
 
         // Save map picked order
-        mapSelectorListener.AddPickedMap((int)category);
+        //mapSelectorListener.AddPickedMap((int)category);
         GameManager.GetInstance().CurrentMinigame = category;
     }
 

@@ -15,7 +15,7 @@ public class DataStorage : MonoBehaviour
 {
     public static DataStorage Instance { get; private set; }
 
-    // Necesary to transform it into a JSON
+    // Necessary to transform it into a JSON
     [Serializable]
     public class UserData
     {
@@ -132,8 +132,6 @@ public class DataStorage : MonoBehaviour
         public string MapOrder;
         public string MapDrops;
         public string MapClicks;
-        public string MapPickOrder;
-        public string DecisionTime;
         public string GroceryAux1;
         public string GroceryAux2;
         public string MapAux1;
@@ -211,9 +209,22 @@ public class DataStorage : MonoBehaviour
                 case "Perfumery-Wipe": return 50;
                 case "Perfumery-Toothbrush": return 51;
                 case "Perfumery-Toothpaste": return 52;
-                default: return -1; // Si no se encuentra
+                default: return -1; // If not found
             }
         }
+    }
+
+    [Serializable]
+    public class MazeMapData
+    {
+        public int MazeID;
+        public int MazeStepsCount = 0;
+        public string MazeSteps;
+        public float MazeDuration;
+        public string MazeMinigamePickOrder;
+        public string SectionsTime;
+        public string MazeAux1;
+        public string MazeAux2;
     }
 
     [Serializable]
@@ -263,6 +274,7 @@ public class DataStorage : MonoBehaviour
     public SessionData sessionData;
     public GameData gameData;
     public GroceryMapData groceryMapData;
+    public MazeMapData mazeMapData;
     public List<MinigamesData> minigamesData;
     public TrolleyDodgeData trolleyDodgeData;
 
@@ -294,6 +306,7 @@ public class DataStorage : MonoBehaviour
         sessionData = new SessionData();
         gameData = new GameData();
         groceryMapData = new GroceryMapData();
+        mazeMapData = new MazeMapData();
         trolleyDodgeData = new TrolleyDodgeData();
 
         for (int i = 0; i < 6; i++)
@@ -307,20 +320,16 @@ public class DataStorage : MonoBehaviour
 
     private void EndClasses()
     {
-
         sessionData.OnDestroyData();
     }
 
 
     public string GetUserDataJson()
     {
-        string aux = JsonUtility.ToJson(userData, true);
-
-
         return JsonUtility.ToJson(userData, true);
     }
 
-    public string GetSesionDataJson()
+    public string GetSessionDataJson()
     {
         return JsonUtility.ToJson(sessionData);
     }
@@ -334,6 +343,11 @@ public class DataStorage : MonoBehaviour
     public string GetGroceryMapDataJson()
     {
         return JsonUtility.ToJson(groceryMapData);
+    }
+
+    public string GetMazeMapDataJson()
+    {
+        return JsonUtility.ToJson(mazeMapData);
     }
 
     public string GetMinigamesDataJson()
@@ -351,15 +365,16 @@ public class DataStorage : MonoBehaviour
         return JsonUtility.ToJson(trolleyDodgeData);
     }
 
-    public string GetCombinedJsons(int minigame)
+    public string GetCombinedJson(int minigame)
     {
         JObject finalJson = new JObject();
         JsonMergeSettings mergeSettings = new JsonMergeSettings { MergeArrayHandling = MergeArrayHandling.Union };
 
         finalJson.Merge(JObject.Parse(GetUserDataJson()), mergeSettings);
-        finalJson.Merge(JObject.Parse(GetSesionDataJson()), mergeSettings);
+        finalJson.Merge(JObject.Parse(GetSessionDataJson()), mergeSettings);
         finalJson.Merge(JObject.Parse(GetGameDataJson()), mergeSettings);
         finalJson.Merge(JObject.Parse(GetGroceryMapDataJson()), mergeSettings);
+        finalJson.Merge(JObject.Parse(GetMazeMapDataJson()), mergeSettings);
         finalJson.Merge(JObject.Parse(GetSingleMinigameDataJson(minigame)), mergeSettings);
         finalJson.Merge(JObject.Parse(GetTrolleyDataJson()), mergeSettings);
 
@@ -369,7 +384,6 @@ public class DataStorage : MonoBehaviour
 
     public void SaveCombinedJsonToFile()
     {
-
         try
         {
             string FolderName = $"{Application.persistentDataPath}/DataCollection/{userData.UserID}_Session{sessionData.SessionID}_Game{gameData.GameID}/";
@@ -379,7 +393,7 @@ public class DataStorage : MonoBehaviour
             for (int i = 0; i < minigamesData.Count; i++)
             {
                 string fileName = $"Minigame{i}.json";
-                string jsonData = GetCombinedJsons(i);
+                string jsonData = GetCombinedJson(i);
 
                 File.WriteAllText(Path.Combine(FolderName, fileName), jsonData);
                 Debug.Log("JSON data saved to " + Path.Combine(FolderName, fileName));
@@ -400,13 +414,13 @@ public class DataStorage : MonoBehaviour
         gameData.GameAux1 = null;
         gameData.GameAux2 = null;
         groceryMapData = new GroceryMapData();
+        mazeMapData = new MazeMapData();
         trolleyDodgeData = new TrolleyDodgeData();
         for (int i = 0; i < minigamesData.Count; i++)
         {
             minigamesData[i] = new MinigamesData();
         }
         sessionData.NumGames++;
-        // Increment the session ID for the next game
     }
 
 }

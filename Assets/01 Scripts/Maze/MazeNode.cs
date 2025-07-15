@@ -24,6 +24,7 @@ public class MazeNode : MonoBehaviour
     [SerializeField] MeshRenderer floor;
     [SerializeField] bool obstacle = false;
 
+    // !Kinda deprecated
     public void SetState(NodeState state)
     {
         switch (state)
@@ -67,12 +68,12 @@ public class MazeNode : MonoBehaviour
         {
             if (wall.activeSelf == false)
             {
-                wall.SetActive(true);  
+                wall.SetActive(true);
                 wall.GetComponent<MeshRenderer>().enabled = false;
             }
         }
-        
-        SetState(NodeState.Blocked);    
+
+        SetState(NodeState.Blocked);
     }
 
     public bool GetObstacle()
@@ -89,6 +90,11 @@ public class MazeNode : MonoBehaviour
         RemoveWall(3);
         floor.transform.position = new Vector3(floor.transform.position.x, -0.5f, floor.transform.position.z);
         SetState(NodeState.ObstaclesMinigame);
+    }
+
+    public void SetFloorColor(Material material)
+    {
+        floor.material = material;
     }
 }
 
