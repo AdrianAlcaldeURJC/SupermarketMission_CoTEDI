@@ -69,7 +69,7 @@ public class GroceryListChecker : MonoBehaviour
                     {
                         isCorrect = false;
                         Debug.LogError("Algo mal con " + item.GetComponent<Food>().category);
-                        Debug.LogError("Algo mal con objeto: " + item.GetComponent<Food>().category);
+                        Debug.LogError("Algo mal con objeto: " + item.name);
                     }
                 }
             }

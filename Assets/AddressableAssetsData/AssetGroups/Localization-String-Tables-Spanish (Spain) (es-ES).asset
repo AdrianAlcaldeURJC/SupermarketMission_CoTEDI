@@ -53,6 +53,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-es-ES
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: afc8c09ffac053f47ac6f03a322e9615
+    m_Address: Maze_es-ES
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cd3c7f43939bbdf40a56e2f971f5a59d
     m_Address: GeneralUI_es-ES
     m_ReadOnly: 1

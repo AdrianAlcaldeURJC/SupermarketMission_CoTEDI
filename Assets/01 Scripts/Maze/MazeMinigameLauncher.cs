@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -5,6 +8,7 @@ public class MazeMinigameLauncher : MonoBehaviour
 {
     [SerializeField] Food.Category foodCategory;
     private LevelLoader lvlLoader;
+    private bool isColliding = false;
 
     public void Start()
     {
@@ -12,6 +16,24 @@ public class MazeMinigameLauncher : MonoBehaviour
         {
             lvlLoader = FindObjectOfType<LevelLoader>();
         }
+
+        var foodCount = foodCategory switch
+        {
+            Food.Category.bakery => GameManager.GetInstance().bakeryFoodList.Count,
+            Food.Category.fish => GameManager.GetInstance().fishFoodList.Count,
+            Food.Category.fridge => GameManager.GetInstance().fridgeFoodList.Count,
+            Food.Category.fruit => GameManager.GetInstance().fruitFoodList.Count,
+            Food.Category.legume => GameManager.GetInstance().legumeFoodList.Count,
+            Food.Category.perfumery => GameManager.GetInstance().perfumeryFoodList.Count,
+            _ => 1,
+        };
+
+        if (foodCount == 0)
+        {
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+            gameObject.SetActive(false);
+        }
+
     }
 
     public void LoadMinigame()
@@ -47,8 +69,48 @@ public class MazeMinigameLauncher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GetComponent<Collider>().enabled = false;
-        LoadMinigame();
+        Debug.Log(other.gameObject.name);
+        if (isColliding) return;
+        isColliding = true;
+
+        StartCoroutine(Reset());
+
+        if (!CheckAllSectionsVisited() && foodCategory == Food.Category.cashier)
+        {
+            GameObject.Find("Trolley").GetComponent<MazeMovement>().ReverseLastDirection();
+            FindObjectsOfType<ExplanationCanvas>(true)[1].gameObject.SetActive(true);
+        }
+        else
+        {
+            GetComponent<Collider>().enabled = false;
+            LoadMinigame();
+        }
+
     }
 
+    IEnumerator Reset()
+    {
+        yield return new WaitForEndOfFrame();
+        isColliding = false;
+    }
+
+    private bool CheckAllSectionsVisited()
+    {
+        List<BoxCollider> sections = transform.parent.gameObject.GetComponentsInChildren<BoxCollider>().ToList();
+
+        int enabled = 0;
+        foreach (var section in sections)
+        {
+            if (section.enabled == true)
+            {
+                enabled++;
+            }
+        }
+
+        if (enabled > 1)
+            {
+                return false;
+            }
+        return true;
+    }
 }

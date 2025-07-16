@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class MazeMovement : MonoBehaviour
 {
-
-    private class MazeStep
+    private class MazeStepData
     {
         public int Direction;
         public bool IsCorrect;
         public float Time;
 
-        public MazeStep(int dir, bool isCorrect, float time)
+        public MazeStepData(int dir, bool isCorrect, float time)
         {
             Direction = dir;
             IsCorrect = isCorrect;
@@ -31,8 +30,8 @@ public class MazeMovement : MonoBehaviour
     private static MazeMovement Instance;
     private List<MazeNode> mazeNodes;
     private List<string> mazeStepsString;
+    private NodeDir lastDirection;
     private int currentIndex;
-
 
     void Awake()
     {
@@ -61,26 +60,27 @@ public class MazeMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             Move(NodeDir.Top);
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             Move(NodeDir.Down);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             Move(NodeDir.Right);
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Move(NodeDir.Left);
         }
     }
 
-    void Move(NodeDir direction)
+    private void Move(NodeDir direction)
     {
+        lastDirection = direction;
         int nextNodeIndex = -1;
         // Move to correct node
         switch (direction)
@@ -122,19 +122,24 @@ public class MazeMovement : MonoBehaviour
         SaveMovementData(direction, CheckIfDirectionIsAvailable(nextNodeIndex, direction));
     }
 
-    bool CheckIfDirectionIsAvailable(int nextNodeIndex, NodeDir direction)
+    private bool CheckIfDirectionIsAvailable(int nextNodeIndex, NodeDir direction)
     {
         return !mazeNodes[nextNodeIndex].GetWallStatus(direction.GetOppositeDirection());
     }
 
-    void SaveMovementData(NodeDir direction, bool directionAvailable)
+    private void SaveMovementData(NodeDir direction, bool directionAvailable)
     {
         DataStorage.Instance.mazeMapData.MazeStepsCount++;
 
         float time = ObstaclesManagerSingleton.Instance.timerAux.elapsedTime[ObstaclesManagerSingleton.Instance.timerID];
-        MazeStep step = new MazeStep((int)direction, directionAvailable, time);
+        MazeStepData step = new MazeStepData((int)direction, directionAvailable, time);
         mazeStepsString.Add(step.ToString());
         DataStorage.Instance.mazeMapData.MazeSteps = string.Join(",", mazeStepsString);
+    }
+
+    public void ReverseLastDirection()
+    {
+        Move(lastDirection.GetOppositeDirection());
     }
 
     public void MoveTop()

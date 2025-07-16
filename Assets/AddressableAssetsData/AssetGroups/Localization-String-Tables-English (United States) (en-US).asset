@@ -47,6 +47,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en-US
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b21b67341b27fad44bb979388c4ee11b
+    m_Address: Maze_en-US
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b71a78d9358c48643acfca6d01f6ae5f
     m_Address: Aisles_en-US
     m_ReadOnly: 1

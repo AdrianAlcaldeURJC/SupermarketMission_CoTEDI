@@ -28,6 +28,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25e30e1c8bd581d41bb24013ad8f6ba6
+    m_Address: Assets/Localization/UI/Maze/Maze Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2ac2586e1e29e3240bf10d218f878ba0
     m_Address: Assets/Localization/UI/GeneralUI/GeneralUI Shared Data.asset
     m_ReadOnly: 1

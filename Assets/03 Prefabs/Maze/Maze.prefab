@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCategory: 1
-  lvlLoader: {fileID: 0}
 --- !u!1 &497212697272467602
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +443,7 @@ MonoBehaviour:
   - {fileID: 4150117364922972729}
   - {fileID: 1845037605849080508}
   - {fileID: 3421250052435399395}
-  obstaclesNumber: 3
+  obstaclesNumber: 5
   obstaclesConditions:
   - list:
     - {fileID: 1846625772900268492}
@@ -835,7 +834,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCategory: 5
-  lvlLoader: {fileID: 0}
 --- !u!1 &2137432723613653649
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +982,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCategory: 2
-  lvlLoader: {fileID: 0}
 --- !u!1 &3519057202705972397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1312,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCategory: 0
-  lvlLoader: {fileID: 0}
 --- !u!1 &3870714042681892036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,7 +1343,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3870714042681892036}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1355,8 +1351,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.4}
-  m_SizeDelta: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.0214, y: -0.4}
+  m_SizeDelta: {x: 1.0428, y: 1.0428}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4045308936944330103
 Canvas:
@@ -1493,7 +1489,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCategory: 6
-  lvlLoader: {fileID: 0}
 --- !u!1 &4438603119313397909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2235,7 +2230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCategory: 3
-  lvlLoader: {fileID: 0}
 --- !u!1 &5814050766280404637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,7 +2660,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodCategory: 4
-  lvlLoader: {fileID: 0}
 --- !u!1 &9091214155819554542
 GameObject:
   m_ObjectHideFlags: 0
