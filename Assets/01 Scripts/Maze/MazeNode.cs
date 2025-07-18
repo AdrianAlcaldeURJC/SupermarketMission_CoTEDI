@@ -26,7 +26,8 @@ public class MazeNode : MonoBehaviour
 
     // !Kinda deprecated
     public void SetState(NodeState state)
-    {
+    {   
+        /*
         switch (state)
         {
             case NodeState.Available:
@@ -48,6 +49,7 @@ public class MazeNode : MonoBehaviour
                 floor.sharedMaterial.color = Color.red;
                 break;
         }
+        */
         floor.transform.position = new Vector3(floor.transform.position.x, -0.5f, floor.transform.position.z);
     }
 

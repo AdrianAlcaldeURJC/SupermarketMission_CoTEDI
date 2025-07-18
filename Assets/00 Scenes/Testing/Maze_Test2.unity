@@ -351,6 +351,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 6410243125414467222, guid: 9e4f3e16e20e4e24e9126bc3fc5023cd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7995500672367707763, guid: 9e4f3e16e20e4e24e9126bc3fc5023cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -617,8 +621,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
+  field of view: 80
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -643,13 +647,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835835717}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 4.5, y: 15, z: 4.11}
+  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
+  m_LocalPosition: {x: 4, y: 5.342, z: 1.661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
 --- !u!1 &2006621313
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,18 +699,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mazes3Obstacles:
-  - {fileID: 8745865793848970438, guid: b17e0f7f4e5265b4f94fed99a683164e, type: 3}
-  - {fileID: 1087909727193407419, guid: 71a0f40a6d4f3264bb04c50d4a2d272d, type: 3}
-  - {fileID: 2490845429217373266, guid: 2836e286767baba479a6e7aba8ca99be, type: 3}
-  - {fileID: 6222039496373338339, guid: ad48d4c162afe8940aff48d4d5bb54d3, type: 3}
-  - {fileID: 3109324012337397304, guid: 66353a513aecb8749bdf0287ca0b4809, type: 3}
-  mazes5Obstacles:
-  - {fileID: 6786378379510092005, guid: c390f0b68d0ce3949a3b754b1e60cbe9, type: 3}
-  - {fileID: 1950500699665513027, guid: cf7d5e88aa42ec84587473cec3564b84, type: 3}
-  - {fileID: 8872751242163042728, guid: 9b74c1e54446f4c4393a16fa78204623, type: 3}
-  - {fileID: 8346275187294065601, guid: e1b608288bd0acb4698afa2c713f3b5f, type: 3}
-  - {fileID: 8877986255484487590, guid: 90217b935e518d0409a6fe7c0d7bce0d, type: 3}
-  mazeMovement: {fileID: 5692233983961403971, guid: 3be0168392d6e6743a4a6bf0c85b512e, type: 3}
+  - {fileID: 3829457795619541757, guid: bccc92155b7a0bb49aa679abb00b40a6, type: 3}
+  mazes5Obstacles: []
   numObstacles: 3
 --- !u!1001 &2032340295
 PrefabInstance:
@@ -837,6 +831,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcca1d2406176fc42b27594958532bb4, type: 3}
+--- !u!1001 &2050440037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1347571502179009426, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_Name
+      value: Maze_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828989504742867644, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828989504742867644, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828989504742867644, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828989504742867644, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828989504742867644, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828989504742867644, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828989504742867644, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828989504742867644, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828989504742867644, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4828989504742867644, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -849,3 +900,4 @@ SceneRoots:
   - {fileID: 1013565529}
   - {fileID: 2006621314}
   - {fileID: 247815927}
+  - {fileID: 2050440037}

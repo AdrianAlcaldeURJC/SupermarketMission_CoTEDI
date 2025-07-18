@@ -100,9 +100,6 @@ public class ObstaclesManager : MonoBehaviour
                 remainingObstacles--;
             }
         }
-
-        FillFloorColors();
-        FillSectionsColors();
     }
 
     public List<MazeNode> GetSelectedObstaclesNodes()
