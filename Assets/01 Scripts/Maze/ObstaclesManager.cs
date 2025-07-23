@@ -19,7 +19,7 @@ public class ObstaclesManager : MonoBehaviour
     [SerializeField] List<MazeNode> sectionsNodes;
     [SerializeField] int obstaclesNumber;
     [SerializeField] List<MazeConditionsClass> obstaclesConditions;
-    [SerializeField] Material[] floorMaterials;
+    [SerializeField] GameObject differentFloorTile;
     private List<MazeNode> SelectedObstaclesNodes = new List<MazeNode>();
 
     private bool CheckConditions(MazeNode node)
@@ -60,36 +60,31 @@ public class ObstaclesManager : MonoBehaviour
     private void FillFloorColors()
     {
         List<MazeNode> nodes = transform.GetComponentsInChildren<MazeNode>().ToList();
-
+        Debug.Log(nodes.Count);
         int colorID = 0;
         foreach (MazeNode node in nodes)
         {
             if (colorID == 0)
             {
-                node.SetFloorColor(floorMaterials[0]);
+                // Do not touch the floor
                 colorID = 1;
             }
             else if (colorID == 1)
             {
-                node.SetFloorColor(floorMaterials[1]);
+                // Set the floor to the new floor color
+                GameObject floorInstantiated = Instantiate(differentFloorTile);
+                floorInstantiated.transform.parent = node.transform;
+                floorInstantiated.name = "Floor_1";
+                floorInstantiated.transform.localPosition = new UnityEngine.Vector3(0.55f, -0.5f, -0.55f);
+                node.SetFloor(floorInstantiated);
                 colorID = 0;
             }
         }
     }
 
-    private void FillSectionsColors()
-    {
-        foreach (MazeNode node in sectionsNodes)
-        {
-            node.SetFloorColor(floorMaterials[2]);
-        }
-    }
-
     public void GenerateObstacles()
     {
-        //ResetObstacles();
         int remainingObstacles = obstaclesNumber;
-
         while (remainingObstacles != 0)
         {
             int obstacleNodeIndex = UnityEngine.Random.Range(0, obstaclesNodes.Count - 1);
@@ -100,6 +95,9 @@ public class ObstaclesManager : MonoBehaviour
                 remainingObstacles--;
             }
         }
+
+        //FillFloorColors();
+
     }
 
     public List<MazeNode> GetSelectedObstaclesNodes()

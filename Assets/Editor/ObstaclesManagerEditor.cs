@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(ObstaclesManager))]
 public class ObstaclesManagerEditor : EditorWindow
 {
     GameObject prefabToSpawn;

@@ -70,7 +70,6 @@ public class SectionGenerator : MonoBehaviour
         //List<String> elements = new List<String>();
         List<Food> allSectionFoods = new List<Food>();
         //List<Sprite> foodSprites = new List<Sprite>();
-        Debug.Log("Creamdo seccion de " + GameManager.GetInstance().actualSection);
 
         switch (GameManager.GetInstance().actualSection)
         //switch (Food.Category.bakery)
@@ -167,7 +166,6 @@ public class SectionGenerator : MonoBehaviour
         //List<String> elements = new List<String>();
         List<Food> allSectionFoods = new List<Food>();
         //List<Sprite> foodSprites = new List<Sprite>();
-        Debug.Log("Creamdo seccion de " + GameManager.GetInstance().actualSection);
 
         switch (GameManager.GetInstance().actualSection)
         //switch (Food.Category.bakery)
@@ -210,18 +208,14 @@ public class SectionGenerator : MonoBehaviour
 
         // Numero aleatorio de elementos (entre 3 y size list)
         var numElements = Random.Range(listElements.Count, 12);
-        Debug.Log("numelements: " + numElements);
         // Crear toggles
         // Instanciar los elemntos de la lista de la compra y guardar su referencia
         GameObject[] toBuyElements = new GameObject[listElements.Count];
-        Debug.Log("Num obligatorios: " + listElements.Count);
-        Debug.Log("Num sprites: " + allSectionFoods.Count);
         for (int i = 0; i < listElements.Count; i++)
         {
             int index = allSectionFoods.FindIndex(s => s.foodName == listElements[i].GetComponent<Food>().foodName);
             GameObject element = Instantiate(foodElement);
             element.transform.SetParent(sectionPanel.transform, false);
-            Debug.Log(index);
             Sprite s = allSectionFoods[index].sprite;
             element.transform.Find("Background").GetComponent<Image>().sprite = s;
             element.transform.Find("Background").Find("Checkmark").GetComponent<Image>().sprite = s;

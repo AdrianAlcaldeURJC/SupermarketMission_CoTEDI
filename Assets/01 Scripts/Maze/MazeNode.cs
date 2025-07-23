@@ -94,9 +94,9 @@ public class MazeNode : MonoBehaviour
         SetState(NodeState.ObstaclesMinigame);
     }
 
-    public void SetFloorColor(Material material)
+    public void SetFloor(GameObject newFloor)
     {
-        floor.material = material;
+        floor = newFloor.GetComponent<MeshRenderer>();
     }
 }
 

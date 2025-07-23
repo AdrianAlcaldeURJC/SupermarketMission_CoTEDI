@@ -53,10 +53,8 @@ public class TrolleyDragAndDropManager : MonoBehaviour
         //Craer el prefab con esos alimentos
         //Ponerles como padre el canvas
         List<Food> newFoods = new List<Food>();
-        Debug.Log("Actual section: " + GameManager.GetInstance().actualSection);
 
         newFoods = GameManager.GetInstance().pickedItems;
-        Debug.Log(newFoods.Count);
 
         foreach (Food foodItem in newFoods)
         {
@@ -99,7 +97,6 @@ public class TrolleyDragAndDropManager : MonoBehaviour
         for (int i = 0; i < layer2.transform.childCount; i++)
         {
             index = layer2.transform.GetChild(i).GetComponent<TrolleyDropField>().GetIndexes();
-            //Debug.Log(trolleyStatus[index[1], index[0], 0]);
             if (GameManager.GetInstance().trolleyStatus[index[1], index[0]])
             {
                 GameObject element = Instantiate(TrolleyElementPrefab);
@@ -142,7 +139,6 @@ public class TrolleyDragAndDropManager : MonoBehaviour
             index = layer2.transform.GetChild(i).GetComponent<TrolleyDropField>().GetIndexes();
             if (layer2.transform.GetChild(i).childCount > 0)
             {
-                Debug.Log(layer2.transform.GetChild(i).transform.GetChild(0).GetComponent<Food>().foodName);
 
                 switch (layer2.transform.GetChild(i).transform.GetChild(0).GetComponent<Food>().category)
                 {
@@ -255,7 +251,6 @@ public class TrolleyDragAndDropManager : MonoBehaviour
             {
                 return Food.positionStatus.wrong;
             }
-            Debug.Log($"Fragile TopWeight: {topWeight}");
         }
         if (hardness == (int)Food.hardnessLevel.mid)
         {

@@ -124,6 +124,7 @@ public class MazeMovement : MonoBehaviour
 
     private bool CheckIfDirectionIsAvailable(int nextNodeIndex, NodeDir direction)
     {
+        if (nextNodeIndex >= mazeSize.x * mazeSize.y) return false;
         return !mazeNodes[nextNodeIndex].GetWallStatus(direction.GetOppositeDirection());
     }
 

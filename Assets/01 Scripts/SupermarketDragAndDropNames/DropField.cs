@@ -5,11 +5,9 @@ using UnityEngine.EventSystems;
 
 public class DropField : MonoBehaviour, IDropHandler
 {
-    [SerializeField]
-    private Food.Category value;
-    [SerializeField]
-    private int index;
-
+    [SerializeField] private Food.Category value;
+    [SerializeField] private int index;
+    [SerializeField] private int allowedChildCount = 0;
     public bool isOccupied = false;
     public DragAndDrop element;
 
@@ -20,8 +18,8 @@ public class DropField : MonoBehaviour, IDropHandler
     {
         Debug.Log("Item dropped");
         if (eventData.pointerDrag != null)
-        {
-            if (this.transform.childCount == 0)
+        {   
+            if (this.transform.childCount == allowedChildCount)
             {
                 if (eventData.pointerDrag.GetComponent<DragAndDrop>().getValue() == this.value)
                 {
@@ -46,12 +44,12 @@ public class DropField : MonoBehaviour, IDropHandler
         }
     }
 
-    public Food.Category getValue()
+    public Food.Category GetValue()
     {
         return this.value;
     }
 
-    public void setValue(Food.Category category)
+    public void SetValue(Food.Category category)
     {
         this.value = category;
     }

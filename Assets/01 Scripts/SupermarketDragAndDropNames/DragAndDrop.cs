@@ -37,9 +37,8 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     public void OnBeginDrag(PointerEventData eventData)
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
-        //Debug.Log("BeginDrag");
         canvasGroup.blocksRaycasts = false;
-        transform.parent = initialParent;
+        transform.SetParent(initialParent);
 
         // Drag data
         dragItem = new Drag();
@@ -51,7 +50,6 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     public void OnDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnDrag");
         rectTrans.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
@@ -63,25 +61,21 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         if (eventData.pointerEnter == null)
         {
             //For the object to come back if it's drag outside the screen
-            transform.parent = initialParent;
+            transform.SetParent(initialParent);
             transform.position = iniPos;
         }
         else
         {
             if (eventData.pointerEnter.GetComponent<DropField>() == null)
             {
-                transform.parent = initialParent;
+                transform.SetParent(initialParent);
                 transform.position = iniPos;
             }
             else
             {
-
-                transform.parent = eventData.pointerEnter.gameObject.transform;
-                //transform.position = new Vector3(0.0f, 0.0f, 1.0f);
+                transform.SetParent(eventData.pointerEnter.gameObject.transform);
                 GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                Debug.Log("first");
                 isCorrectDrop = true;
-
             }
         }
 
@@ -90,7 +84,6 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         dragItem.TakenDuration = MapListener.Instance.timerAux.elapsedTime[timerIndex].ToString();
         dragItem.IsDropCorrect = isCorrectDrop ? 1 : 0;
         MapListener.Instance.dragMapList.Add(dragItem.ToString());
-        Debug.Log("Timer index: " + timerIndex);
     }
 
     public Food.Category getValue()

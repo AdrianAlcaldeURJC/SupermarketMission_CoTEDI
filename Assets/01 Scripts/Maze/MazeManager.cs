@@ -24,9 +24,14 @@ public class MazeManager : MonoBehaviour
                 break;
         }
 
-        int randomMazeID = Random.Range(0, mazes3Obstacles.Count);
+        int mazeID = GameManager.GetInstance().mazeID;
 
-        // Instantiate maze and trolley
-        Instantiate(mazes3Obstacles[randomMazeID], new Vector3(0f, 0f, 0f), Quaternion.identity);
+        // Instantiate maze
+        if (FindObjectOfType<ObstaclesManagerSingleton>())
+        {
+            return;
+        }
+        GameObject maze = Instantiate(mazesList[mazeID]);
+        maze.transform.position = new Vector3(0f, 0f, 0f);
     }
 }

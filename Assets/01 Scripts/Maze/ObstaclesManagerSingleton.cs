@@ -10,17 +10,22 @@ public class ObstaclesManagerSingleton : MonoBehaviour
     public static ObstaclesManagerSingleton Instance;
     private DataStorage dataStorage;
     public int timerID;
+    public bool destroyOnLoad = false;
 
     private void Awake()
     {
-        if (Instance != null)
+        if (!destroyOnLoad)
         {
-            Destroy(gameObject);
-            return;
-        }
+            if (Instance != null)
+            {
+                Debug.Log("Removing myself");
+                Destroy(gameObject);
+                return;
+            }
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }    
     }
 
     private void Start()
@@ -34,7 +39,7 @@ public class ObstaclesManagerSingleton : MonoBehaviour
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
+    {   
         if (scene.name == "Maze_Test2")
         {
             timerAux.RestartAllTimers();

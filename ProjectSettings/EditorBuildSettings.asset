@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/00 Scenes/GroceryList.unity
     guid: a96dcbfeb465b5e40a6c43f3090df719
   - enabled: 1
-    path: Assets/00 Scenes/SupermarketMap.unity
+    path: Assets/00 Scenes/SupermarketMap_Old.unity
     guid: 6a640fd8441055c4e9fa6188d264f564
   - enabled: 1
     path: Assets/00 Scenes/ObstaclesGame.unity
@@ -38,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00 Scenes/Testing/Maze_Test2.unity
     guid: 3e4831437f6a0ed489fea188e6acb325
+  - enabled: 1
+    path: Assets/00 Scenes/SupermarketMap.unity
+    guid: ac82d36cbbf3c79418d475119ba897d6
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: a269486342739d848978f08a2f2a0d34, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 2aa28f05368c87a47abdadc95daec880, type: 2}

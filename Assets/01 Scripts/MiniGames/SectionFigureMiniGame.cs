@@ -39,7 +39,6 @@ public class SectionFigureMiniGame : MonoBehaviour
     IEnumerator PickedItemCoroutine()
     {
         int pid = ++actualPID;
-        Debug.Log("Mi PID es: " + pid);
         while (pid == actualPID && !stopMiniGame)
         {
             this.NextItem();
@@ -61,7 +60,6 @@ public class SectionFigureMiniGame : MonoBehaviour
         {
             this.SaveCorrectItems();
         }
-        Debug.Log("Me destruyo: " + pid);
     }
 
     void PrepareToggles()
@@ -134,7 +132,6 @@ public class SectionFigureMiniGame : MonoBehaviour
         }
         if (countAlreadytaken == list.Count)
             stopMiniGame = true;
-        Debug.Log("alimento cogidos anteriormente " + countAlreadytaken + " alimentos en la lista " + list.Count);
     }
 
     void ShuffleList(List<Food> list)
@@ -306,7 +303,6 @@ public class SectionFigureMiniGame : MonoBehaviour
 
     void SaveCorrectItems()
     {
-        Debug.Log("Son correctos: " + correctItems.Count);
         GameManager.GetInstance().pickedItems = correctItems;
         GameManager.GetInstance().numWrongPickedItems += wrongSelected;
         EventManager.OnSaveTimer();

@@ -47,10 +47,10 @@ public class GroceryListChecker : MonoBehaviour
         dropFields = FindObjectsOfType<DropFieldGroceryList>();
     }
 
-    bool checkClassification()
+    bool CheckClassification()
     {
         bool isCorrect = true;
-        //Check if pending item list is empty
+        // Check if pending item list is empty
         if(parentList.transform.childCount != 0)
         {
             isCorrect = false;
@@ -81,7 +81,7 @@ public class GroceryListChecker : MonoBehaviour
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickTechButtonSFX);
         //Check if correct
-        if (checkClassification())
+        if (CheckClassification())
         {
             EventManager.OnSaveTimer();
             levelLoader.LoadNextLevel("SupermarketMap");

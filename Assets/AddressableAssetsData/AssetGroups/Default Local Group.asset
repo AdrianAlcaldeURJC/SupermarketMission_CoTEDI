@@ -16,7 +16,12 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: fb94ae1a8108dcb49a5755c2bd8c6291
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 9ffb20360b5dee448a8595a7e025d273
+    m_Address: Assets/SimpleShopInteriors/Materials/SimpleShopInteriors_mod.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 043810b411557f044812f2f311844d9a, type: 2}
   m_SchemaSet:

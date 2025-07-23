@@ -53,6 +53,8 @@ public class GameManager : MonoBehaviour
     private DataBaseComunicator dataBaseCommunicator;
     private bool isSessionUpdated = false;
 
+    public int mazeID;
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void LoadMain()
     {

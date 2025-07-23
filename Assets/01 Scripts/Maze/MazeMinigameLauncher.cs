@@ -69,7 +69,6 @@ public class MazeMinigameLauncher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.name);
         if (isColliding) return;
         isColliding = true;
 
@@ -96,7 +95,8 @@ public class MazeMinigameLauncher : MonoBehaviour
 
     private bool CheckAllSectionsVisited()
     {
-        List<BoxCollider> sections = transform.parent.gameObject.GetComponentsInChildren<BoxCollider>().ToList();
+        // I am so over
+        List<BoxCollider> sections = transform.parent.transform.parent.transform.parent.gameObject.GetComponentsInChildren<BoxCollider>().ToList();
 
         int enabled = 0;
         foreach (var section in sections)
