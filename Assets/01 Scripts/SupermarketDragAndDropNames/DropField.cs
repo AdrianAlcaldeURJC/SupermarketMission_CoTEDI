@@ -8,6 +8,8 @@ public class DropField : MonoBehaviour, IDropHandler
     [SerializeField] private Food.Category value;
     [SerializeField] private int index;
     [SerializeField] private int allowedChildCount = 0;
+    [SerializeField] private int modifiedWidth = 180;
+    [SerializeField] private int modifiedAngleZ = 0;
     public bool isOccupied = false;
     public DragAndDrop element;
 
@@ -18,23 +20,21 @@ public class DropField : MonoBehaviour, IDropHandler
     {
         Debug.Log("Item dropped");
         if (eventData.pointerDrag != null)
-        {   
+        {
             if (this.transform.childCount == allowedChildCount)
             {
                 if (eventData.pointerDrag.GetComponent<DragAndDrop>().getValue() == this.value)
                 {
                     Debug.Log("Correct");
-                    //dndManager.SetResult(index, true);
                 }
                 else
                 {
                     Debug.Log("Bad");
-                    //dndManager.SetResult(index, false);
                 }
-                //eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = this.GetComponent<RectTransform>().anchoredPosition;
 
-                //eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-                Debug.Log(eventData.pointerDrag.GetComponent<RectTransform>().gameObject);
+                eventData.pointerDrag.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, modifiedWidth);
+                eventData.pointerDrag.GetComponent<RectTransform>().Rotate(new Vector3(0f, 0f, modifiedAngleZ));
+
             }
             else
             {

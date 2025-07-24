@@ -26,6 +26,9 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     private int timerIndex;
     private bool isCorrectDrop = false;
 
+    // Original size data
+    [SerializeField] private Vector2Int rectTransformOriginalSize = new Vector2Int(180, 50);
+
     void Start()
     {
         rectTrans = GetComponent<RectTransform>();
@@ -61,6 +64,8 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         if (eventData.pointerEnter == null)
         {
             //For the object to come back if it's drag outside the screen
+            rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rectTransformOriginalSize.x);
+            rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rectTransformOriginalSize.y);
             transform.SetParent(initialParent);
             transform.position = iniPos;
         }
@@ -70,6 +75,8 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
             {
                 transform.SetParent(initialParent);
                 transform.position = iniPos;
+                rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rectTransformOriginalSize.x);
+                rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rectTransformOriginalSize.y);
             }
             else
             {

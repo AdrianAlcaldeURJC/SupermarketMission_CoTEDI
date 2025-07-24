@@ -31,7 +31,8 @@ public class MazeMinigameLauncher : MonoBehaviour
         if (foodCount == 0)
         {
             gameObject.GetComponent<BoxCollider>().enabled = false;
-            gameObject.SetActive(false);
+            SetCompleted();
+            // gameObject.SetActive(false);
         }
 
     }
@@ -72,6 +73,7 @@ public class MazeMinigameLauncher : MonoBehaviour
         if (isColliding) return;
         isColliding = true;
 
+        SetCompleted();
         StartCoroutine(Reset());
 
         if (!CheckAllSectionsVisited() && foodCategory == Food.Category.cashier)
@@ -108,9 +110,28 @@ public class MazeMinigameLauncher : MonoBehaviour
         }
 
         if (enabled > 1)
-            {
-                return false;
-            }
+        {
+            return false;
+        }
         return true;
     }
+
+    private void SetCompleted()
+    {
+        // Get parent (color highlight)
+        transform.parent.transform.parent.gameObject.GetComponent<UnityEngine.UI.Image>().color = transform.parent.transform.parent.gameObject.GetComponent<UnityEngine.UI.Image>().color * 0.7f;
+
+        // Get children's
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).GetComponent<UnityEngine.UI.Image>().color = transform.GetChild(i).gameObject.GetComponent<UnityEngine.UI.Image>().color * 0.7f;
+        }
+
+        if (transform.childCount == 0)
+        {
+            transform.GetComponent<UnityEngine.UI.Image>().color = transform.gameObject.GetComponent<UnityEngine.UI.Image>().color * 0.7f;
+        }
+
+    }
+    
 }
