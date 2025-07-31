@@ -236,7 +236,6 @@ public class MazeGenerator : MonoBehaviour
         // Set obstacles minigame and random minigames positions
         longestPath[longestPath.Count - 1].SetState(NodeState.ObstaclesMinigame);
 
-        // TODO: This for should only instantiate the minigames that have items to pick
         List<MazeNode> minigameNode = new List<MazeNode>();
         for (int i = 0; i < 6; ++i)
         {

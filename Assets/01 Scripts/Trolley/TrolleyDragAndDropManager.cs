@@ -25,6 +25,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
 
     [SerializeField]
     LevelLoader lvlLoader;
+    [SerializeField] private GameObject destroyGOAnimation;
     private ExplanationCanvas explanationCanvas;
 
     public GameObject[,] trolley = new GameObject[8, 3];
@@ -90,7 +91,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
     {
         //Colocar cada alimento dnd esta en e status
         //Para los tres pisos
-        //Recorrer los hijos y comprobar si en sus indices hay un aimento
+        //Recorrer los hijos y comprobar si en sus indices hay un alimento
         //Si hay alimento, instanciar el elemento como hijo de ese
         //Poner el sprite del food
         int[] index;
@@ -163,19 +164,6 @@ public class TrolleyDragAndDropManager : MonoBehaviour
                     default:
                         break;
                 }
-                //Comparar color para guardar su status en GM
-                //switch (trolley[index[1], index[0]].GetComponent<Food>().trolleyStatus)
-                //{
-                //    case Food.positionStatus.good:
-                //        GameManager.GetInstance().numElementsCorrectPositionTrolley++;
-                //        break;
-                //    case Food.positionStatus.moderate:
-                //        GameManager.GetInstance().numElementsModeratePositionTrolley++;
-                //        break;
-                //    case Food.positionStatus.wrong:
-                //        GameManager.GetInstance().numElementsWrongPositionTrolley++;
-                //        break;
-                //}
 
             }
             else
@@ -225,6 +213,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
             newColor.a = 0.65f;
             trolley[indexJ, row].GetComponent<TrolleyDragAndDrop>().statusImage.color = newColor;
             trolley[indexJ, row].GetComponent<Food>().trolleyStatus = itemStatus;
+            EvaluateDestruction(itemStatus, indexJ, row);
         }
     }
 
@@ -286,5 +275,18 @@ public class TrolleyDragAndDropManager : MonoBehaviour
             Food.positionStatus.wrong => Color.red,
             _ => Color.white,
         };
+    }
+
+    private void EvaluateDestruction(Food.positionStatus status, int col, int row)
+    {
+        if (status != Food.positionStatus.wrong)
+        {
+            return;
+        }
+
+        GameObject prefabInstantiated = Instantiate(destroyGOAnimation, trolley[col, row].transform.parent.parent.parent);
+        prefabInstantiated.GetComponent<AnimationCyclesCounter>().column = col;
+        prefabInstantiated.GetComponent<AnimationCyclesCounter>().row = row;
+        prefabInstantiated.transform.position = trolley[col, row].transform.position;
     }
 }

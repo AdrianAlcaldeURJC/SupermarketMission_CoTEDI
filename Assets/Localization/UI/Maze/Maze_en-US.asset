@@ -19,11 +19,19 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 6469103616
-    m_Localized: Move to all the zones to complete their minigames! Then go to checkout.
+    m_Localized: Touch the arrows to move!
     m_Metadata:
       m_Items: []
   - m_Id: 1691862085632
     m_Localized: To access the checkout, first you must visit all the others zones.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081495300911104
+    m_Localized: Complete all minigames first!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5082670972710912
+    m_Localized: Now go into the checkout!
     m_Metadata:
       m_Items: []
   references:

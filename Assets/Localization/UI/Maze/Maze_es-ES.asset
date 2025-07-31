@@ -19,12 +19,19 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 6469103616
-    m_Localized: "Tienes que llegar a todas las zonas para completar sus minijuegos.
-      Despu\xE9s, avanza a la caja."
+    m_Localized: "\xA1Toca las flechas para moverte!"
     m_Metadata:
       m_Items: []
   - m_Id: 1691862085632
     m_Localized: Para acceder a la caja debes de pasar por todas las zonas previamente.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5081495300911104
+    m_Localized: "\xA1Primero completa todos los minijuegos!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5082670972710912
+    m_Localized: "\xA1Ahora entra a la zona de pagos!"
     m_Metadata:
       m_Items: []
   references:

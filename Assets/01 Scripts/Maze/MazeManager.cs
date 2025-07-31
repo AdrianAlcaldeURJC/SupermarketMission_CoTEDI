@@ -33,5 +33,13 @@ public class MazeManager : MonoBehaviour
         }
         GameObject maze = Instantiate(mazesList[mazeID]);
         maze.transform.position = new Vector3(0f, 0f, 0f);
+
+    }
+
+    private void Start()
+    {
+        // Explanation canvas
+        ExplanationCanvas explanationCanvas = FindObjectOfType<ExplanationCanvas>();
+        explanationCanvas.SetTextChecking("Maze", "Tutorial_1", 2);
     }
 }

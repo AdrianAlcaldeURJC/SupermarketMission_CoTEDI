@@ -23,11 +23,11 @@ public class DragAndDropManager : MonoBehaviour
     [SerializeField] private ExplanationCanvas explanationCanvas;
     [SerializeField] private Canvas notificationCanvas;
     [SerializeField] private GameObject[] sections = new GameObject[6];
-    [SerializeField] private Sprite[] sectionImages = new Sprite[6];
+    [SerializeField] private Image[] sectionsImages = new Image[6];
+    [SerializeField] private Sprite[] sectionSprites = new Sprite[6];
     [SerializeField] private List<GameObjects> mazeMaps = new List<GameObjects>(3);
     [SerializeField] private List<Categories> sectionCategories = new List<Categories>(3);
     private List<string> sectionsAvailability = new List<string> { "bakery", "fruits", "legumes", "fridge", "fish", "perfumery" };
-
 
     void Start()
     {
@@ -81,37 +81,37 @@ public class DragAndDropManager : MonoBehaviour
             switch (sectionsAvailability[rand])
             {
                 case "bakery":
-                    sections[i].GetComponent<Image>().sprite = sectionImages[0];
+                    sections[i].GetComponent<Image>().sprite = sectionSprites[0];
                     sections[i].GetComponent<DropField>().SetValue(Food.Category.bakery);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.bakery;
                     MapListener.Instance.mapLayout.Add(1);
                     break;
                 case "fruits":
-                    sections[i].GetComponent<Image>().sprite = sectionImages[1];
+                    sections[i].GetComponent<Image>().sprite = sectionSprites[1];
                     sections[i].GetComponent<DropField>().SetValue(Food.Category.fruit);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.fruit;
                     MapListener.Instance.mapLayout.Add(0);
                     break;
                 case "legumes":
-                    sections[i].GetComponent<Image>().sprite = sectionImages[2];
+                    sections[i].GetComponent<Image>().sprite = sectionSprites[2];
                     sections[i].GetComponent<DropField>().SetValue(Food.Category.legume);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.legume;
                     MapListener.Instance.mapLayout.Add(2);
                     break;
                 case "fridge":
-                    sections[i].GetComponent<Image>().sprite = sectionImages[3];
+                    sections[i].GetComponent<Image>().sprite = sectionSprites[3];
                     sections[i].GetComponent<DropField>().SetValue(Food.Category.fridge);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.fridge;
                     MapListener.Instance.mapLayout.Add(3);
                     break;
                 case "fish":
-                    sections[i].GetComponent<Image>().sprite = sectionImages[4];
+                    sections[i].GetComponent<Image>().sprite = sectionSprites[4];
                     sections[i].GetComponent<DropField>().SetValue(Food.Category.fish);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.fish;
                     MapListener.Instance.mapLayout.Add(4);
                     break;
                 case "perfumery":
-                    sections[i].GetComponent<Image>().sprite = sectionImages[5];
+                    sections[i].GetComponent<Image>().sprite = sectionSprites[5];
                     sections[i].GetComponent<DropField>().SetValue(Food.Category.perfumery);
                     GameManager.GetInstance().sectionDistribution[i] = Food.Category.perfumery;
                     MapListener.Instance.mapLayout.Add(5);
@@ -128,7 +128,7 @@ public class DragAndDropManager : MonoBehaviour
         int i = 0;
         foreach (Food.Category category in categories.list)
         {
-            sections[i].GetComponent<Image>().sprite = sectionImages[(int)category];
+            sectionsImages[i].sprite = sectionSprites[(int)category];
             sections[i].GetComponent<DropField>().SetValue(category);
             GameManager.GetInstance().sectionDistribution[i] = category;
             MapListener.Instance.mapLayout.Add((int)category);

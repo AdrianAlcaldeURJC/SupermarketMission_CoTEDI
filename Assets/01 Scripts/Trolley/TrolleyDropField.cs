@@ -23,15 +23,12 @@ public class TrolleyDropField : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Item dropped");
         if (eventData.pointerDrag != null)
         {
             if (this.transform.childCount == 0 && dndManager.trolley[indexJ,indexI] == null)
             {
                 if (eventData.pointerDrag.GetComponent<TrolleyDragAndDrop>())
                 {
-                    Debug.Log("Mi pos: " + this.transform.position);
-
                     PositionElement(indexJ, indexI, eventData.pointerDrag.gameObject);
                 }
 

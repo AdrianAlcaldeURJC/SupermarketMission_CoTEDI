@@ -71,7 +71,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         }
         else
         {
-            if (eventData.pointerEnter.GetComponent<DropField>() == null)
+            if (eventData.pointerEnter.transform.GetComponent<DropField>() == null)
             {
                 transform.SetParent(initialParent);
                 transform.position = iniPos;
