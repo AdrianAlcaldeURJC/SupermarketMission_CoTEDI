@@ -85,7 +85,6 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
                 isCorrectDrop = true;
             }
         }
-
         
         // Save drag data
         dragItem.TakenDuration = MapListener.Instance.timerAux.elapsedTime[timerIndex].ToString();
@@ -101,6 +100,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     public void SendBackToIni()
     {
         transform.position = iniPos;
+        GetComponent<RectTransform>().eulerAngles = new Vector3(0f, 0f, 0f);
 
     }
 }

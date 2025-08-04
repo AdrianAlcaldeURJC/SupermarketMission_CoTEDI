@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnClickPlay()
     {
-        AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickTechButtonSFX);
+        AudioManager.GetInstance()?.PlaySFXClip(AudioManager.GetInstance().clickTechButtonSFX);
         GameManager.GetInstance().GoToScene("NameScene");
     }
 

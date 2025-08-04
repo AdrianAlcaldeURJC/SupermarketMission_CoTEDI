@@ -18,7 +18,6 @@ public class DropField : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Item dropped");
         if (eventData.pointerDrag != null)
         {
             if (this.transform.childCount == allowedChildCount)
@@ -33,8 +32,7 @@ public class DropField : MonoBehaviour, IDropHandler
                 }
 
                 eventData.pointerDrag.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, modifiedWidth);
-                eventData.pointerDrag.GetComponent<RectTransform>().Rotate(new Vector3(0f, 0f, modifiedAngleZ));
-
+                eventData.pointerDrag.GetComponent<RectTransform>().eulerAngles = new Vector3(0f, 0f, modifiedAngleZ);
             }
             else
             {

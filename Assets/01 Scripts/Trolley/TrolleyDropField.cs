@@ -36,15 +36,13 @@ public class TrolleyDropField : MonoBehaviour, IDropHandler
             else
             {
                 //Mandarlo de vuelta en la pos ini
-                eventData.pointerDrag.GetComponent<TrolleyDragAndDrop>().SendBackToIni();
+                eventData.pointerDrag.GetComponent<TrolleyDragAndDrop>()?.SendBackToIni();
             }
         }
     }
 
     void PositionElement(int indexJ, int indexI, GameObject element)
     {
-        Debug.Log("Indices: " + indexJ + ", "+ indexI);
-
         // If item dropped on not bottom row
         if (indexI < 2)
         {

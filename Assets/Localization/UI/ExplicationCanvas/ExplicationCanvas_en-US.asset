@@ -52,6 +52,30 @@ MonoBehaviour:
     m_Localized: Move the items to it's aisle!
     m_Metadata:
       m_Items: []
+  - m_Id: 25001162605768704
+    m_Localized: You must move the items to the trolley!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25001236282912768
+    m_Localized: Be careful! The items break if they hold too much weight!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25001274392358912
+    m_Localized: 'The weight of the items, from lesser to geater are:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25001321297260544
+    m_Localized: 'The hardness of the items, from lesser to greater are:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25001408157102080
+    m_Localized: 'The state of the items, from perfecto to broken are:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25001582480764928
+    m_Localized: Keep in mind all the aspects of each item!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -43,7 +43,6 @@ public class LevelIntroLoader : MonoBehaviour
 
     public void StartDarkTransition()
     {
-        Debug.Log("Oscurecer");
         StartCoroutine(showIntrotext());
     }
 
@@ -56,7 +55,6 @@ public class LevelIntroLoader : MonoBehaviour
 
     public void StartLightTransition()
     {
-        Debug.Log("Aclarar");
         StartCoroutine(hideIntrotext());
     }
 

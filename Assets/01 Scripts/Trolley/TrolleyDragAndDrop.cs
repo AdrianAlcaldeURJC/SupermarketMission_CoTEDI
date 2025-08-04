@@ -159,6 +159,6 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
     }
     public void SendBackToIni()
     {
-        statusImage.color = new Color(1,1,1, 0.65f);
+        statusImage.color = new Color(1, 1, 1, 0.65f);
     }
 }

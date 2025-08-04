@@ -195,7 +195,6 @@ public class StoryBehaviour : MonoBehaviour
     {
         if (!changeInProgress)
         {
-            Debug.Log("Next line");
             if (index < lines.Length - 1)
             {
                 index++;
@@ -214,7 +213,8 @@ public class StoryBehaviour : MonoBehaviour
                     }
                     else
                     {
-                        GameManager.GetInstance().SendResultToDB();
+                        // Deprecated
+                        // // GameManager.GetInstance().SendResultToDB(); 
                         levelLoader.LoadNextLevel("MainMenu");
                     }
 

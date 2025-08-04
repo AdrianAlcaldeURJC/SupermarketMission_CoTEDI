@@ -22,54 +22,63 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es-ES
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b4f7459ab17cc64f9bb45a5286c5a8d
     m_Address: Obstacles_es-ES
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es-ES
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 54743d4065bc5d74b83ba6e4fa97ca9c
     m_Address: FoodItems_es-ES
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es-ES
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 69a1f77cb323f4d408293f5e3f46f508
     m_Address: ExplicationCanvas_es-ES
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es-ES
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 80864ab55e33460499680a55a16eecb2
     m_Address: MainMenu_es-ES
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es-ES
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8b4c9c33d84690a4fafba9e5cf133fee
     m_Address: Aisles_es-ES
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es-ES
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: afc8c09ffac053f47ac6f03a322e9615
     m_Address: Maze_es-ES
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es-ES
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cd3c7f43939bbdf40a56e2f971f5a59d
     m_Address: GeneralUI_es-ES
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es-ES
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f9d56e7bf6f33ae42a1de98a4ab0b8df
     m_Address: Dialog_es-ES
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es-ES
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 043810b411557f044812f2f311844d9a, type: 2}

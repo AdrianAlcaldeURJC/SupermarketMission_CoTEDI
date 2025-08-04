@@ -16,7 +16,7 @@ public class SectionGenerator : MonoBehaviour
     [SerializeField] private GameObject sectionPanel;
     [SerializeField] private GameObject foodElement;
     [SerializeField] private GameObject foodResourcesPrefab;
-    [SerializeField] private Image backgroungSection;
+    [SerializeField] private Image backgroundSection;
     [SerializeField] private Sprite[] backgrounds = new Sprite[6];
 
     [SerializeField] List<Food> listElements = new List<Food>();
@@ -25,8 +25,8 @@ public class SectionGenerator : MonoBehaviour
 
     [SerializeField] private MinigameListener minigameListener;
     private float StartTime;
-    [SerializeField] private VideoClip colorsTutorial;
-    [SerializeField] private VideoClip figuresTutorial;
+    [SerializeField] private string figureVideoName;
+    [SerializeField] private string colorsVideoName;
     [SerializeField] private VideoPlayer videoPlayer;
 
     // Start is called before the first frame update
@@ -47,7 +47,7 @@ public class SectionGenerator : MonoBehaviour
         if (GameManager.GetInstance().actualSection == Food.Category.fruit && !GameManager.GetInstance().daltonicUser)
         {
             explanationCanvas.SetTextChecking("ExplicationCanvas", "SupermarketSection_1", 3);
-            videoPlayer.clip = colorsTutorial;
+            //videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, colorsVideoName);
 
             minigameColors.StartMiniGame();
             minigameFigures.gameObject.SetActive(false);
@@ -55,7 +55,7 @@ public class SectionGenerator : MonoBehaviour
         else
         {
             explanationCanvas.SetTextChecking("ExplicationCanvas", "SupermarketSection_2", 4);
-            videoPlayer.clip = figuresTutorial;
+            //videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, figureVideoName);
 
             minigameFigures.StartMiniGame();
             minigameColors.gameObject.SetActive(false);
@@ -75,33 +75,33 @@ public class SectionGenerator : MonoBehaviour
         //switch (Food.Category.bakery)
         {
             case Food.Category.bakery:
-                backgroungSection.sprite = backgrounds[0];
+                backgroundSection.sprite = backgrounds[0];
                 listElements.AddRange(GameManager.GetInstance().bakeryFoodList);
                 allSectionFoods.AddRange(foodResources.GetComponent<FoodResourcesManager>().bakeryFoods);
                 //foodSprites.AddRange(foodResources.GetComponent<FoodResourcesManager>().bakery);
                 break;
             case Food.Category.fruit:
-                backgroungSection.sprite = backgrounds[1];
+                backgroundSection.sprite = backgrounds[1];
                 listElements = GameManager.GetInstance().fruitFoodList;
                 allSectionFoods = foodResources.GetComponent<FoodResourcesManager>().fruitsFoods;
                 break;
             case Food.Category.legume:
-                backgroungSection.sprite = backgrounds[2];
+                backgroundSection.sprite = backgrounds[2];
                 listElements = GameManager.GetInstance().legumeFoodList;
                 allSectionFoods = foodResources.GetComponent<FoodResourcesManager>().legumeFoods;
                 break;
             case Food.Category.fridge:
-                backgroungSection.sprite = backgrounds[3];
+                backgroundSection.sprite = backgrounds[3];
                 listElements = GameManager.GetInstance().fridgeFoodList;
                 allSectionFoods = foodResources.GetComponent<FoodResourcesManager>().fridgeFoods;
                 break;
             case Food.Category.fish:
-                backgroungSection.sprite = backgrounds[4];
+                backgroundSection.sprite = backgrounds[4];
                 listElements = GameManager.GetInstance().fishFoodList;
                 allSectionFoods = foodResources.GetComponent<FoodResourcesManager>().fishFoods;
                 break;
             case Food.Category.perfumery:
-                backgroungSection.sprite = backgrounds[5];
+                backgroundSection.sprite = backgrounds[5];
                 listElements = GameManager.GetInstance().perfumeryFoodList;
                 allSectionFoods = foodResources.GetComponent<FoodResourcesManager>().perfumeryFoods;
                 break;
@@ -171,32 +171,32 @@ public class SectionGenerator : MonoBehaviour
         //switch (Food.Category.bakery)
         {
             case Food.Category.bakery:
-                backgroungSection.sprite = backgrounds[0];
+                backgroundSection.sprite = backgrounds[0];
                 listElements.AddRange(GameManager.GetInstance().bakeryFoodList);
                 allSectionFoods.AddRange(foodResources.GetComponent<FoodResourcesManager>().bakeryFoods);
                 break;
             case Food.Category.fruit:
-                backgroungSection.sprite = backgrounds[1];
+                backgroundSection.sprite = backgrounds[1];
                 listElements = GameManager.GetInstance().fruitFoodList;
                 allSectionFoods = foodResources.GetComponent<FoodResourcesManager>().fruitsFoods;
                 break;
             case Food.Category.legume:
-                backgroungSection.sprite = backgrounds[2];
+                backgroundSection.sprite = backgrounds[2];
                 listElements = GameManager.GetInstance().legumeFoodList;
                 allSectionFoods = foodResources.GetComponent<FoodResourcesManager>().legumeFoods;
                 break;
             case Food.Category.fridge:
-                backgroungSection.sprite = backgrounds[3];
+                backgroundSection.sprite = backgrounds[3];
                 listElements = GameManager.GetInstance().fridgeFoodList;
                 allSectionFoods = foodResources.GetComponent<FoodResourcesManager>().fridgeFoods;
                 break;
             case Food.Category.fish:
-                backgroungSection.sprite = backgrounds[4];
+                backgroundSection.sprite = backgrounds[4];
                 listElements = GameManager.GetInstance().fishFoodList;
                 allSectionFoods = foodResources.GetComponent<FoodResourcesManager>().fishFoods;
                 break;
             case Food.Category.perfumery:
-                backgroungSection.sprite = backgrounds[5];
+                backgroundSection.sprite = backgrounds[5];
                 listElements = GameManager.GetInstance().perfumeryFoodList;
                 allSectionFoods = foodResources.GetComponent<FoodResourcesManager>().perfumeryFoods;
                 break;

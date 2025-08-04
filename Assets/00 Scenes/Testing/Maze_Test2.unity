@@ -512,7 +512,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2541066423625511428, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
+      value: -0.00012207031
       objectReference: {fileID: 0}
     - target: {fileID: 4384344604367703227, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
       propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
@@ -1050,6 +1050,7 @@ GameObject:
   - component: {fileID: 710427707}
   - component: {fileID: 710427706}
   - component: {fileID: 710427705}
+  - component: {fileID: 710427708}
   m_Layer: 5
   m_Name: Video Player
   m_TagString: Untagged
@@ -1147,6 +1148,20 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!114 &710427708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710427703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f608d2f4cfb40a945a7d3fade60aed2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 710427707}
+  videoName: MazeTutorial1.mp4
 --- !u!1 &735442920
 GameObject:
   m_ObjectHideFlags: 0

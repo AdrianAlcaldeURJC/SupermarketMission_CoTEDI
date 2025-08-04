@@ -1879,7 +1879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9029298074679155355, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3358,12 +3358,12 @@ MonoBehaviour:
   - {fileID: 1901559685}
   - {fileID: 88747723}
   sectionsImages:
-  - {fileID: 751239948}
-  - {fileID: 1238801058}
-  - {fileID: 1517723508}
-  - {fileID: 520676253}
   - {fileID: 899218859}
+  - {fileID: 520676253}
   - {fileID: 1849605455}
+  - {fileID: 1517723508}
+  - {fileID: 1238801058}
+  - {fileID: 751239948}
   sectionSprites:
   - {fileID: 21300000, guid: 3dc3699fd7d810a419097f148f4cc799, type: 3}
   - {fileID: 21300000, guid: 07049182a03ce0549a61654e0901e4c5, type: 3}
@@ -4530,6 +4530,7 @@ GameObject:
   - component: {fileID: 1159492357}
   - component: {fileID: 1159492356}
   - component: {fileID: 1159492355}
+  - component: {fileID: 1159492358}
   m_Layer: 5
   m_Name: Video
   m_TagString: Untagged
@@ -4574,7 +4575,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
@@ -4612,7 +4613,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: d344014680c3958419d2c4b03474a469, type: 2}
+  m_Texture: {fileID: 8400000, guid: 46730981e389aee439acb8f18abfad22, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -4627,6 +4628,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159492353}
   m_CullTransparentMesh: 1
+--- !u!114 &1159492358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159492353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f608d2f4cfb40a945a7d3fade60aed2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoPlayer: {fileID: 1159492355}
+  videoName: MapOrderingTutorial_v2.mp4
 --- !u!1 &1195056101
 GameObject:
   m_ObjectHideFlags: 0
