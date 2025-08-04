@@ -665,7 +665,7 @@ MonoBehaviour:
   sectionPanel: {fileID: 1229796836}
   foodElement: {fileID: 1387802453792661310, guid: 765188ce2881c3b4989e94c4231f0936, type: 3}
   foodResourcesPrefab: {fileID: 1338596650235749774, guid: 735907f06c0e09a458799466401f043f, type: 3}
-  backgroundSection: {fileID: 0}
+  backgroundSection: {fileID: 854039065}
   backgrounds:
   - {fileID: 21300000, guid: a3b545d14acf36243b55b5d20b653506, type: 3}
   - {fileID: 21300000, guid: d14654afa854c32459df27cbd99be50a, type: 3}
@@ -708,7 +708,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &365162986
 RectTransform:
   m_ObjectHideFlags: 0
@@ -746,7 +746,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0

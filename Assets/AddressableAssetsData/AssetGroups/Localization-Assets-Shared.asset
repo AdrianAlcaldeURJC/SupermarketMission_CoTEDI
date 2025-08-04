@@ -77,13 +77,6 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bf53e7d32dd176e4c9af3a21ad76e483
-    m_Address: FiguresTutorial_mk0.2.mp4
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-en-US
-    - Locale-es-ES
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e8f3334009d261f4b97f63a2c84f2144
     m_Address: Assets/Localization/UI/MainMenu Shared Data.asset
     m_ReadOnly: 1

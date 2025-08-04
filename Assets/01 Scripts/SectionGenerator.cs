@@ -47,7 +47,7 @@ public class SectionGenerator : MonoBehaviour
         if (GameManager.GetInstance().actualSection == Food.Category.fruit && !GameManager.GetInstance().daltonicUser)
         {
             explanationCanvas.SetTextChecking("ExplicationCanvas", "SupermarketSection_1", 3);
-            //videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, colorsVideoName);
+            videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, colorsVideoName);
 
             minigameColors.StartMiniGame();
             minigameFigures.gameObject.SetActive(false);
@@ -55,7 +55,7 @@ public class SectionGenerator : MonoBehaviour
         else
         {
             explanationCanvas.SetTextChecking("ExplicationCanvas", "SupermarketSection_2", 4);
-            //videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, figureVideoName);
+            videoPlayer.url = System.IO.Path.Combine(Application.streamingAssetsPath, figureVideoName);
 
             minigameFigures.StartMiniGame();
             minigameColors.gameObject.SetActive(false);
