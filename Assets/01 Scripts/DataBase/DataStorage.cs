@@ -67,9 +67,6 @@ public class DataStorage : MonoBehaviour
 
                 // Return the hexadecimal string.
                 hash = sBuilder.ToString();
-
-                Debug.Log($"The SHA256 hash of {Name} is: {hash}.");
-
             }
             return hash;
         }
@@ -288,7 +285,7 @@ public class DataStorage : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            Debug.LogError("SE HA INTENTADO CREAR DOS VECES UN SINGLETON");
+            Debug.LogError("TRIED TO CREATE A SINGLETON TWO TIMES");
         }
 
         StartClasses();

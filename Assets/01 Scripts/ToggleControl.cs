@@ -12,11 +12,10 @@ public class ToggleControl : MonoBehaviour
         toggles = GetComponentsInChildren<Toggle>();
     }
 
-    public void selectedObjects()
+    public void SelectedObjects()
     {
         foreach (Toggle t in toggles)
         {
-            //Debug.Log(t.isOn);
         }
     }
 

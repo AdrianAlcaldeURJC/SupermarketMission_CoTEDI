@@ -114,12 +114,9 @@ public class SectionGenerator : MonoBehaviour
 
         //NUmero aleatorio de elementos (entre 3 y size list)
         var numElements = Random.Range(listElements.Count, allSectionFoods.Count);
-        Debug.Log("numelements: " + numElements);
         //Crear toggles
         //Instanciar los elemntos de la lista de la compra y guardar su referencia
         GameObject[] toBuyElements = new GameObject[listElements.Count];
-        Debug.Log("Num obligatorios: " + listElements.Count);
-        Debug.Log("Num sprites: " + allSectionFoods.Count);
         for (int i = 0; i < listElements.Count; i++)
         {
             //VIGILAR SI ESTA BIEN CON NAME O TIENE QUE SER FOOD NAME
@@ -128,7 +125,6 @@ public class SectionGenerator : MonoBehaviour
             //TO DO
             GameObject element = Instantiate(foodElement);
             element.transform.SetParent(sectionPanel.transform,false);
-            Debug.Log(index);
             Sprite s = allSectionFoods[index].sprite;
             element.transform.Find("Background").GetComponent<Image>().sprite = s;
             element.transform.Find("Background").Find("Checkmark").GetComponent<Image>().sprite = s;
@@ -148,7 +144,6 @@ public class SectionGenerator : MonoBehaviour
             element.transform.Find("Background").Find("Checkmark").GetComponent<Image>().sprite = s;
             element.GetComponent<Food>().CopyFood(allSectionFoods[rand].GetComponent<Food>());
             allSectionFoods.RemoveAt(rand);
-            //Debug.Log("randFoodIndex: " + rand + "-- count food remaining " + allSectionFoods.Count);
         }
         // Dar una posicion aleatoria entre los hijos a los elemtos iniciales
         for (int i = 0; i < listElements.Count; i++)

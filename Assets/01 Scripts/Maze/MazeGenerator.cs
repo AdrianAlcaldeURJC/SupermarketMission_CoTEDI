@@ -213,7 +213,6 @@ public class MazeGenerator : MonoBehaviour
             {
                 if (currentLength > maxLength)
                 {
-                    Debug.Log(currentLength);
                     maxLength = currentLength;
                     currentLength = 0;
                     longestPath = new List<MazeNode>(currentPath);
@@ -246,7 +245,6 @@ public class MazeGenerator : MonoBehaviour
             }
             minigameNode.Add(nodes[randomNodeIndex]);
             nodes[randomNodeIndex].SetState(NodeState.RandomMinigame);
-            Debug.Log(randomNodeIndex);
             yield return new WaitForSeconds(0.1f);
         }
 

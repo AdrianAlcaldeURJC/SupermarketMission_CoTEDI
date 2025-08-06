@@ -142,7 +142,6 @@ public class SectionColorsMiniGame : MonoBehaviour
             //stopMiniGame = true;
             SaveCorrectItems();
         correctSelected = countAlreadytaken;
-        Debug.Log("alimento cogidos anteriormente " + countAlreadytaken + " alimentos en la lista " + list.Count);
     }
 
     void SetColorVisibility(Food.colors color)
@@ -155,7 +154,6 @@ public class SectionColorsMiniGame : MonoBehaviour
             filterImage.GetComponent<Animator>().SetTrigger("Appear");
             filterImage.color = new Color32(temp.r, temp.g, temp.b, 125);
             //Recorrer toogles y porner alfa a 0 de los que lo tengan
-            Debug.Log("Pulsado para " + color);
             bool hasColor;
             foreach (Toggle toggle in toggles)
             {
@@ -186,7 +184,6 @@ public class SectionColorsMiniGame : MonoBehaviour
 
     IEnumerator MakeItemsDisappear()
     {
-        //Debug.Log("Animation duration: "+filterImage.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length);
         yield return new WaitForSeconds(2f);
 
         //yield return new WaitForSeconds(filterImage.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
@@ -195,7 +192,6 @@ public class SectionColorsMiniGame : MonoBehaviour
             t.GetComponent<CanvasGroup>().alpha = 0;
             t.GetComponent<CanvasGroup>().interactable = false;
         }
-        Debug.Log("Termino la rutina");
 
         int openedOrder = minigameListener.GetColorOpenedIndex();
         int isCorrect = CheckCorrectColor(currentOpenedColor);
@@ -220,7 +216,6 @@ public class SectionColorsMiniGame : MonoBehaviour
 
         if (index != -1)
         {
-            Debug.Log("Esta en la lista");
             switch (GameManager.GetInstance().actualSection)
             {
                 case Food.Category.bakery:
@@ -269,7 +264,6 @@ public class SectionColorsMiniGame : MonoBehaviour
                     break;
             }
 
-            Debug.Log("valor alreadyTaken: " + alreadyTaken);
             if (!alreadyTaken)
             {
                 //Si no habia sido aun cogido, se a�ade a la lista de correctos
@@ -284,10 +278,6 @@ public class SectionColorsMiniGame : MonoBehaviour
                 isCorrect = 0;
             }
 
-            //groceryList.RemoveAt(index);
-            Debug.Log("se han cogido correctos " + correctItems.Count + " y en la lista hay " + groceryList.Count);
-            //if (correctItems.Count == groceryList.Count)
-            //stopMiniGame = true;
             if (correctSelected == groceryList.Count)
                 SaveCorrectItems();
         }
@@ -299,7 +289,6 @@ public class SectionColorsMiniGame : MonoBehaviour
         }
 
         picksAfterColorOpen++; // Incrementa el contador si hay un color abierto
-        Debug.Log("Picks realizados desde que se abrió el color " + currentOpenedColor + ": " + picksAfterColorOpen);
 
         int order = minigameListener.GetColorPickedIndex();
         int pick = DataStorage.GroceryMapData.GetIDfromStringFood(foodSelected.GetComponent<Food>().foodName);
@@ -308,7 +297,6 @@ public class SectionColorsMiniGame : MonoBehaviour
 
     void SaveCorrectItems()
     {
-        Debug.Log("Son correctos: " + correctItems.Count);
         GameManager.GetInstance().pickedItems = correctItems;
         GameManager.GetInstance().numWrongPickedItems += wrongSelected;
         EventManager.OnSaveTimer();

@@ -74,11 +74,9 @@ public class TrolleyDropField : MonoBehaviour, IDropHandler
     {
         if (indexI > 0)
         {
-            Debug.Log("Quizas Colocando uno");
             //Ver si en la posicion superior a este hay un elemtno
             if (dndManager.trolley[indexJ, indexI - 1])
             {
-                Debug.Log("Colocando uno");
                 //Si lo hay, colocarlo en la actual
                 dndManager.trolley[indexJ, indexI - 1] = null;
                 dndManager.trolley[indexJ, indexI] = null;

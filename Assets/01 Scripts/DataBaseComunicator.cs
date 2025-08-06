@@ -34,12 +34,12 @@ public class DataBaseComunicator : MonoBehaviour
         // Verificar si hay errores
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log("Error: " + request.error);
+            Debug.Log("Database - Error: " + request.error);
         }
         else
         {
             // La solicitud fue exitosa, puedes acceder a la respuesta
-            Debug.Log("Respuesta: " + request.downloadHandler.text);
+            Debug.Log("Database - Response: " + request.downloadHandler.text);
         }
     }
 
@@ -134,6 +134,8 @@ public class DataBaseComunicator : MonoBehaviour
             }
             DataStorage.Instance.sessionData.SessionID = sessionID + 1;
             DataStorage.Instance.gameData.GameID = gameID + 1;
+            Debug.Log("Number of sessions: " + sessionID + " Number of games: " + gameID); // Process the response
+
         }
         catch (System.Exception e)
         {

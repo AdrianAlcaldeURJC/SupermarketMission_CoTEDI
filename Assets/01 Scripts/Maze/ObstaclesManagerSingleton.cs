@@ -18,7 +18,6 @@ public class ObstaclesManagerSingleton : MonoBehaviour
         {
             if (Instance != null)
             {
-                Debug.Log("Removing myself");
                 Destroy(gameObject);
                 return;
             }

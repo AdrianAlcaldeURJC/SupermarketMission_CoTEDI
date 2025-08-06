@@ -18,13 +18,13 @@ public class DialogManager : MonoBehaviour
     private bool readyForNewText = true;
 
     private WaitForSeconds simpleDelay;
-    private WaitForSeconds puntuactionDelay;
+    private WaitForSeconds punctuationDelay;
 
     [Header("Typewriting Settings")]
     [SerializeField]
     private float charactersPerSecond = 30;
     [SerializeField]
-    private float interpuntuactionDelay = 0.5f;
+    private float interpunctuationDelay = 0.5f;
 
     //Skipping Functionality
     public bool currentlySkipping { get; private set; }
@@ -49,7 +49,7 @@ public class DialogManager : MonoBehaviour
     {
         textBox = GetComponent<TMP_Text>();
         simpleDelay = new WaitForSeconds(1 / charactersPerSecond);
-        puntuactionDelay = new WaitForSeconds(interpuntuactionDelay);
+        punctuationDelay = new WaitForSeconds(interpunctuationDelay);
 
         skipDelay = new WaitForSeconds(1 / (charactersPerSecond * skipSpeedUp));
         textBoxFullEventDelay = new WaitForSeconds(sendDoneDelay);
@@ -71,11 +71,11 @@ public class DialogManager : MonoBehaviour
             }
             else
             {
-                if (readyForNewText&&sb!=null)
+                if (readyForNewText && sb != null)
                 {
                     sb.ShowNewText();
                 }
-                if(readyForNewText&&sb == null&& introLoader != null)
+                if(readyForNewText && sb == null && introLoader != null)
                 {
                     introLoader.StartLightTransition();
                 }
@@ -120,7 +120,8 @@ public class DialogManager : MonoBehaviour
         TMP_TextInfo textInfo = textBox.textInfo;
 
         while (currentCharacterIndex < textInfo.characterCount)
-        {
+        {   
+            textBox.ForceMeshUpdate();
             var lastCharacterIndex = textInfo.characterCount - 1;
             //Es el fianl de la frase, y hace la pausa de final y para la ejecucion de la funcion
             if(currentCharacterIndex == lastCharacterIndex)
@@ -134,9 +135,9 @@ public class DialogManager : MonoBehaviour
             char character = textInfo.characterInfo[currentCharacterIndex].character;
             textBox.maxVisibleCharacters++;
 
-            if (!currentlySkipping && (character == '?' || character == '.' || character == ',' || character == ':' || character == ';' || character == '!' || character == '-'))
+            if (!currentlySkipping && (character == '?' || character == '.' || character == ',' || character == ':' || character == ';' || character == '!' || character == '-' || character == '¿' || character == '¡'))
             {
-                yield return puntuactionDelay;
+                yield return punctuationDelay;
             }
             else
             {

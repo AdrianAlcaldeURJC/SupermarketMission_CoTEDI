@@ -20,11 +20,12 @@ MonoBehaviour:
     - rid: 4724020283536048155
   m_TableData:
   - m_Id: 4623609856
-    m_Localized: "\xA1Selecciona las zonas del supermercado!"
+    m_Localized: "\xA1Entra en las zonas del supermercado!"
     m_Metadata:
       m_Items: []
   - m_Id: 51679506432
-    m_Localized: "\xA1\xC1nimo! Solo quedan {0.remainingMinigames} de {1.maxMinigames}."
+    m_Localized: "\xA1\xC1nimo! Solo {0.remainingMinigames:plural: queda | quedan}
+      {0.remainingMinigames} de {1.maxMinigames} zonas."
     m_Metadata:
       m_Items:
       - rid: 4724020283536048155

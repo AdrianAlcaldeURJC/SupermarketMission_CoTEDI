@@ -48,28 +48,25 @@ public class GroceryListChecker : MonoBehaviour
     }
 
     bool CheckClassification()
-    {
+    {   
         bool isCorrect = true;
         // Check if pending item list is empty
         if(parentList.transform.childCount != 0)
         {
             isCorrect = false;
-            Debug.Log("No se ha clasificado todo - " + parentList.transform.childCount);
         }
         else
         {
-            //Then check each category, run through every item and check its category propert
+            //Then check each category, run through every item and check its category property
             for(int i=0; i<dropFields.Length && isCorrect; i++)
             {
-                Debug.Log("Estoy comprobando " + dropFields[i].GetComponent<DropFieldGroceryList>().value);
-
+                dropFields[i].UpdateItems();
                 foreach (GameObject item in dropFields[i].items)
                 {
-                    if (item.GetComponent<Food>().category != dropFields[i].GetComponent<DropFieldGroceryList>().value)
+                    if (item.GetComponent<Food>().category != dropFields[i].value)
                     {
                         isCorrect = false;
-                        Debug.LogError("Algo mal con " + item.GetComponent<Food>().category);
-                        Debug.LogError("Algo mal con objeto: " + item.name);
+
                     }
                 }
             }
@@ -88,7 +85,6 @@ public class GroceryListChecker : MonoBehaviour
         }
         else
         {
-            Debug.Log("Hay algo mal");
             notificationCanvas.gameObject.SetActive(true);
             // Changed by a Localize Event String on the GameObject
             //notificationCanvas.GetComponentInChildren<TMP_Text>().text = "Hay algo mal clasificado o te faltan elementos por clasificar";

@@ -24,11 +24,9 @@ public class DropField : MonoBehaviour, IDropHandler
             {
                 if (eventData.pointerDrag.GetComponent<DragAndDrop>().getValue() == this.value)
                 {
-                    Debug.Log("Correct");
                 }
                 else
                 {
-                    Debug.Log("Bad");
                 }
 
                 eventData.pointerDrag.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, modifiedWidth);

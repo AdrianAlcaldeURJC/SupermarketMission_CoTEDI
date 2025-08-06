@@ -52,15 +52,13 @@ public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDrag
         initialParent = transform.parent;
         scrollIndex = transform.GetSiblingIndex();
 
-        //Debug.Log("Parent: " + initialParent + " Index: " + scrollIndex);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
-        //Debug.Log("BeginDrag");
         canvasGroup.blocksRaycasts = false;
-        //Borrar el objecto de la lista cuando se le esta sacando de un drop field
+        // Borrar el objeto de la lista cuando se le esta sacando de un drop field
         if (this.transform.parent.GetComponentInParent<DropFieldGroceryList>())
         {
             this.transform.parent.GetComponentInParent<DropFieldGroceryList>().items.Remove(this.gameObject);
@@ -78,7 +76,6 @@ public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDrag
 
     public void OnDrag(PointerEventData eventData)
     {
-        //Debug.Log("OnDrag");
         rectTrans.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
@@ -88,7 +85,7 @@ public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDrag
         canvasGroup.blocksRaycasts = true;
         if (eventData.pointerEnter == null)
         {
-            //For the object to come back if it's drag outside the screen
+            // For the object to come back if it's drag outside the screen
             transform.SetParent(initialParent, false);
             this.transform.SetSiblingIndex(scrollIndex);
         }
@@ -98,7 +95,6 @@ public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDrag
             {
                 if (eventData.pointerEnter.transform.parent.GetComponent<DragAndDropGroceryList>() != null)
                 {
-                    Debug.Log("Nombre objeto " + eventData.pointerEnter.gameObject.name);
                     if (eventData.pointerEnter.gameObject.GetComponentInParent<DropFieldGroceryList>() != null)
                     {
                         GameObject usefulParent = eventData.pointerEnter.gameObject.GetComponentInParent<DropFieldGroceryList>().gameObject;
@@ -134,7 +130,7 @@ public class DragAndDropGroceryList : MonoBehaviour, IBeginDragHandler, IEndDrag
         ListListener.Instance.dragGroceryList.Add(dragItem.ToString());
     }
 
-    public string getValue()
+    public string GetValue()
     {
         return this.value;
     }

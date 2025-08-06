@@ -60,7 +60,6 @@ public class GroceryListDisplay : MonoBehaviour
         int childCount = sectionScroll.transform.childCount;
         for (int i=0; i<childCount; i++)
         {
-            Debug.Log("Estoy borrando "+ sectionScroll.transform.GetChild(0).gameObject);
             GameObject go = sectionScroll.transform.GetChild(0).gameObject;
             go.transform.parent = null;
             Destroy(go);

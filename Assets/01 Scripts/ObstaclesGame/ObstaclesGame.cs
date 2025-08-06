@@ -119,7 +119,6 @@ public class ObstaclesGame : MonoBehaviour
     {
         if (!isGameOver)
         {
-            Debug.Log("AUCH");
             hearts[playerLives].gameObject.SetActive(false);
             playerLives--;
             if (playerLives < 0)
@@ -133,7 +132,6 @@ public class ObstaclesGame : MonoBehaviour
     {
         this.numObstacles++;
         numObstaclesText.text = numObstacles + "/" + MAX_NUMOBSTACLES;
-        Debug.Log(numObstacles);
     }
 
     private void GameOver()
@@ -143,10 +141,9 @@ public class ObstaclesGame : MonoBehaviour
         {
             elem.SetStop(true);
         }
-        Debug.Log("GameOver");
         this.isGameOver = true;
-        //Pausar carrito y obstaculos
-        //Mostrar canvas de GameOver para pasar a la siguiente escena
+        // Pausar carrito y obstaculos
+        // Mostrar canvas de GameOver para pasar a la siguiente escena
         if (playerLives >= 0)
             this.CongratsPanel.SetActive(true);
         else

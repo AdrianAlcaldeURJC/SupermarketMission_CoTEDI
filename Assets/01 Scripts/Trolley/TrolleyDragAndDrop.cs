@@ -52,7 +52,6 @@ public class TrolleyDragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHand
         //Borrar el objecto de la lista cuando se le esta sacando de un drop field
         if (this.transform.parent.GetComponentInParent<TrolleyDropField>())
         {
-            Debug.Log("El padre es un drop field " + this.transform.parent);
             dndManager.trolley[this.transform.parent.GetComponentInParent<TrolleyDropField>().GetIndexes()[1], this.transform.parent.GetComponentInParent<TrolleyDropField>().GetIndexes()[0]] = null;
             this.transform.parent.GetComponentInParent<TrolleyDropField>().RelocateColumnElements(this.transform.parent.GetComponentInParent<TrolleyDropField>().GetIndexes()[0]);
         }

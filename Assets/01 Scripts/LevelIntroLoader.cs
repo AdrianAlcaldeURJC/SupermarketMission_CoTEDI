@@ -43,10 +43,10 @@ public class LevelIntroLoader : MonoBehaviour
 
     public void StartDarkTransition()
     {
-        StartCoroutine(showIntrotext());
+        StartCoroutine(ShowIntroText());
     }
 
-    IEnumerator showIntrotext()
+    IEnumerator ShowIntroText()
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
@@ -55,10 +55,10 @@ public class LevelIntroLoader : MonoBehaviour
 
     public void StartLightTransition()
     {
-        StartCoroutine(hideIntrotext());
+        StartCoroutine(HideIntroText());
     }
 
-    IEnumerator hideIntrotext()
+    IEnumerator HideIntroText()
     {
         transition.SetTrigger("End");
         yield return new WaitForSeconds(transitionTime);

@@ -20,14 +20,19 @@ MonoBehaviour:
     - rid: 4724020283536048154
   m_TableData:
   - m_Id: 4623609856
-    m_Localized: 
+    m_Localized: Enter in the sections of the supermarket!
     m_Metadata:
       m_Items: []
   - m_Id: 51679506432
-    m_Localized: 
+    m_Localized: Come on! There are only {0.remainingMinigames} of {1.maxMinigames}
+      sections left.
     m_Metadata:
       m_Items:
       - rid: 4724020283536048154
+  - m_Id: 128787591168
+    m_Localized: Enter the checkout!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

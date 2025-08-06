@@ -22,27 +22,20 @@ public class MainMenu : MonoBehaviour
         AudioManager.GetInstance().PlayMusicClip(AudioManager.GetInstance().generalMusic);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnClickPlay()
     {
+        ClearAllData();
         AudioManager.GetInstance()?.PlaySFXClip(AudioManager.GetInstance().clickTechButtonSFX);
         GameManager.GetInstance().GoToScene("NameScene");
     }
 
     public void OnClickScoreboard()
     {
-        Debug.Log("Clicked Scoreboard");
     }
 
     public void OnClickOptions()
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
-        Debug.Log("Clicked Options");
         scorebardCanvas.gameObject.SetActive(false);
         optionsCanvas.gameObject.SetActive(!optionsCanvas.gameObject.activeSelf);
         SetSlidersValue();
@@ -51,7 +44,6 @@ public class MainMenu : MonoBehaviour
     public void OnClickExit()
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
-        Debug.Log("Clicked Exit");
         Application.Quit();
     }
 
@@ -66,5 +58,12 @@ public class MainMenu : MonoBehaviour
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         MusicSlider.value = GameManager.GetInstance().musicVolume;
         SFXSlider.value = GameManager.GetInstance().SFXVolume;
+    }
+
+    private void ClearAllData()
+    {
+        GameManager.GetInstance().ResetGameManager();
+        Destroy(FindObjectOfType<ObstaclesManagerSingleton>(true)?.gameObject);
+        Destroy(FindObjectOfType<MazeMovement>(true)?.gameObject);
     }
 }

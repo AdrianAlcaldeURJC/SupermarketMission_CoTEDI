@@ -59,7 +59,6 @@ public class AudioManager : MonoBehaviour
 
     public void SetMusicVolume(float sliderValue)
     {
-        Debug.Log("Setting music value to " + sliderValue);
         mixer.SetFloat("MusicVolume", Mathf.Log10(sliderValue)*20);
         GameManager.GetInstance().musicVolume = sliderValue;
     }

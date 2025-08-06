@@ -98,7 +98,7 @@ public class SupermarketMap : MonoBehaviour
                     sections[i].GetComponent<Button>().onClick.AddListener(delegate { OnClickSection(Food.Category.perfumery); });
                     break;
                 default:
-                    Debug.Log("No existe esa categoria: " + order[i]);
+                    Debug.LogWarning("That category does not exist: " + order[i]);
                     break;
             }
             

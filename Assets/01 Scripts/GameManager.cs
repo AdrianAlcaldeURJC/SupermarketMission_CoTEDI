@@ -46,8 +46,6 @@ public class GameManager : MonoBehaviour
     public int numElementsWrongPositionTrolley = 0;
 
     public string currentSceneName;
-    DataBaseComunicator dbCom;
-
     public Food.Category CurrentMinigame;
     
     private DataBaseComunicator dataBaseCommunicator;
@@ -80,7 +78,6 @@ public class GameManager : MonoBehaviour
         trolleyStatus = new Food[8, 3];
         musicVolume = 0.5f;
         SFXVolume = 0.5f;
-        dbCom = this.gameObject.GetComponent<DataBaseComunicator>();
         dataBaseCommunicator = gameObject.AddComponent<DataBaseComunicator>();
     }
 
@@ -111,7 +108,10 @@ public class GameManager : MonoBehaviour
         playerGender = "";
         daltonicUser = false;
 
-        //firstTimeScene = { true, true, true, true, true, true, true };
+        for (int i = 0; i < firstTimeScene.Length; i++)
+        {
+            firstTimeScene[i] = true;
+        }
 
         currentSpentTime = 0f;
         groceryListSpentTime = 0f;
@@ -121,17 +121,6 @@ public class GameManager : MonoBehaviour
         minigamesSpentTime = new float[6];
         trolleyStatus = new Food[8, 3];
 
-        //for (int i = 0; i < minigamesSpentTime.Length; i++)
-        //{
-        //    minigamesSpentTime[i] = 0;
-        //}
-        //for (int i = 0; i < trolleyStatus.GetLength(0); i++)
-        //{
-        //    for (int j = 0; j < trolleyStatus.GetLength(1); j++)
-        //    {
-        //        trolleyStatus[i,j] = null;
-        //    }
-        //}
         pickedItems = new List<Food>();
 
         bakeryFoodList = new List<Food>();
@@ -146,44 +135,6 @@ public class GameManager : MonoBehaviour
         numElementsCorrectPositionTrolley = 0;
         numElementsModeratePositionTrolley = 0;
         numElementsWrongPositionTrolley = 0;
-    }
-
-    // Send user data to DB
-    public void SendResultToDB()
-    {
-        Debug.Log(System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-        string date = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        //string score = @"""name"": ""name2"", ""start"": """ + date + @""", ""end"": ""2024-07-09 19:27:34""";
-
-        string score = @"""name"": """ + this.playerName + @""", 
-                        ""age"": """ + this.playerAge + @""",
-                        ""gender"": """ + this.playerGender + @""",
-                        ""totalTime"": """ + this.currentSpentTime.ToString().Replace(",", ".") + @""",
-                        ""clasifyListTime"": """ + this.groceryListSpentTime.ToString().Replace(",", ".") + @""",
-                        ""identifyMapTime"": """ + this.SupermarketMapSpentTime.ToString().Replace(",", ".") + @""",
-                        ""organizeTrolleyTime"": """ + this.trolleySpentTime.ToString().Replace(",", ".") + @""",
-                        ""bakeryMGTime"": """ + this.minigamesSpentTime[0].ToString().Replace(",", ".") + @""",
-                        ""fruitsMGTime"": """ + this.minigamesSpentTime[1].ToString().Replace(",", ".") + @""",
-                        ""legumesMGTime"": """ + this.minigamesSpentTime[2].ToString().Replace(",", ".") + @""",
-                        ""fridgeMGTime"": """ + this.minigamesSpentTime[3].ToString().Replace(",", ".") + @""",
-                        ""fishMGTime"": """ + this.minigamesSpentTime[4].ToString().Replace(",", ".") + @""",
-                        ""perfumeryMGTime"": """ + this.minigamesSpentTime[5].ToString().Replace(",", ".") + @""",
-                        ""correctPickedItems"": """ + this.pickedListItems + @""",
-                        ""wrongPickedItems"": """ + this.numWrongPickedItems + @""",
-                        ""correctPositionTroley"": """ + this.numElementsCorrectPositionTrolley + @""",
-                        ""moderatePositionTrolley"": """ + this.numElementsModeratePositionTrolley + @""",
-                        ""wrongPositionTrolley"": """ + this.numElementsWrongPositionTrolley + @""",
-                        ""date"": """ + date + @"""";
-
-        Debug.Log(score);
-        dbCom.SendInsertRequest(score);
-    }
-
-
-    public void SendUserToDB()
-    {
-        // Comprobar si el usuario ya se encuentra dentro de la DB
-
     }
 
     public void EvaluateFinalTrolley()

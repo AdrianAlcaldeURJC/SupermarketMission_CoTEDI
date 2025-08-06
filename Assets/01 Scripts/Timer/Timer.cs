@@ -30,7 +30,6 @@ public class Timer : MonoBehaviour
             timeToDisplay += Time.deltaTime;
             TimeSpan timeSpan = TimeSpan.FromSeconds(timeToDisplay);
             text.text = timeSpan.ToString(@"mm\:ss\:ff");
-            //Debug.Log(timeSpan);
         }
     }
 

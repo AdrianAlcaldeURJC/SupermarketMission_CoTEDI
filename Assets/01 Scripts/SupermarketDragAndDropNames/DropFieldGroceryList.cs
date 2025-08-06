@@ -17,7 +17,7 @@ public class DropFieldGroceryList : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if(eventData.pointerDrag != null)
+        if (eventData.pointerDrag != null)
         {
             if (eventData.pointerDrag.GetComponent<Food>())
             {
@@ -26,5 +26,16 @@ public class DropFieldGroceryList : MonoBehaviour, IDropHandler
                 eventData.pointerDrag.transform.SetParent(panelList);
             }
         }
+    }
+
+    public void UpdateItems()
+    {
+        items.Clear();
+        for (int i = 0; i < panelList.childCount; i++)
+        {
+            Transform item = panelList.GetChild(i);
+            items.Add(item.gameObject);
+        }
+
     }
 }

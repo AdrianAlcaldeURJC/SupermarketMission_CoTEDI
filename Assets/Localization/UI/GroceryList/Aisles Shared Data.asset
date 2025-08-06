@@ -68,12 +68,17 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 629871871500484618
   m_KeyGenerator:
     rid: 3978965961367355400
   references:
     version: 2
     RefIds:
+    - rid: 629871871500484618
+      type: {class: PreloadAssetTableMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_PreloadBehaviour: 1
     - rid: 3978965961367355400
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:

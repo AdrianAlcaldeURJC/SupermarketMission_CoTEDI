@@ -13,8 +13,7 @@ public class DestroyObjects : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("You shall not pass");
-        if(other.gameObject.tag == "Obstacle")
+        if(other.gameObject.CompareTag("Obstacle"))
             miniManager.ObstacleReachedTheEnd();
         Destroy(other.gameObject);
     }

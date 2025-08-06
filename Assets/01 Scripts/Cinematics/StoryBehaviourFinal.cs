@@ -65,11 +65,11 @@ public class StoryBehaviourFinal : MonoBehaviour
     void SetLines()
     {
         lines = new string[numLines];
-        lines[0] = "¡" + GameManager.GetInstance().playerName + "! ¿Puedes venir un momento, por favor?";
-        lines[1] = "Aquí estás. Pues verás, tengo una misión para ti.";
+        lines[0] = "ï¿½" + GameManager.GetInstance().playerName + "! ï¿½Puedes venir un momento, por favor?";
+        lines[1] = "Aquï¿½ estï¿½s. Pues verï¿½s, tengo una misiï¿½n para ti.";
         lines[2] = "Tu padre iba ponerse a hacer la comida, pero al parecer nos faltan muchos ingredientes y tenemos un poco de prisa.";
-        lines[3] = "¿Crees que podrías conseguirlos todos tu solo, agente " + GameManager.GetInstance().playerInitial + "? ";
-        lines[4] = "¿Si? Te veo decidido. Pues aquí tienes la lista. Prepárate para la misión.";
+        lines[3] = "ï¿½Crees que podrï¿½as conseguirlos todos tu solo, agente " + GameManager.GetInstance().playerInitial + "? ";
+        lines[4] = "ï¿½Si? Te veo decidido. Pues aquï¿½ tienes la lista. Prepï¿½rate para la misiï¿½n.";
     }
 
     //void completedLine()
@@ -77,9 +77,8 @@ public class StoryBehaviourFinal : MonoBehaviour
     //    DialogManager.CompleteTextRevealed += showNewText;
     //}
 
-    public void showNewText()
+    public void ShowNewText()
     {
-        Debug.Log("Next line");
         if (index < lines.Length - 1)
         {
             index++;

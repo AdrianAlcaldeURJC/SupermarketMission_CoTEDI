@@ -30,13 +30,10 @@ public class PuzzlePiece : MonoBehaviour
         //AudioSource.PlayOneShot(pickUpClip);
 
         offset = this.GetMousePos() - transform.position;
-        Debug.Log("HELLO" + offset);
-
     }
 
     Vector3 GetMousePos()
     {
-        //Debug.Log(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f)));
         return Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
     }
 }

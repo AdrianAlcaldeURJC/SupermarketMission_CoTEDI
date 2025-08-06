@@ -60,7 +60,6 @@ public class ObstaclesManager : MonoBehaviour
     private void FillFloorColors()
     {
         List<MazeNode> nodes = transform.GetComponentsInChildren<MazeNode>().ToList();
-        Debug.Log(nodes.Count);
         int colorID = 0;
         foreach (MazeNode node in nodes)
         {

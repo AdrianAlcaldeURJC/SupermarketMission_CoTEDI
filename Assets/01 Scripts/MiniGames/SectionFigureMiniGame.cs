@@ -184,12 +184,10 @@ public class SectionFigureMiniGame : MonoBehaviour
             int index2 = -1;
             if (index != -1)
             {
-                Debug.Log("Esta en la listaaaa");
                 alreadyTaken = CheckIfTaken(foodSelected, ref index2);
                 if (!alreadyTaken)
                     ModifyFoodTaken(index2);
 
-                Debug.Log("valor alreadyTaken: " + alreadyTaken);
                 if (!alreadyTaken)
                 {
                     correctItems.Add(groceryList[index]);
@@ -201,7 +199,6 @@ public class SectionFigureMiniGame : MonoBehaviour
                     wrongSelected++;
                 }
 
-                Debug.Log("se han cogido correctos " + correctItems.Count + " y en la lista hay " + groceryList.Count);
                 if (correctItems.Count == groceryList.Count)
                 {
                     isCorrect = true;
