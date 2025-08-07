@@ -78,7 +78,7 @@ public class MazeMinigameLauncher : MonoBehaviour
         if (!CheckAllSectionsVisited() && foodCategory == Food.Category.cashier)
         {
             GameObject.Find("Trolley").GetComponent<MazeMovement>().ReverseLastDirection();
-            FindObjectsOfType<ExplanationCanvas>(true)[0].gameObject.SetActive(true);
+            FindObjectsOfType<ExplanationCanvas>(true)[1].gameObject.SetActive(true);
         }
         else
         {

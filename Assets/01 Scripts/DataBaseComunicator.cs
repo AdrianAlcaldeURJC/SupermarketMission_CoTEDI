@@ -129,12 +129,12 @@ public class DataBaseComunicator : MonoBehaviour
                 if (data.SessionID > sessionID && data.UserID == DataStorage.Instance.userData.UserID)
                 {
                     sessionID = data.SessionID;
-                    gameID = data.GameID;
+                    //gameID = data.GameID;
                 }
             }
             DataStorage.Instance.sessionData.SessionID = sessionID + 1;
             DataStorage.Instance.gameData.GameID = gameID + 1;
-            Debug.Log("Number of sessions: " + sessionID + " Number of games: " + gameID); // Process the response
+            Debug.Log("Number of sessions: " + DataStorage.Instance.sessionData.SessionID + " Number of games: " + DataStorage.Instance.gameData.GameID); // Process the response
 
         }
         catch (System.Exception e)

@@ -9,12 +9,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Trolley
   - Water
   - UI
   - UI_background1
   - UI_background2
-  - 
+  - CompanionCollider
   - 
   - 
   - 

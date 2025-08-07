@@ -61,7 +61,7 @@ public class GroceryListDisplay : MonoBehaviour
         for (int i=0; i<childCount; i++)
         {
             GameObject go = sectionScroll.transform.GetChild(0).gameObject;
-            go.transform.parent = null;
+            go.transform.SetParent(null);
             Destroy(go);
         }
     }
