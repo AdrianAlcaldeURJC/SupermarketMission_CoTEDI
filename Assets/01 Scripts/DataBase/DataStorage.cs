@@ -383,7 +383,8 @@ public class DataStorage : MonoBehaviour
     {
         try
         {
-            string FolderName = $"{Application.persistentDataPath}/DataCollection/{userData.UserID}_Session{sessionData.SessionID}_Game{gameData.GameID}/";
+            string sessionTime = sessionData.SessionStartTime.Replace(":", "-");
+            string FolderName = $"{Application.persistentDataPath}/DataCollection/{userData.UserID}_Session{sessionData.SessionID}_Game{gameData.GameID}_Time{sessionTime}/";
             if(!Directory.Exists(FolderName))
                 Directory.CreateDirectory(FolderName);
             

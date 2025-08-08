@@ -3092,8 +3092,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameInput: {fileID: 164169852}
   ageText: {fileID: 15877442}
-  chicoSelectedImage: {fileID: 908068557}
-  chicaSelectedImage: {fileID: 912660774}
+  boySelectedImage: {fileID: 908068557}
+  girlSelectedImage: {fileID: 912660774}
 --- !u!114 &1574013155
 MonoBehaviour:
   m_ObjectHideFlags: 0

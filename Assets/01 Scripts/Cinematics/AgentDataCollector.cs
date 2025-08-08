@@ -12,22 +12,22 @@ public class AgentDataCollector : MonoBehaviour
     [SerializeField]
     private TMP_Text ageText;
     [SerializeField]
-    private Image chicoSelectedImage;
+    private Image boySelectedImage;
     [SerializeField]
-    private Image chicaSelectedImage;
+    private Image girlSelectedImage;
 
     private int age = 7;
     private string gender = "";
 
     private LevelLoader lvlLoader;
     private bool updateSession = true;
-    // Start is called before the first frame update
+
     void Start()
     {
         nameInput.text = "";
         ageText.text = age.ToString();
-        chicaSelectedImage.gameObject.SetActive(false);
-        chicoSelectedImage.gameObject.SetActive(false);
+        girlSelectedImage.gameObject.SetActive(false);
+        boySelectedImage.gameObject.SetActive(false);
         lvlLoader = FindObjectOfType<LevelLoader>();
     }
 
@@ -53,14 +53,14 @@ public class AgentDataCollector : MonoBehaviour
 
         if (value == "Femenino")
         {
-            chicaSelectedImage.gameObject.SetActive(true);
-            chicoSelectedImage.gameObject.SetActive(false);
+            girlSelectedImage.gameObject.SetActive(true);
+            boySelectedImage.gameObject.SetActive(false);
 
         }
         else
         {
-            chicaSelectedImage.gameObject.SetActive(false);
-            chicoSelectedImage.gameObject.SetActive(true);
+            girlSelectedImage.gameObject.SetActive(false);
+            boySelectedImage.gameObject.SetActive(true);
         }
         gender = value;
     }
@@ -73,7 +73,6 @@ public class AgentDataCollector : MonoBehaviour
             userData.Name = nameInput.text;
 
             DataStorage.Instance.userData.setData(nameInput.text, age, gender);
-            //GameManager.GetInstance().SavePlayerData(nameInput.text, age, gender);
             if(updateSession)
             {
                 GameManager.GetInstance().UpdateSessionID();
