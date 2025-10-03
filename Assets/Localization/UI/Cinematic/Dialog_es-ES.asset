@@ -58,23 +58,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3816713269248
-    m_Localized: "\xA1Lo has tra\xEDdo todo en perfecto estado y organizaste el carro
-      genial! \xA1Enhorabuena!"
+    m_Localized: "\xA1Lo has tra\xEDdo todo en perfecto estado!"
     m_Metadata:
       m_Items: []
   - m_Id: 5133607284736
-    m_Localized: "Casi todo el carro est\xE1 impecable, solo unos detallitos para
-      mejorar. \xA1Muy bien!"
+    m_Localized: "Casi todo el carro est\xE1 impecable"
     m_Metadata:
       m_Items: []
   - m_Id: 5297499713536
-    m_Localized: "Algunos fallitos al organizar el carro. \xA1Pero tranqui, nada
-      se rompi\xF3! Practicaremos m\xE1s."
+    m_Localized: Algunos fallitos al organizar el carro.
     m_Metadata:
       m_Items: []
   - m_Id: 5413027622912
-    m_Localized: "\xA1Ay! Algo se rompi\xF3 por c\xF3mo lo colocaste. F\xEDjate:
-      lo pesado abajo, lo fr\xE1gil arriba. Quiz\xE1 haya que repetir la misi\xF3n\u2026"
+    m_Localized: "\xA1Ay! Algo se rompi\xF3 por c\xF3mo lo colocaste."
     m_Metadata:
       m_Items: []
   - m_Id: 13431190499328
@@ -83,10 +79,29 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3978966006029877274
+  - m_Id: 50695781699989504
+    m_Localized: "\xA1Y organizaste el carro genial! \xA1Enhorabuena!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50695784052994048
+    m_Localized: "Solo unos detallitos para mejorar. \xA1Muy bien!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50695785755881472
+    m_Localized: " \xA1Pero tranqui, nada se rompi\xF3! Practicaremos m\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50695865313439744
+    m_Localized: "F\xEDjate: lo duro abajo, lo fr\xE1gil arriba. Quiz\xE1 haya que
+      repetir la misi\xF3n\u2026"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3978966006029877274
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00b05631370c0000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 13431190499328

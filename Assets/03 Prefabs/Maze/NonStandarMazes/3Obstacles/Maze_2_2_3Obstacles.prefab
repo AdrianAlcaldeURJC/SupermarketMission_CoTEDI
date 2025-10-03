@@ -144,6 +144,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 929098724564423866, guid: 91dbbfba3fcd6c14a9f6eed2a985e883, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1347571502179009426, guid: 91dbbfba3fcd6c14a9f6eed2a985e883, type: 3}
       propertyPath: m_Name
       value: Maze_2_2_3Obstacles

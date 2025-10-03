@@ -22,20 +22,17 @@ public class GroceryListChecker : MonoBehaviour
     [SerializeField] private GameObject parentList;
     [SerializeField] private Canvas canvas;
 
-    [SerializeField] List<Sprite> itemsIcons = new List<Sprite>(); 
+    [SerializeField] List<Sprite> itemsIcons = new List<Sprite>();
     //List of pending to classify item
     List<Food> foodPendings = new List<Food>();
     [SerializeField] int numItems = 18;
+    [SerializeField] int maxNumItemsPerSection = 3;
     DropFieldGroceryList[] dropFields = new DropFieldGroceryList[6];
 
     // Start is called before the first frame update
     private void Awake()
     {
         explanationCanvas = FindObjectOfType<ExplanationCanvas>();
-        
-        // explanationCanvas.SetText("Para ser un buen agente, lo primero que hay que hacer es planificar la misi�n. " +
-        //         "As� que vamos a clasificar los objetivos en las distintas secciones del supermercado donde podemos encontrarlos. \n" +
-        //         "�Listo? �Pues vamos all�! Arrastra los elementos en cada secci�n.");
     }
 
     void Start()
@@ -48,26 +45,28 @@ public class GroceryListChecker : MonoBehaviour
     }
 
     bool CheckClassification()
-    {   
+    {
         bool isCorrect = true;
         // Check if pending item list is empty
-        if(parentList.transform.childCount != 0)
+        if (parentList.transform.childCount != 0)
         {
             isCorrect = false;
         }
-        else
-        {
-            //Then check each category, run through every item and check its category property
-            for(int i=0; i<dropFields.Length && isCorrect; i++)
-            {
-                dropFields[i].UpdateItems();
-                foreach (GameObject item in dropFields[i].items)
-                {
-                    if (item.GetComponent<Food>().category != dropFields[i].value)
-                    {
-                        isCorrect = false;
 
-                    }
+        //Then check each category, run through every item and check its category property
+        for (int i = 0; i < dropFields.Length; i++)
+        {
+            dropFields[i].UpdateItems();
+            foreach (GameObject item in dropFields[i].items)
+            {
+                if (item.GetComponent<Food>().category != dropFields[i].value)
+                {
+                    item.GetComponent<Image>().color = new Color(1f, 0.2f, 0.1f, 1f);
+                    isCorrect = false;
+                }
+                else
+                {
+                    item.GetComponent<Image>().color = new Color(0.608624f, 0.9150943f, 0.8299581f, 1f);
                 }
             }
         }
@@ -81,13 +80,11 @@ public class GroceryListChecker : MonoBehaviour
         if (CheckClassification())
         {
             EventManager.OnSaveTimer();
-            levelLoader.LoadNextLevel("SupermarketMap");
+            levelLoader.LoadNextLevel("NextPlayerScene");
         }
         else
         {
             notificationCanvas.gameObject.SetActive(true);
-            // Changed by a Localize Event String on the GameObject
-            //notificationCanvas.GetComponentInChildren<TMP_Text>().text = "Hay algo mal clasificado o te faltan elementos por clasificar";
         }
     }
 
@@ -108,12 +105,14 @@ public class GroceryListChecker : MonoBehaviour
         allFoods.AddRange(fm.perfumeryFoods);
 
         int randIndex = 0;
-        for(int i=0; i<numItems; i++)
+        for (int i = 0; i < numItems; i++)
         {
-            randIndex = Random.Range(0, allFoods.Count);
+            // TODO: Create a function to select the random number
+            randIndex = GetNewItemIndex(allFoods);
+
             //Meter ese alimento en la lista
             foodPendings.Add(allFoods[randIndex].GetComponent<Food>());
-            //pendings.Add(allFoods[randIndex].GetComponent<Food>().foodName);
+
             //clasificarlo en las listas de tipos de GM
             switch (allFoods[randIndex].GetComponent<Food>().category)
             {
@@ -138,6 +137,7 @@ public class GroceryListChecker : MonoBehaviour
                 default:
                     break;
             }
+
             //Eliminarlo del conjunto de todos
             allFoods.RemoveAt(randIndex);
         }
@@ -150,7 +150,7 @@ public class GroceryListChecker : MonoBehaviour
 
     void GenerateClassificationList()
     {
-        for(int i=0; i<foodPendings.Count; i++)
+        for (int i = 0; i < foodPendings.Count; i++)
         {
             GameObject g = Instantiate(prefabFoodItemList);
             //set parent
@@ -158,7 +158,7 @@ public class GroceryListChecker : MonoBehaviour
             g.transform.localScale = new Vector3(1f, 1f, 1f);
             g.GetComponent<DragAndDropGroceryList>().canvas = canvas;
             g.GetComponent<DragAndDropGroceryList>().upperParent = canvas;
-            
+
             //set index
             int rand = Random.Range(0, numItems);
             g.transform.SetSiblingIndex(rand);
@@ -168,10 +168,10 @@ public class GroceryListChecker : MonoBehaviour
             g.GetComponentInChildren<LocalizeStringEvent>().OnUpdateString.RemoveAllListeners();
             GameManager.GetInstance().UpdateTMPtoLocalization(g.GetComponentInChildren<LocalizeStringEvent>(),
                                                                 g.GetComponentInChildren<TMP_Text>(),
-                                                                "FoodItems", 
+                                                                "FoodItems",
                                                                 foodPendings[i].GetComponent<Food>().foodName,
                                                                 true);
-            
+
             g.GetComponent<Food>().category = foodPendings[i].category;
             int itemID = DataStorage.GroceryMapData.GetIDfromStringFood(g.GetComponent<Food>().foodName);
             g.transform.Find("IconR").GetComponent<Image>().sprite = itemsIcons[itemID];
@@ -181,7 +181,8 @@ public class GroceryListChecker : MonoBehaviour
 
     void SetAsNotTakenFood(List<Food> list)
     {
-        foreach (Food f in list){
+        foreach (Food f in list)
+        {
             f.alreadyTaken = false;
         }
     }
@@ -204,11 +205,43 @@ public class GroceryListChecker : MonoBehaviour
         {
             strEvent.OnUpdateString.AddListener((translatedText) =>
                 targetText.text = translatedText
-            ); 
+            );
         }
         else
         {
             Debug.LogWarning("TMP_Text component is not linked to update");
         }
     }
+
+    int GetNewItemIndex(List<Food> allFoods)
+    {
+        bool repeat = false;
+        do
+        {
+            int rand = Random.Range(0, allFoods.Count);
+            if (GetNumItemsInFoodSection(allFoods[rand]) < maxNumItemsPerSection)
+            {
+                return rand;
+            }
+            repeat = true;
+        } while (repeat);
+
+
+        return 0;
+    }
+
+    int GetNumItemsInFoodSection(Food food)
+    {
+        int counter = 0;
+        Food.Category foodCategory = food.category;
+
+        foreach (Food pending in foodPendings)
+        {
+            if (foodCategory == pending.category)
+                counter++;
+        }
+
+        return counter;
+    }
+
 }

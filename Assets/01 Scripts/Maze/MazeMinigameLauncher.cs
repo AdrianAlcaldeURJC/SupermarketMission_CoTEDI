@@ -47,7 +47,10 @@ public class MazeMinigameLauncher : MonoBehaviour
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         GameManager.GetInstance().actualSection = foodCategory;
         if (foodCategory == Food.Category.cashier)
-            lvlLoader.LoadNextLevel("ObstaclesGame");
+        {
+            GameManager.GetInstance().nextSceneName = "ObstaclesGame";
+            lvlLoader.LoadNextLevel("NextPlayerScene");
+        }
         else
             lvlLoader.LoadNextLevel("SupermarketSection");
 

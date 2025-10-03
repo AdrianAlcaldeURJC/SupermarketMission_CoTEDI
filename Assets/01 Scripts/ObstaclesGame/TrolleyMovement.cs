@@ -22,16 +22,26 @@ public class TrolleyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float touchDeltaX = 0;
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+#if UNITY_WEBGL && !UNITY_EDITOR
+            touchDeltaX = -Input.GetTouch(0).deltaPosition.x; // Inverted for WebGL
+#else
+            touchDeltaX = Input.GetTouch(0).deltaPosition.x;
+#endif
+        }
+        
         if (Input.GetKeyDown(KeyCode.A)
         || Input.GetKeyDown(KeyCode.LeftArrow)
-        || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && (Input.GetTouch(0).deltaPosition.x < 0)))
+        || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && touchDeltaX < 0))
         {
             anim.SetTrigger("MoveLeft");
             StartCoroutine(DeactivateTrigger(0));
         }
         if (Input.GetKeyDown(KeyCode.D)
         || Input.GetKeyDown(KeyCode.RightArrow)
-        || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && (Input.GetTouch(0).deltaPosition.x > 0)))
+        || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved && touchDeltaX > 0))
         {
             anim.SetTrigger("MoveRight");
             StartCoroutine(DeactivateTrigger(1));

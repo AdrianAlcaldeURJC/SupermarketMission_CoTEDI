@@ -58,23 +58,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3816713269248
-    m_Localized: "You brought everything back perfectly\u2014and your cart organization
-      was awesome! High five!"
+    m_Localized: You brought everything back perfectly
     m_Metadata:
       m_Items: []
   - m_Id: 5133607284736
-    m_Localized: "Almost everything in your cart is perfect\u2014just a couple of
-      tiny mistakes to fix next time. Great job!"
+    m_Localized: Almost everything in your cart is perfect
     m_Metadata:
       m_Items: []
   - m_Id: 5297499713536
-    m_Localized: "A few tiny oopsies with your cart packing\u2014be a bit more careful
-      next time. But hey, nothing broke! Phew!"
+    m_Localized: A few tiny oopsies with your cart packing
     m_Metadata:
       m_Items: []
   - m_Id: 5413027622912
-    m_Localized: 'Oh no! Some items broke because they were squished. Remember: heavy
-      stuff goes under, fragile stuff on top! You might need a quick shopping redo.'
+    m_Localized: Oh no! Some items broke because they were squished.
     m_Metadata:
       m_Items: []
   - m_Id: 13431190499328
@@ -84,10 +80,29 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 3978966006029877273
+  - m_Id: 50695781699989504
+    m_Localized: And your cart organization was awesome! High five!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50695784052994048
+    m_Localized: Just a couple of tiny mistakes to fix next time. Great job!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50695785755881472
+    m_Localized: Be a bit more careful next time. But hey, nothing broke! Phew!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50695865313439744
+    m_Localized: 'Remember: hard stuff goes under, fragile stuff on top! You might
+      need a quick shopping redo.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
     - rid: 3978966006029877273
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00b05631370c0000
+        m_Entries: 
+        m_SharedEntries:
+        - id: 13431190499328

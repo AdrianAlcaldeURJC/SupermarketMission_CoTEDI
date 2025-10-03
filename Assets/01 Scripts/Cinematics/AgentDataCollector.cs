@@ -1,33 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class AgentDataCollector : MonoBehaviour
 {
 
-    [SerializeField]
-    private TMP_InputField nameInput;
-    [SerializeField]
-    private TMP_Text ageText;
-    [SerializeField]
-    private Image boySelectedImage;
-    [SerializeField]
-    private Image girlSelectedImage;
+    [SerializeField] private TMP_InputField nameInputA;
+    [SerializeField] private TMP_InputField nameInputB;
+    [SerializeField] private TMP_Text ageTextA;
+    [SerializeField] private TMP_Text ageTextB;
+    [SerializeField] private Image boySelectedImageA;
+    [SerializeField] private Image girlSelectedImageA;
+    [SerializeField] private Image boySelectedImageB;
+    [SerializeField] private Image girlSelectedImageB;
 
     private int age = 7;
-    private string gender = "";
+    private string genderA = "";
+    private string genderB = "";
 
     private LevelLoader lvlLoader;
     private bool updateSession = true;
+    private bool firstPlayerRegistered = false;
 
     void Start()
     {
-        nameInput.text = "";
-        ageText.text = age.ToString();
-        girlSelectedImage.gameObject.SetActive(false);
-        boySelectedImage.gameObject.SetActive(false);
+        nameInputA.text = "";
+        nameInputB.text = "";
+        ageTextB.text = age.ToString();
+        girlSelectedImageA.gameObject.SetActive(false);
+        boySelectedImageA.gameObject.SetActive(false);
         lvlLoader = FindObjectOfType<LevelLoader>();
     }
 
@@ -35,7 +39,15 @@ public class AgentDataCollector : MonoBehaviour
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         age++;
-        ageText.text = age.ToString();
+
+        if (!firstPlayerRegistered)
+        {
+            ageTextA.text = age.ToString();
+        }
+        else
+        {
+            ageTextB.text = age.ToString();
+        }
     }
 
     public void DecrementAge()
@@ -44,36 +56,77 @@ public class AgentDataCollector : MonoBehaviour
         age--;
         if (age < 1)
             age = 1;
-        ageText.text = age.ToString();
+
+        if (!firstPlayerRegistered)
+        {
+            ageTextA.text = age.ToString();
+        }
+        else
+        {
+            ageTextB.text = age.ToString();
+        }
+
     }
 
     public void SetGender(string value)
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
 
+        Image girl, boy;
+
+        if (!firstPlayerRegistered)
+        {
+            girl = girlSelectedImageA;
+            boy = boySelectedImageA;
+        }
+        else
+        {
+            girl = girlSelectedImageB;
+            boy = boySelectedImageB;
+        }
+
         if (value == "Femenino")
         {
-            girlSelectedImage.gameObject.SetActive(true);
-            boySelectedImage.gameObject.SetActive(false);
+            girl.gameObject.SetActive(true);
+            boy.gameObject.SetActive(false);
 
         }
         else
         {
-            girlSelectedImage.gameObject.SetActive(false);
-            boySelectedImage.gameObject.SetActive(true);
+            girl.gameObject.SetActive(false);
+            boy.gameObject.SetActive(true);
         }
-        gender = value;
+
+        if (!firstPlayerRegistered)
+        {
+            genderA = value;
+        }
+        else
+        {
+            genderB = value;
+        }
+
     }
 
     public bool CheckAndSaveAgentData()
     {
-        if (nameInput.text != "" && gender != "")
+        if (genderB == "" || nameInputB.text == "")
+        {
+            return false;
+        }
+        else
         {
             DataStorage.UserData userData = DataStorage.Instance.userData;
-            userData.Name = nameInput.text;
+            userData.Name = nameInputA.text;
+            userData.UserAux1 = nameInputB.text;
+            DataStorage.Instance.userData.SetData(nameInputA.text, int.Parse(ageTextA.text), genderA, nameInputB.text, ageTextB.text);
 
-            DataStorage.Instance.userData.setData(nameInput.text, age, gender);
-            if(updateSession)
+            DataStorage.Instance.sessionData.SessionAux1 = genderB;
+
+            GameManager.GetInstance().playerNameA = nameInputA.text;
+            GameManager.GetInstance().playerNameB = nameInputB.text;
+
+            if (updateSession)
             {
                 GameManager.GetInstance().UpdateSessionID();
                 updateSession = false;
@@ -81,18 +134,38 @@ public class AgentDataCollector : MonoBehaviour
 
             return true;
         }
-        else
-        {
+    }
+
+    private bool NextPlayer()
+    {
+        if (firstPlayerRegistered)
             return false;
-        }
+
+        if (genderA == "" || nameInputA.text == "")
+            return true;
+
+        nameInputA.transform.parent.gameObject.SetActive(false);
+        ageTextA.transform.parent.gameObject.SetActive(false);
+        boySelectedImageA.transform.parent.parent.gameObject.SetActive(false);
+
+        nameInputB.transform.parent.gameObject.SetActive(true);
+        ageTextB.transform.parent.gameObject.SetActive(true);
+        boySelectedImageB.transform.parent.parent.gameObject.SetActive(true);
+
+        ageTextB.text = age.ToString();
+
+        firstPlayerRegistered = true;
+        return true;
     }
 
     public void StartCinematic()
     {
+        if (NextPlayer())
+            return;
+
         if (CheckAndSaveAgentData())
         {
             AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickTechButtonSFX);
-
             lvlLoader.LoadNextLevel("StartingCinematic");
         }
     }

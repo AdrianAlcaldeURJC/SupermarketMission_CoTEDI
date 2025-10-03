@@ -172,6 +172,10 @@ PrefabInstance:
       propertyPath: obstacle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1794256989811825512, guid: 417f86193bfa5d548aadd72eff69e8b9, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1902282187173329515, guid: 417f86193bfa5d548aadd72eff69e8b9, type: 3}
       propertyPath: m_IsActive
       value: 1

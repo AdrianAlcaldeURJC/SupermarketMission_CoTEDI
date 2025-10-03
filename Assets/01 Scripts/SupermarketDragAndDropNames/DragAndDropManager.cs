@@ -43,7 +43,7 @@ public class DragAndDropManager : MonoBehaviour
     private bool CheckResults()
     {
         bool correct = true;
-        for (int i = 0; correct && i < dropFields.Length; i++)
+        for (int i = 0; i < dropFields.Length; i++)
         {
             if (dropFields[i].transform.childCount > 0)
             {
@@ -51,6 +51,11 @@ public class DragAndDropManager : MonoBehaviour
                 {
                     correct = false;
                     notificationCanvas.gameObject.SetActive(true);
+                    dropFields[i].transform.GetChild(0).GetComponent<Image>().color = new Color(1f, 0.16f, 0.05f, 1.0f);
+                }
+                else
+                {
+                    dropFields[i].transform.GetChild(0).GetComponent<Image>().color = new Color(0.3411765f, 0.9686275f, 0.8470588f, 1.0f);
                 }
             }
             else
@@ -69,7 +74,7 @@ public class DragAndDropManager : MonoBehaviour
         if (correct)
         {
             EventManager.OnSaveTimer();
-            lvlLoader.LoadNextLevel("Maze_Test2");
+            lvlLoader.LoadNextLevel("NextPlayerScene");
         }
     }
 

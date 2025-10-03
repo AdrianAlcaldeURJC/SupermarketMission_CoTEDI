@@ -71,6 +71,22 @@ MonoBehaviour:
     m_Key: FinalCinematic_4
     m_Metadata:
       m_Items: []
+  - m_Id: 50695781699989504
+    m_Key: Trolley_0_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50695784052994048
+    m_Key: Trolley_1_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50695785755881472
+    m_Key: Trolley_2_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50695865313439744
+    m_Key: Trolley_3_1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

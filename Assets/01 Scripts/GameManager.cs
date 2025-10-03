@@ -9,7 +9,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-    public string playerName;
+    public string playerNameA;
+    public string playerNameB;
     public string playerInitial;
     public int playerAge;
     public string playerGender;
@@ -46,12 +47,14 @@ public class GameManager : MonoBehaviour
     public int numElementsWrongPositionTrolley = 0;
 
     public string currentSceneName;
+    public string nextSceneName;
     public Food.Category CurrentMinigame;
     
     private DataBaseComunicator dataBaseCommunicator;
     private bool isSessionUpdated = false;
 
     public int mazeID;
+    public int nextPlayer = 0;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     public static void LoadMain()
@@ -94,15 +97,16 @@ public class GameManager : MonoBehaviour
 
     public void SavePlayerData(string name, int age, string gender)
     {
-        playerName = name;
-        playerInitial = playerName.Substring(0, 1).ToUpper();
+        playerNameA = name;
+        playerInitial = playerNameA.Substring(0, 1).ToUpper();
         playerAge = age;
         playerGender = gender;
     }
 
     public void ResetGameManager()
     {
-        playerName = "";
+        playerNameA = "";
+        playerNameB = "";
         playerInitial = "";
         playerAge = 7;
         playerGender = "";
@@ -137,6 +141,8 @@ public class GameManager : MonoBehaviour
         numElementsWrongPositionTrolley = 0;
     }
 
+    // ! REDO THIS FUNCTION TO USE THE TROLLEY ONE
+    /*
     public void EvaluateFinalTrolley()
     {
         for (int i = 0; i < trolleyStatus.GetLength(0); i++)
@@ -234,7 +240,8 @@ public class GameManager : MonoBehaviour
 
         }
     }
-
+    */
+    
     public void UpdateTMPtoLocalization(LocalizeStringEvent i_strEvent, TMP_Text i_tmp, string i_tableName, string i_keyName, bool add)
     {
         if (i_strEvent == null)

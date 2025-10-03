@@ -9,17 +9,19 @@ public class MazeMovement : MonoBehaviour
         public int Direction;
         public bool IsCorrect;
         public float Time;
+        public int Player;
 
-        public MazeStepData(int dir, bool isCorrect, float time)
+        public MazeStepData(int dir, bool isCorrect, float time, int player = -1)
         {
             Direction = dir;
             IsCorrect = isCorrect;
             Time = time;
+            Player = player;
         }
 
         public override string ToString()
         {
-            return $"({Direction}, {IsCorrect}, {Time})";
+            return $"({Direction}, {IsCorrect}, {Time}, {Player})";
         }
     }
 
@@ -133,7 +135,17 @@ public class MazeMovement : MonoBehaviour
         DataStorage.Instance.mazeMapData.MazeStepsCount++;
 
         float time = ObstaclesManagerSingleton.Instance.timerAux.elapsedTime[ObstaclesManagerSingleton.Instance.timerID];
-        MazeStepData step = new MazeStepData((int)direction, directionAvailable, time);
+        int player = -1;
+        if (GameManager.GetInstance().nextPlayer == 0)
+        {
+            player = 1;
+        }
+        else
+        {
+            player = 0;
+        }
+        Debug.Log(player);
+        MazeStepData step = new MazeStepData((int)direction, directionAvailable, time, player);
         mazeStepsString.Add(step.ToString());
         DataStorage.Instance.mazeMapData.MazeSteps = string.Join(",", mazeStepsString);
     }

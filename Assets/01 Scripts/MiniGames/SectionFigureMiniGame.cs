@@ -28,6 +28,11 @@ public class SectionFigureMiniGame : MonoBehaviour
     // Saving data
     [SerializeField] private MinigameListener minigameListener;
     private bool itemSkipped = true;
+
+    // PopUp Message
+    [SerializeField] private PopUpSpawner popUpSpawner; 
+
+
     public void StartMiniGame()
     {
         PrepareMiniGame();
@@ -176,9 +181,6 @@ public class SectionFigureMiniGame : MonoBehaviour
         {
             //correcto
             itemSkipped = false;
-            //foodSelected.GetComponent<Renderer>().enabled = false;
-            //ColorBlock c = foodSelected.GetComponent<Toggle>().colors;
-            //c.pressedColor = new Color(0,0,0, 1f);
             foodSelected.GetComponent<Toggle>().interactable = false;
             int index = groceryList.FindIndex(s => s.foodName == foodSelected.GetComponent<Food>().foodName);
             int index2 = -1;
@@ -210,6 +212,10 @@ public class SectionFigureMiniGame : MonoBehaviour
             {
                 //No esta en la lista de la compra
                 wrongSelected++;
+
+                // TODO: Add here wrong item picked popUp
+                popUpSpawner.SetSpawnPosition(foodSelected.transform.position);
+                popUpSpawner.SpawnPopUp();
             }
 
             StartCoroutine(PickedItemCoroutine());
@@ -220,7 +226,7 @@ public class SectionFigureMiniGame : MonoBehaviour
         }
 
         int isCorrectMoment = foodSelected.GetComponent<Food>().foodName == food.GetComponent<Food>().foodName ? 1 : 0;
-        
+
         minigameListener.AddShadowPick(
             DataStorage.GroceryMapData.GetIDfromStringFood(foodSelected.GetComponent<Food>().foodName),
             isCorrect ? 1 : 0,
@@ -284,7 +290,7 @@ public class SectionFigureMiniGame : MonoBehaviour
                 GameManager.GetInstance().legumeFoodList[index].alreadyTaken = true;
                 break;
             case Food.Category.fridge:
-                    GameManager.GetInstance().fridgeFoodList[index].alreadyTaken = true;
+                GameManager.GetInstance().fridgeFoodList[index].alreadyTaken = true;
                 break;
             case Food.Category.fish:
                 GameManager.GetInstance().fishFoodList[index].alreadyTaken = true;
@@ -319,5 +325,6 @@ public class SectionFigureMiniGame : MonoBehaviour
         }
         return 0;
     }
+
 }
 

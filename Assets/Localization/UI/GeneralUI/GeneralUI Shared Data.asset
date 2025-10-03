@@ -36,7 +36,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 368785350897664
-    m_Key: Name
+    m_Key: Name_A
     m_Metadata:
       m_Items: []
   - m_Id: 368941811019776
@@ -61,6 +61,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 14811599392387072
     m_Key: Congratulations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55487311463755776
+    m_Key: Name_B
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56175799037243392
+    m_Key: NextPlayer
     m_Metadata:
       m_Items: []
   m_Metadata:

@@ -65,7 +65,7 @@ public class StoryBehaviourFinal : MonoBehaviour
     void SetLines()
     {
         lines = new string[numLines];
-        lines[0] = "�" + GameManager.GetInstance().playerName + "! �Puedes venir un momento, por favor?";
+        lines[0] = "�" + GameManager.GetInstance().playerNameA + "! �Puedes venir un momento, por favor?";
         lines[1] = "Aqu� est�s. Pues ver�s, tengo una misi�n para ti.";
         lines[2] = "Tu padre iba ponerse a hacer la comida, pero al parecer nos faltan muchos ingredientes y tenemos un poco de prisa.";
         lines[3] = "�Crees que podr�as conseguirlos todos tu solo, agente " + GameManager.GetInstance().playerInitial + "? ";

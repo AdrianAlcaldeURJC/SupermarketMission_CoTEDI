@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1794256989811825512, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1902282187173329515, guid: 20613a17b0587dd4f9305f8d8ecb3022, type: 3}
       propertyPath: m_IsActive
       value: 1

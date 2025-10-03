@@ -13,6 +13,8 @@ public class SectionColorsMiniGame : MonoBehaviour
     [SerializeField] private FoodResourcesManager foodManager;
     [SerializeField] private LevelLoader lvlLoader;
     [SerializeField] private MinigameListener minigameListener;
+    [SerializeField] private PopUpSpawner popUpSpawner;
+
     private List<Food> sectionFood = new List<Food>();
     private List<Food> groceryList = new List<Food>();
     private List<Food> correctItems = new List<Food>();
@@ -68,7 +70,7 @@ public class SectionColorsMiniGame : MonoBehaviour
         }
 
         CountAlreadyTakenItems(groceryList);
-        //Instancia los botones de los colores que tenga los alimentos
+        // Instancia los botones de los colores que tenga los alimentos
         List<Food.colors> sectionColors = new List<Food.colors>();
         foreach (Food f in sectionFood)
         {
@@ -79,8 +81,8 @@ public class SectionColorsMiniGame : MonoBehaviour
                     sectionColors.Add(color);
                     GameObject button = Instantiate(colorButtonPrefab);
                     button.transform.SetParent(buttonsScrollPanel.transform, false);
-                    button.GetComponent<Image>().color = SetColorButton(color);
-                    button.GetComponent<Button>().onClick.AddListener(delegate
+                    button.GetComponentInChildren<Image>().color = SetColorButton(color);
+                    button.GetComponentInChildren<Button>().onClick.AddListener(delegate
                     {
                         SetColorVisibility(color);
                     });
@@ -135,11 +137,10 @@ public class SectionColorsMiniGame : MonoBehaviour
         int countAlreadytaken = 0;
         foreach (Food f in list)
         {
-              if (f.alreadyTaken)
-                countAlreadytaken++;
+            if (f.alreadyTaken)
+            countAlreadytaken++;
         }
         if (countAlreadytaken == list.Count)
-            //stopMiniGame = true;
             SaveCorrectItems();
         correctSelected = countAlreadytaken;
     }
@@ -150,9 +151,10 @@ public class SectionColorsMiniGame : MonoBehaviour
         {
             //Visualizar solo los alimentos que tengas ese color
             //Poner el filtro a ese color
-            Color32 temp = SetColorButton(color);
+            Color32 filterColor = SetColorButton(color);
             filterImage.GetComponent<Animator>().SetTrigger("Appear");
-            filterImage.color = new Color32(temp.r, temp.g, temp.b, 125);
+            filterImage.color = new Color32(filterColor.r, filterColor.g, filterColor.b, 125);
+
             //Recorrer toogles y porner alfa a 0 de los que lo tengan
             bool hasColor;
             foreach (Toggle toggle in toggles)
@@ -184,7 +186,7 @@ public class SectionColorsMiniGame : MonoBehaviour
 
     IEnumerator MakeItemsDisappear()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.72f);
 
         //yield return new WaitForSeconds(filterImage.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
         foreach (Toggle t in toggles)
@@ -266,7 +268,7 @@ public class SectionColorsMiniGame : MonoBehaviour
 
             if (!alreadyTaken)
             {
-                //Si no habia sido aun cogido, se a�ade a la lista de correctos
+                //Si no habia sido aun cogido, se añade a la lista de correctos
                 correctItems.Add(groceryList[index]);
                 correctSelected++;
                 GameManager.GetInstance().pickedListItems++;
@@ -286,6 +288,10 @@ public class SectionColorsMiniGame : MonoBehaviour
             //No esta en la lista de la compra
             wrongSelected++;
             isCorrect = 0;
+
+            
+            popUpSpawner.SetSpawnPosition(foodSelected.transform.position);
+            popUpSpawner.SpawnPopUp();
         }
 
         picksAfterColorOpen++; // Incrementa el contador si hay un color abierto

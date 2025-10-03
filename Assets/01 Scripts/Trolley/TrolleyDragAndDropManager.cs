@@ -26,6 +26,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
     [SerializeField]
     LevelLoader lvlLoader;
     [SerializeField] private GameObject destroyGOAnimation;
+    [SerializeField] private PopUpSpawner popUpSpawner;
     private ExplanationCanvas explanationCanvas;
 
     public GameObject[,] trolley = new GameObject[8, 3];
@@ -176,22 +177,29 @@ public class TrolleyDragAndDropManager : MonoBehaviour
     public void OnClickNext()
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickTechButtonSFX);
+        EvaluateTrolley();
         if (newFoodParent.transform.childCount == 0)
         {
             SaveTrolley();
             GameManager.GetInstance().pickedItems = new List<Food>();
             EventManager.OnSaveTimer();
-            lvlLoader.LoadNextLevel("Maze_Test2");
+            lvlLoader.LoadNextLevel("NextPlayerScene");
         }
 
     }
 
     private void EvaluateTrolley()
     {
+        Vector3 statePlacedItems = new Vector3();
+
         for (int col = 0; col < trolley.GetLength(0); ++col)
         {
-            EvaluateColumn(col);
+            statePlacedItems += EvaluateColumn(col);
         }
+
+        GameManager.GetInstance().numElementsCorrectPositionTrolley     = (int)statePlacedItems.x;
+        GameManager.GetInstance().numElementsModeratePositionTrolley    = (int)statePlacedItems.y;
+        //GameManager.GetInstance().numElementsWrongPositionTrolley       = (int)statePlacedItems.z;
     }
 
     /// <summary>
@@ -201,20 +209,38 @@ public class TrolleyDragAndDropManager : MonoBehaviour
     /// </summary>
     /// <param name="indexJ">Index of the column to evaluate.</param>
     /// 
-    public void EvaluateColumn(int indexJ)
+    public Vector3 EvaluateColumn(int indexJ)
     {
+        Vector3 statePlacedItems = new Vector3();
         int topWeight = 0;
         for (int row = 2; row >= 0; --row)
         {
             if (!trolley[indexJ, row]) break;
             topWeight = EvaluateWeight(indexJ, row);
             Food.positionStatus itemStatus = EvaluateRules(topWeight, (int)trolley[indexJ, row].GetComponent<Food>().hardness);
+
+            if (itemStatus == Food.positionStatus.good)
+            {
+                statePlacedItems.x += 1;
+            }
+            if (itemStatus == Food.positionStatus.moderate)
+            {
+                statePlacedItems.y += 1;
+            }
+            if (itemStatus == Food.positionStatus.wrong)
+            {
+                statePlacedItems.z += 1; // Useless
+                GameManager.GetInstance().numElementsWrongPositionTrolley += 1;
+            }
+
             Color newColor = EvaluateColor(itemStatus);
             newColor.a = 0.65f;
             trolley[indexJ, row].GetComponent<TrolleyDragAndDrop>().statusImage.color = newColor;
             trolley[indexJ, row].GetComponent<Food>().trolleyStatus = itemStatus;
             EvaluateDestruction(itemStatus, indexJ, row);
         }
+
+        return statePlacedItems;
     }
 
     private int EvaluateWeight(int column, int row)
@@ -283,6 +309,9 @@ public class TrolleyDragAndDropManager : MonoBehaviour
         {
             return;
         }
+
+        popUpSpawner.SetSpawnPosition(trolley[col, row].transform.position);
+        popUpSpawner.SpawnPopUp();
 
         GameObject prefabInstantiated = Instantiate(destroyGOAnimation, trolley[col, row].transform.parent.parent.parent);
         prefabInstantiated.GetComponent<AnimationCyclesCounter>().column = col;

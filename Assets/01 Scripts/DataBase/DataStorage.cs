@@ -6,6 +6,8 @@ using System.Security.Cryptography;
 using System.Text;
 using UnityEngine.Localization.Settings;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.IO.Compression;
 
 /// <summary>
 /// Singleton class to store multiple JSON DATA. 
@@ -13,6 +15,11 @@ using System.IO;
 /// </summary>
 public class DataStorage : MonoBehaviour
 {
+
+    [DllImport("__Internal")]
+    // private static extern void DownloadFile(string filename, string content);
+    private static extern void DownloadFile(string filename, byte[] content, int size);
+
     public static DataStorage Instance { get; private set; }
 
     // Necessary to transform it into a JSON
@@ -28,24 +35,24 @@ public class DataStorage : MonoBehaviour
         public string UserAux1;
         public string UserAux2;
 
-        public void setData(string _Name, int _Age, string _Gender,
+        public void SetData(string _Name, int _Age, string _Gender,
                             string _UserAux1 = null, string _UserAux2 = null)
         {
             Name = _Name.Replace(" ", "_").ToLower();
-            CreationDate = DateTime.Now.ToString("M/d/yyyy"); // TODO: Check if the user is already created and use that date...
+            CreationDate = DateTime.Now.ToString("M/d/yyyy"); // TODO: Check if the user is already created, and use that date...
             Age = _Age;
             Gender = _Gender;
 
             // Creation Country
             Country = LocalizationSettings.SelectedLocale.ToString();
 
-            UserAux1 = _UserAux1;
+            UserAux1 = _UserAux1.Replace(" ", "_").ToLower();
             UserAux2 = _UserAux2;
 
-            UserID = generateUserID();
+            UserID = GenerateUserID();
         }
 
-        public string generateUserID()
+        public string GenerateUserID()
         {
             // Function by https://stackoverflow.com/questions/63615950/generate-unique-id-from-string-in-c-sharp
             string hash;
@@ -87,14 +94,14 @@ public class DataStorage : MonoBehaviour
         public void OnAwakeData()
         {
             SessionStartTime = DateTime.Now.ToString("M/d/yyyy/hh:mm:ss");
-            SessionID = 0; 
+            SessionID = 0;
             Platform = (int)Environment.OSVersion.Platform;
         }
 
         public void OnDestroyData()
         {
-            
-            SessionEndTime = DateTime.Now.ToString("M/d/yyyy/hh:mm:ss") ;
+
+            SessionEndTime = DateTime.Now.ToString("M/d/yyyy/hh:mm:ss");
         }
     }
 
@@ -385,18 +392,33 @@ public class DataStorage : MonoBehaviour
         {
             string sessionTime = sessionData.SessionStartTime.Replace(":", "-");
             string FolderName = $"{Application.persistentDataPath}/DataCollection/{userData.UserID}_Session{sessionData.SessionID}_Game{gameData.GameID}_Time{sessionTime}/";
-            if(!Directory.Exists(FolderName))
+
+            // Zip data
+            Dictionary<string, string> jsonFiles = new Dictionary<string, string>();
+
+
+            if (!Directory.Exists(FolderName))
                 Directory.CreateDirectory(FolderName);
-            
+
             for (int i = 0; i < minigamesData.Count; i++)
             {
                 string fileName = $"Minigame{i}.json";
                 string jsonData = GetCombinedJson(i);
+                jsonFiles.Add($"Minigame_{i}.json", jsonData);
 
-                File.WriteAllText(Path.Combine(FolderName, fileName), jsonData);
-                Debug.Log("JSON data saved to " + Path.Combine(FolderName, fileName));
+                //File.WriteAllText(Path.Combine(FolderName, fileName), jsonData);
             }
+
+            byte[] zipBytes = CreateZipFromJsons(jsonFiles);
+            #if UNITY_WEBGL && !UNITY_EDITOR
+                DownloadFile($"{userData.UserID}_Session{sessionData.SessionID}_Game{gameData.GameID}_Time{sessionTime}.zip", zipBytes, zipBytes.Length);
+            #else
+            File.WriteAllBytes(Path.Combine(FolderName, "Games.zip"), zipBytes);
+            #endif
             
+            Debug.Log("JSON data saved to " + Path.Combine(FolderName, $"Games.zip"));
+            
+
         }
         catch (Exception e)
         {
@@ -421,4 +443,22 @@ public class DataStorage : MonoBehaviour
         sessionData.NumGames++;
     }
 
+    private byte[] CreateZipFromJsons(Dictionary<string, string> jsonFiles)
+    {
+        using (MemoryStream memoryStream = new MemoryStream())
+        {
+            using (ZipArchive archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+            {
+                foreach (var kvp in jsonFiles)
+                {
+                    ZipArchiveEntry entry = archive.CreateEntry(kvp.Key);
+                    using (StreamWriter writer = new StreamWriter(entry.Open()))
+                    {
+                        writer.Write(kvp.Value);
+                    }
+                }
+            }
+            return memoryStream.ToArray();
+        }
+    }
 }

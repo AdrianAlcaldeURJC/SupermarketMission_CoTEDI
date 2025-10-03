@@ -8,6 +8,7 @@ public class TrolleyTutorialController : MonoBehaviour
 {
     [SerializeField] private Button leftArrow;
     [SerializeField] private Button rightArrow;
+    [SerializeField] private Button close;
     [SerializeField] private List<Toggle> pageIndicator;
     [SerializeField] private List<GameObject> pages;
     [SerializeField] private int maxPages = 3;
@@ -43,7 +44,10 @@ public class TrolleyTutorialController : MonoBehaviour
         pageIndicator[currentPage].isOn = true;
 
         if (currentPage == maxPages - 1)
+        {
             rightArrow.interactable = false;
+            close.interactable = true;
+        }   
 
         leftArrow.interactable = true;
     }

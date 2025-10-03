@@ -36,11 +36,14 @@ EditorBuildSettings:
     path: Assets/00 Scenes/NameScene.unity
     guid: 7ed8e15e0ee3d0342901ae1b390747df
   - enabled: 1
-    path: Assets/00 Scenes/Testing/Maze_Test2.unity
+    path: Assets/00 Scenes/Maze_Test2.unity
     guid: 3e4831437f6a0ed489fea188e6acb325
   - enabled: 1
     path: Assets/00 Scenes/SupermarketMap.unity
     guid: ac82d36cbbf3c79418d475119ba897d6
+  - enabled: 1
+    path: Assets/00 Scenes/NextPlayerScene.unity
+    guid: 6f3915c95d4bd294b8b234e6c1a2c060
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: a269486342739d848978f08a2f2a0d34, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 2aa28f05368c87a47abdadc95daec880, type: 2}

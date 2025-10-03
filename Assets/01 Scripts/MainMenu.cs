@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] Canvas scorebardCanvas;
+    [SerializeField] Canvas scoreboardCanvas;
     [SerializeField] Canvas optionsCanvas;
     [SerializeField] Canvas mainCanvas;
 
@@ -16,8 +16,8 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         GameManager.GetInstance().ResetGameManager();
-        scorebardCanvas.gameObject.SetActive(false);
-        optionsCanvas.gameObject.SetActive(false);
+        scoreboardCanvas.gameObject.SetActive(false);
+        optionsCanvas.transform.GetChild(0).gameObject.SetActive(false);
         mainCanvas.gameObject.SetActive(true);
         AudioManager.GetInstance().PlayMusicClip(AudioManager.GetInstance().generalMusic);
     }
@@ -36,8 +36,8 @@ public class MainMenu : MonoBehaviour
     public void OnClickOptions()
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
-        scorebardCanvas.gameObject.SetActive(false);
-        optionsCanvas.gameObject.SetActive(!optionsCanvas.gameObject.activeSelf);
+        scoreboardCanvas.gameObject.SetActive(false);
+        optionsCanvas.transform.GetChild(0).gameObject.SetActive(!optionsCanvas.transform.GetChild(0).gameObject.activeSelf);
         SetSlidersValue();
     }
 

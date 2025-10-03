@@ -39,7 +39,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 368785350897664
-    m_Localized: Name
+    m_Localized: Name A
     m_Metadata:
       m_Items: []
   - m_Id: 368941811019776
@@ -64,6 +64,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 14811599392387072
     m_Localized: Congratulations!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55487311463755776
+    m_Localized: Name b
+    m_Metadata:
+      m_Items: []
+  - m_Id: 56175799037243392
+    m_Localized: Now you have to play!
     m_Metadata:
       m_Items: []
   references:

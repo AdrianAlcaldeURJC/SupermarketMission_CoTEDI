@@ -30,7 +30,7 @@ MonoBehaviour:
       m_Items:
       - rid: 4724020283536048155
   - m_Id: 128787591168
-    m_Localized: "\xA1Avanza a la caja!"
+    m_Localized: "\xA1Ahora ve a la caja!"
     m_Metadata:
       m_Items: []
   references:

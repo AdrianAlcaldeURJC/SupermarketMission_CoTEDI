@@ -27,7 +27,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     private bool isCorrectDrop = false;
 
     // Original size data
-    [SerializeField] private Vector2Int rectTransformOriginalSize = new Vector2Int(180, 50);
+    [SerializeField] private Vector2Int rectTransformOriginalSize = new Vector2Int(220, 70);
 
     void Start()
     {
@@ -41,7 +41,6 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     {
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         canvasGroup.blocksRaycasts = false;
-        transform.SetParent(initialParent);
 
         // Drag data
         dragItem = new Drag();
@@ -63,11 +62,12 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
         if (eventData.pointerEnter == null)
         {
-            //For the object to come back if it's drag outside the screen
+            // For the object to come back if it's drag outside the screen
             rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rectTransformOriginalSize.x);
             rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, rectTransformOriginalSize.y);
             eventData.pointerDrag.GetComponent<RectTransform>().eulerAngles = new Vector3(0f, 0f, 0f);
 
+            transform.SetParent(initialParent.parent);
             transform.SetParent(initialParent);
             transform.position = iniPos;
         }
@@ -75,6 +75,7 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         {
             if (eventData.pointerEnter.transform.GetComponent<DropField>() == null)
             {
+                transform.SetParent(initialParent.parent);
                 transform.SetParent(initialParent);
                 transform.position = iniPos;
                 rectTrans.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, rectTransformOriginalSize.x);
@@ -84,6 +85,11 @@ public class DragAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
             else
             {
                 transform.SetParent(eventData.pointerEnter.gameObject.transform);
+                RectTransform rect = GetComponent<RectTransform>();
+                rect.anchorMin = new Vector2(0.5f, 0.5f);
+                rect.anchorMax = new Vector2(0.5f, 0.5f);
+                rect.pivot     = new Vector2(0.5f, 0.5f);
+
                 GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
                 isCorrectDrop = true;
             }

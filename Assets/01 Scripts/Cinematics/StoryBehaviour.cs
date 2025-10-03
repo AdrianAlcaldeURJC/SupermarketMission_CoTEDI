@@ -91,7 +91,7 @@ public class StoryBehaviour : MonoBehaviour
                 if (SceneManager.GetActiveScene().name == "StartingCinematic")
                 {
                     //Skip story
-                    levelLoader.LoadNextLevel("GroceryList");
+                    levelLoader.LoadNextLevel("NextPlayerScene");
                 }
                 else
                 {
@@ -126,7 +126,7 @@ public class StoryBehaviour : MonoBehaviour
                 lines[4] = m_localizedStrings[4].GetLocalizedString();
                 break;
             case "FinalCinematic":
-                numLines = 6;
+                numLines = 7;
                 lines = new string[numLines];
                 lines[0] = m_localizedStrings[5].GetLocalizedString();
                 lines[1] = m_localizedStrings[6].GetLocalizedString();
@@ -134,7 +134,8 @@ public class StoryBehaviour : MonoBehaviour
                 lines[3] = m_localizedStrings[8].GetLocalizedString();
                 lines[4] = CalculateScore();
                 //Dependiendo estado de los alimentos sacar un dialogo distinto
-                lines[5] = CalculateTrolleyScore();
+                lines[5] = CalculateTrolleyScore()[0];
+                lines[6] = CalculateTrolleyScore()[1];
                 break;
             default:
                 lines[0] = "[Dialogo no definido]";
@@ -161,36 +162,35 @@ public class StoryBehaviour : MonoBehaviour
         return o;
     }
 
-    string CalculateTrolleyScore()
+    string[] CalculateTrolleyScore()
     {
-        GameManager.GetInstance().EvaluateFinalTrolley();
-        string line;
+        //GameManager.GetInstance().EvaluateFinalTrolley();
+        string[] lines = new string[2];
         int wrongPosition = GameManager.GetInstance().numElementsWrongPositionTrolley;
         int moderatePosition = GameManager.GetInstance().numElementsModeratePositionTrolley;
         if(wrongPosition == 0 && moderatePosition == 0)
         {
-            line = m_localizedStrings[10].GetLocalizedString();
+            lines[0] = m_localizedStrings[10].GetLocalizedString();
+            lines[1] = m_localizedStrings[11].GetLocalizedString();
         }
-        else if(wrongPosition==0&&moderatePosition<4)
+        else if(wrongPosition==0 && moderatePosition < 4)
         {
-            line = m_localizedStrings[11].GetLocalizedString();
+            lines[0] = m_localizedStrings[12].GetLocalizedString();
+            lines[1] = m_localizedStrings[13].GetLocalizedString();
         }
         else if (wrongPosition == 0 && moderatePosition >= 4)
         {
-            line = m_localizedStrings[12].GetLocalizedString();
+            lines[0] = m_localizedStrings[14].GetLocalizedString();
+            lines[1] = m_localizedStrings[15].GetLocalizedString();
         }
         else
         {
-            line = m_localizedStrings[13].GetLocalizedString();
+            lines[0] = m_localizedStrings[16].GetLocalizedString();
+            lines[1] = m_localizedStrings[17].GetLocalizedString();
         }
-        return line;
+        return lines;
     }
-
-    //void completedLine()
-    //{
-    //    DialogManager.CompleteTextRevealed += showNewText;
-    //}
-
+    
     public void ShowNewText()
     {
         if (!changeInProgress)
@@ -206,10 +206,10 @@ public class StoryBehaviour : MonoBehaviour
             {
                 if (index == lines.Length - 1)
                 {
-                    if(SceneManager.GetActiveScene().name == "StartingCinematic")
+                    if (SceneManager.GetActiveScene().name == "StartingCinematic")
                     {
                         //Skip story
-                        levelLoader.LoadNextLevel("GroceryList");
+                        levelLoader.LoadNextLevel("NextPlayerScene");
                     }
                     else
                     {

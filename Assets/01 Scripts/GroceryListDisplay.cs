@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization.Components;
+using UnityEngine.UI;
 
 public class GroceryListDisplay : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class GroceryListDisplay : MonoBehaviour
 
     void FillSectionList(List<Food> foodList, GameObject sectionScroll)
     {
+        bool allFoodsTaken = true;
         //Por cada lista, ir creando los eleemntos de la lista
         for (int i = 0; i < foodList.Count; i++)
         {
@@ -49,9 +51,22 @@ public class GroceryListDisplay : MonoBehaviour
 
             //Comprobar si el elemento ya ha sido cogido para tachar el texto
             if (foodList[i].alreadyTaken)
+            {
                 g.GetComponentInChildren<TMP_Text>().fontStyle = FontStyles.Strikethrough;
-            //Quitar drag and drop script
+                g.GetComponent<Image>().color = new Color(0.5f, 1f, 0.25f, 1f);
+            }
+            else
+            {
+                allFoodsTaken = false;
+            }
+
+            // Quitar drag and drop script
             g.GetComponent<DragAndDropGroceryList>().enabled = false;
+        }
+
+        if (allFoodsTaken)
+        {
+            sectionScroll.transform.parent.GetComponent<Image>().color = new Color(0.5f, 1f, 0.25f, 1f);
         }
     }
 
