@@ -264,6 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9e547ce705b344a92f0028f509c3a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disappearTimeRange: {x: 10, y: 50}
-  upDistanceRange: {x: 50, y: 150}
-  speedRange: {x: 7, y: 20}
+  disappearTimeRange: {x: 50, y: 100}
+  upDistanceRange: {x: 50, y: 200}
+  speedRange: {x: 8, y: 13}

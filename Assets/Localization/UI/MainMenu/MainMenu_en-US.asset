@@ -42,6 +42,18 @@ MonoBehaviour:
     m_Localized: Exit
     m_Metadata:
       m_Items: []
+  - m_Id: 69303797189881856
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69303886545334272
+    m_Localized: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69304013863432192
+    m_Localized: Spanish
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

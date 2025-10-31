@@ -42,6 +42,18 @@ MonoBehaviour:
     m_Localized: Salir
     m_Metadata:
       m_Items: []
+  - m_Id: 69303797189881856
+    m_Localized: Idioma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69303886545334272
+    m_Localized: "Ingl\xE9s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69304013863432192
+    m_Localized: "Espa\xF1ol"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -309,6 +309,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9f15727d1c2d64a44aa70a2974083051, type: 3}
   - {fileID: 21300000, guid: 7777e5aec33aba444968a5f6982b9f6c, type: 3}
   numItems: 18
+  maxNumItemsPerSection: 3
 --- !u!1 &39826920
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +564,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1860346488}
   m_HandleRect: {fileID: 1860346487}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2496,7 +2497,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1408089914}
   m_HandleRect: {fileID: 1408089913}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5739,7 +5740,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1926778622}
   m_HandleRect: {fileID: 1926778621}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -6450,7 +6451,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.5
+  m_fontSize: 47.55
   m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7827,7 +7828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9029298074679155355, guid: 35c776e17716d234eacba18cb8e7388d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

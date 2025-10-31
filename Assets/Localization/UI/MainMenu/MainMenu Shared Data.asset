@@ -39,6 +39,18 @@ MonoBehaviour:
     m_Key: Exit
     m_Metadata:
       m_Items: []
+  - m_Id: 69303797189881856
+    m_Key: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69303886545334272
+    m_Key: English
+    m_Metadata:
+      m_Items: []
+  - m_Id: 69304013863432192
+    m_Key: Spanish
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
