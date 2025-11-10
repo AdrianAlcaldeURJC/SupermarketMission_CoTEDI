@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using Random = UnityEngine.Random;
@@ -257,6 +258,13 @@ public class SectionGenerator : MonoBehaviour
         AudioManager.GetInstance().PlaySFXClip(AudioManager.GetInstance().clickButtonSFX);
         groceryListCanvas.gameObject.SetActive(!groceryListCanvas.gameObject.activeSelf);
         groceryListCanvas.gameObject.GetComponent<GroceryListDisplay>().RefreshSection();
-
+        if (groceryListCanvas.gameObject.activeSelf)
+        {
+            if (SceneManager.GetActiveScene().name != "SupermarketSection")
+                groceryListCanvas.GetComponent<GroceryListHighlight>().HighlightSection(GameManager.GetInstance().actualSection, true);
+            else
+                groceryListCanvas.GetComponent<GroceryListHighlight>().HighlightSection(GameManager.GetInstance().actualSection, false);
+                
+        }
     }
 }

@@ -144,7 +144,6 @@ public class MazeMovement : MonoBehaviour
         {
             player = 0;
         }
-        Debug.Log(player);
         MazeStepData step = new MazeStepData((int)direction, directionAvailable, time, player);
         mazeStepsString.Add(step.ToString());
         DataStorage.Instance.mazeMapData.MazeSteps = string.Join(",", mazeStepsString);

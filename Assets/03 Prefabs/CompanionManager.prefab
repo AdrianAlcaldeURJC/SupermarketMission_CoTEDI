@@ -255,8 +255,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PRUEBA PRUEBA PRUEBA PRUEBA PRUEBA PRUEBA
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 81e9eede3a91b7b428f1491974312c7f, type: 2}
-  m_sharedMaterial: {fileID: 1077191850112297578, guid: 81e9eede3a91b7b428f1491974312c7f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e9975527edfbbb34893034272c73dd83, type: 2}
+  m_sharedMaterial: {fileID: -4515719125032221682, guid: e9975527edfbbb34893034272c73dd83, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.35
+  m_fontSize: 24.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

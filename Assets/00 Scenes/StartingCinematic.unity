@@ -890,7 +890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1456685280
 RectTransform:
   m_ObjectHideFlags: 0
@@ -932,8 +932,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Pulsa T para saltar...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 81e9eede3a91b7b428f1491974312c7f, type: 2}
-  m_sharedMaterial: {fileID: 1077191850112297578, guid: 81e9eede3a91b7b428f1491974312c7f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e9975527edfbbb34893034272c73dd83, type: 2}
+  m_sharedMaterial: {fileID: -4515719125032221682, guid: e9975527edfbbb34893034272c73dd83, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1426,8 +1426,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: heeeee
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 81e9eede3a91b7b428f1491974312c7f, type: 2}
-  m_sharedMaterial: {fileID: 1077191850112297578, guid: 81e9eede3a91b7b428f1491974312c7f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e9975527edfbbb34893034272c73dd83, type: 2}
+  m_sharedMaterial: {fileID: -4515719125032221682, guid: e9975527edfbbb34893034272c73dd83, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 92.9
   m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 1
