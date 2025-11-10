@@ -192,6 +192,8 @@ public class SectionFigureMiniGame : MonoBehaviour
 
                 if (!alreadyTaken)
                 {
+                    popUpSpawner.SetSpawnPosition(foodSelected.transform.position);
+                    popUpSpawner.SpawnPopUp(true);
                     correctItems.Add(groceryList[index]);
                     GameManager.GetInstance().pickedListItems++;
                     isCorrect = true;
@@ -203,6 +205,8 @@ public class SectionFigureMiniGame : MonoBehaviour
 
                 if (correctItems.Count == groceryList.Count)
                 {
+                    popUpSpawner.SetSpawnPosition(foodSelected.transform.position);
+                    popUpSpawner.SpawnPopUp(true);
                     isCorrect = true;
                     stopMiniGame = true;
                     EventManager.OnTimerStop();
@@ -213,9 +217,8 @@ public class SectionFigureMiniGame : MonoBehaviour
                 //No esta en la lista de la compra
                 wrongSelected++;
 
-                // TODO: Add here wrong item picked popUp
                 popUpSpawner.SetSpawnPosition(foodSelected.transform.position);
-                popUpSpawner.SpawnPopUp();
+                popUpSpawner.SpawnPopUp(false);
             }
 
             StartCoroutine(PickedItemCoroutine());

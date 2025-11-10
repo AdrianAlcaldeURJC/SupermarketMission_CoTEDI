@@ -273,6 +273,8 @@ public class SectionColorsMiniGame : MonoBehaviour
                 correctSelected++;
                 GameManager.GetInstance().pickedListItems++;
                 isCorrect = 1;
+                popUpSpawner.SetSpawnPosition(foodSelected.transform.position);
+                popUpSpawner.SpawnPopUp(true);
             }
             else
             {
@@ -291,7 +293,7 @@ public class SectionColorsMiniGame : MonoBehaviour
 
             
             popUpSpawner.SetSpawnPosition(foodSelected.transform.position);
-            popUpSpawner.SpawnPopUp();
+            popUpSpawner.SpawnPopUp(false);
         }
 
         picksAfterColorOpen++; // Incrementa el contador si hay un color abierto

@@ -48,4 +48,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86739b8349c5e54d829f2bc9778e40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUpPrefab: {fileID: 4087896354487083182, guid: f1c0936370c1dcc4b81bba32abdc15d9, type: 3}
+  popUpCorrect: {fileID: 4087896354487083182, guid: bd67d28b952a92346adb37256671ac6d, type: 3}
+  popUpWrong: {fileID: 4087896354487083182, guid: 425cf93cdf05cb34daf3a1a67a64e2c6, type: 3}

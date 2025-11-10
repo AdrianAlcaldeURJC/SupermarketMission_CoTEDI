@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.4
+  m_fontSize: 36.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1081,7 +1081,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.35
+  m_fontSize: 38.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1370,7 +1370,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.4
+  m_fontSize: 39.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1562,10 +1562,10 @@ RectTransform:
   - {fileID: 5913620340281865728}
   m_Father: {fileID: 1955126990562547051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -827.9399, y: 425.5273}
-  m_SizeDelta: {x: 104.0267, y: 82.1333}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 132.06012, y: -116}
+  m_SizeDelta: {x: 104.02673, y: 82.1333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3533110033629628778
 CanvasRenderer:
@@ -2423,18 +2423,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlights:
-  - {fileID: 1397016030666067394}
-  - {fileID: 6871721987758375698}
-  - {fileID: 5072434238803458350}
-  - {fileID: 7199177855334021874}
-  - {fileID: 8385559872691691663}
-  - {fileID: 723310190259810471}
-  - {fileID: 8902243159005840930}
-  - {fileID: 6770219488972396549}
-  - {fileID: 5732516038422072729}
-  - {fileID: 1873049986291893720}
-  - {fileID: 1286108431614556142}
-  - {fileID: 2786346923258393643}
+  - {fileID: 4338071001484438988}
+  - {fileID: 466173371817053965}
+  - {fileID: 8899275238627818990}
+  - {fileID: 2666796705749878226}
+  - {fileID: 4381721589398539023}
+  - {fileID: 1865534562916722195}
   transparency: 0.368
   groceryListCanvas: {fileID: 0}
 --- !u!1 &6075426996801581634
@@ -3624,7 +3618,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42.55
+  m_fontSize: 42.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

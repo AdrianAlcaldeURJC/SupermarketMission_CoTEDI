@@ -28,14 +28,12 @@ public class PopUpMessage : MonoBehaviour
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = startPosition + new Vector3(0.0f, upDistance, 0.0f);
         Image image = GetComponent<Image>();
-        TextMeshProUGUI tmp = GetComponentInChildren<TextMeshProUGUI>();
 
         while (time < disappearSpeedTime)
         {
             gameObject.transform.position = Vector3.Lerp(startPosition, targetPosition, time / disappearSpeedTime);
             alpha = Mathf.Lerp(1, 0, time / disappearSpeedTime);
             image.color = new Color(image.color.r, image.color.g, image.color.b, alpha);
-            tmp.color = new Color(tmp.color.r, tmp.color.g, tmp.color.b, alpha);
             time += Time.deltaTime;
             yield return null;
         }

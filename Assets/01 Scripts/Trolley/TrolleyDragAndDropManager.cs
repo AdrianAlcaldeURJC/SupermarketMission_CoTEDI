@@ -311,7 +311,7 @@ public class TrolleyDragAndDropManager : MonoBehaviour
         }
 
         popUpSpawner.SetSpawnPosition(trolley[col, row].transform.position);
-        popUpSpawner.SpawnPopUp();
+        popUpSpawner.SpawnPopUp(false);
 
         GameObject prefabInstantiated = Instantiate(destroyGOAnimation, trolley[col, row].transform.parent.parent.parent);
         prefabInstantiated.GetComponent<AnimationCyclesCounter>().column = col;

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GroceryListHighlight : MonoBehaviour
 {
-    [SerializeField] private List<Image> highlights;
+    [SerializeField] private List<GameObject> highlights;
     [SerializeField] private float transparency;
     [SerializeField] private GameObject groceryListCanvas;
 
@@ -30,24 +30,16 @@ public class GroceryListHighlight : MonoBehaviour
     
     private void Highlight(int indexSection)
     {
-        // TODO: Just get all the images of the child and change their alpha
-        for (int i = 0; i < highlights.Count; i = i+2)
+        for (int i = 0; i < highlights.Count; ++i)
         {
-            Color colorTop = highlights[i].color;
-            Color colorBottom = highlights[i+1].color;
+            Image[] images =  highlights[i].GetComponentsInChildren<Image>();
 
-            if (i == indexSection * 2)
+            foreach (Image image in images)
             {
-                colorTop.a = 100;
-                colorBottom.a = 100;
+                Color color = image.color;
+                color.a = i == indexSection ? 1f : transparency;
+                image.color = color;
             }
-            else
-            {
-                colorTop.a = transparency;
-                colorBottom.a = transparency;
-            }   
-            highlights[i].color = colorTop;
-            highlights[i+1].color = colorBottom;
         }
     }
 
@@ -55,13 +47,14 @@ public class GroceryListHighlight : MonoBehaviour
     {
         for (int i = 0; i < highlights.Count; i = i+2)
         {
-            Color colorTop = highlights[i].color;
-            Color colorBottom = highlights[i+1].color;
-            
-            colorTop.a = 255;
-            colorBottom.a = 255;
-            highlights[i].color = colorTop;
-            highlights[i+1].color = colorBottom;
+            Image[] images =  highlights[i].GetComponentsInChildren<Image>();
+
+            foreach (Image image in images)
+            {
+                Color color = image.color;
+                color.a = 1f;
+                image.color = color;
+            }
         }
     }
 }

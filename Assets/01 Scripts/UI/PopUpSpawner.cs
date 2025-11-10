@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PopUpSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject popUpPrefab;
+    [SerializeField] GameObject popUpCorrect;
+    [SerializeField] GameObject popUpWrong;
 
-    public void SpawnPopUp()
+    public void SpawnPopUp(bool isCorrect)
     {
-        GameObject spawned = Instantiate(popUpPrefab);
+        GameObject spawned = isCorrect  ? Instantiate(popUpCorrect)  : Instantiate(popUpWrong);
         spawned.transform.SetParent(gameObject.transform);
         spawned.transform.position = gameObject.transform.position;
     }
